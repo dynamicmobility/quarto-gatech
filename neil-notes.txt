@@ -1,0 +1,14 @@
+
+
+Overview:
+This paper shows that "muscle synergy priors" enhance biomechanical fidelity, specifically in muscoluskeletal simulation. The paper extracts low-dimensional muscle synergy basis from inverse musculoskeletal analyses of overground walking trials. They then create a 3-dimensional muscle driven model and train it across various speeds and uneven terrain using RL. Overall, the paper shows that embedding neurophysiological structure in RL can improve biomechanical fidelity. 
+
+Muscle synergy priors: ???
+
+Musculoskeletal analyses: ???
+
+Overground walking trials: ???
+
+Biomechanical fidelity: vertical ground reaction forces align with that of human demonstrations. Non-physiological knee kinematics arise from unconstrained controller (that doesn't 'think' about muscle synergies)
+
+Musculoskeletal simulation: ???
