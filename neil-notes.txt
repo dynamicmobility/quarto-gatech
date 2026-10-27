@@ -12,3 +12,8 @@ Overground walking trials: ???
 Biomechanical fidelity: vertical ground reaction forces align with that of human demonstrations. Non-physiological knee kinematics arise from unconstrained controller (that doesn't 'think' about muscle synergies)
 
 Musculoskeletal simulation: ???
+
+
+The problem:
+Advances in RL have enabled msm sims to generate diverse, human-like movements and perform challenging locomotion tasks in various envs. Much of this progress has been driven by motion imitation RL.
+However, these policies primarily focus on replicating reference kinematics rather than truly imitate the underlying neuromuscular coordination and joint kinetics. Moreover, these policies can be brittle or not transferable to out-of-distribution conditions and environments.

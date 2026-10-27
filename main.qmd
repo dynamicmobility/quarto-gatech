@@ -1,0 +1,59 @@
+---
+title: "Muscle Synergy Priors Enhance Biomechanical Fidelity in Predictive Musculoskeletal Locomotion Simulation"
+subtitle: "Literature Review, FACTS Lab + Dynamo Lab"
+author:
+  - name: "<b>Ayah Ahmad</b>"
+    affiliation: Georgia Institute of Technology
+    # email: presenter@gatech.edu
+date: last-modified
+date-format: "MMMM D, YYYY"
+format:
+  gatech-revealjs:
+    toc: false                  # agenda slide listing the `#` sections
+# bibliography: references.bib # add your own .bib to get per-slide references
+---
+
+## Motivation: Musculoskeletal Modeling
+
+- Level-1 headings (`#`) group slides into sections
+- Level-2 headings (`##`) start a new slide
+- `#` divider slides are skipped by default; add `hide-section-slides: false`
+  under the format to show them
+
+# Background
+
+## Learning Locomotion with Musculoskeletal Models
+
+- Cover the standard approaches for learning locomotion on msms
+- namely, tracking a pre-recorded reference by having a policy output muscle activiatiosn
+- this is bad because kinematically feasible != muscle feasible (i.e. there could be conflicting activiations within the same muscle group)
+
+## Muscle Synergies
+
+- Muscle groups work together
+
+# Method
+
+## Method Framework
+
+## Data collection
+
+## Identifying Muscle Synergies from Data
+
+## Training a Policy with Reinforcement Learning
+
+# Results
+
+## Reinforcement Learning Performance
+
+## Similarity of Muscle Activities
+
+## Kinematic and Kinetic Similarity
+
+## Open Questions
+1. How can we leverage data from multiple subjects?
+2. How do we determine the optimal $k$?
+3. Could the muscle synergy matrix be time-varying (over some window)?
+
+# Conclusion
+
