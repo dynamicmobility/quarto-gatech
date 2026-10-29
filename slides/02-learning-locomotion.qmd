@@ -1,6 +1,6 @@
 ## Learning Locomotion with MSMs
 
-### Two main approaches — and neither gets the muscles right yet.
+### Two main approaches
 
 ::: {.horiz}
 ::: {.box}

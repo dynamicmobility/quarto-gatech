@@ -1,15 +1,17 @@
 ## Motivation
 
-### Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being [@grimmer2019mobility; @freiberger2020mobility].
+### Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being 
+<!-- [@grimmer2019mobility; @freiberger2020mobility]. -->
 
-- RL has enabled musculoskeletal models (MSMs) to generate diverse, human-like movement in complex environments [@song2021deeprl]
-- much of this progress → **motion imitation**
+- RL has enabled musculoskeletal models (MSMs) to generate diverse, human-like movement in complex environments 
+<!-- [@song2021deeprl] -->
+- much of musculoskeletal simulation progress has relied on motion imitation
 
 ::: {.fragment}
-**But** human-like *motion* ≠ human-like *biomechanics*
+#### Human-like motion ≠ human-like biomechanics
 
-- imitation reproduces reference kinematics, not the underlying neuromuscular coordination + joint kinetics
-- brittle outside the demonstrations
+- imitation reproduces reference kinematics, not the underlying neuromuscular coordination & joint kinetics
+<!-- - brittle outside the demonstrations -->
 :::
 
 ::: {.fragment}

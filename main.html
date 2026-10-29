@@ -173,13 +173,14 @@
 </section>
 <section id="motivation" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Motivation</h2>
-<h3 id="locomotion-is-central-to-independence-and-mobility-loss-is-linked-to-injury-and-reduced-well-being-grimmer2019mobility-freiberger2020mobility.">Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being <span class="citation" data-cites="grimmer2019mobility freiberger2020mobility"><a href="#/references" role="doc-biblioref" onclick="">[1]</a>, <a href="#/references" role="doc-biblioref" onclick="">[2]</a></span>.</h3>
+<h3 id="locomotion-is-central-to-independence-and-mobility-loss-is-linked-to-injury-and-reduced-well-being">Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being</h3>
+<!-- [@grimmer2019mobility; @freiberger2020mobility]. -->
 <ul>
-<li>RL has enabled musculoskeletal models (MSMs) to generate diverse, human-like movement in complex environments <span class="citation" data-cites="song2021deeprl"><a href="#/references" role="doc-biblioref" onclick="">[3]</a></span></li>
-<li>much of this progress → <strong>motion imitation</strong></li>
+<li>RL has enabled musculoskeletal models (MSMs) to generate diverse, human-like movement in complex environments <!-- [@song2021deeprl] --></li>
+<li>much of musculoskeletal simulation progress has relied on motion imitation</li>
 </ul>
 <div class="fragment" data-fragment-index="0">
-<p><strong>But</strong> human-like <em>motion</em> ≠ human-like <em>biomechanics</em></p>
+<h4 id="human-like-motion-human-like-biomechanics">Human-like <em>motion</em> ≠ human-like <em>biomechanics</em></h4>
 <ul>
 <li>imitation reproduces reference kinematics, not the underlying neuromuscular coordination + joint kinetics</li>
 <li>brittle outside the demonstrations</li>
@@ -187,7 +188,7 @@
 </div>
 <div class="fragment" data-fragment-index="1">
 <blockquote>
-<p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[4]</a></span></p>
+<p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[1]</a></span></p>
 </blockquote>
 </div>
 <aside class="notes">
@@ -207,20 +208,9 @@
           display:block!important;
       }</style></aside>
 
-
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Grimmer, R. Riener, C. J. Walsh, and A. Seyfarth, “Mobility related physical and functional losses due to aging and disease – a motivation for lower limb exoskeletons,” <em>Journal of NeuroEngineering and Rehabilitation</em>, 2019.</div>
-</div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">E. Freiberger, C. C. Sieber, and R. Kob, “Mobility in older community-dwelling persons: A narrative review,” <em>Frontiers in Physiology</em>, 2020.</div>
-</div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S. Song <em>et al.</em>, “Deep reinforcement learning for modeling human locomotion control in neuromechanical simulation,” <em>Journal of NeuroEngineering and Rehabilitation</em>, 2021.</div>
-</div>
-</div><div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
 </div>
 </div></aside></section>
 <section>
@@ -233,7 +223,7 @@
 <h3 id="two-main-approaches-and-neither-gets-the-muscles-right-yet.">Two main approaches — and neither gets the muscles right yet.</h3>
 <div class="horiz">
 <div class="box">
-<p><strong>Motion imitation</strong> <span class="citation" data-cites="simos2025imitation park2025magnet cotton2025kintwin"><a href="#/references" role="doc-biblioref" onclick="">[5]</a>, <a href="#/references" role="doc-biblioref" onclick="">[6]</a>, <a href="#/references" role="doc-biblioref" onclick="">[7]</a></span></p>
+<p><strong>Motion imitation</strong> <span class="citation" data-cites="simos2025imitation park2025magnet cotton2025kintwin"><a href="#/references" role="doc-biblioref" onclick="">[2]</a>, <a href="#/references" role="doc-biblioref" onclick="">[3]</a>, <a href="#/references" role="doc-biblioref" onclick="">[4]</a></span></p>
 <ul>
 <li>policy outputs muscle excitations</li>
 <li>reward → track a mocap clip</li>
@@ -241,7 +231,7 @@
 </ul>
 </div>
 <div class="box">
-<p><strong>Predictive simulation</strong> <span class="citation" data-cites="schumacher2025natural badie2025bioinspired weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[8]</a>, <a href="#/references" role="doc-biblioref" onclick="">[9]</a>, <a href="#/references" role="doc-biblioref" onclick="">[10]</a></span></p>
+<p><strong>Predictive simulation</strong> <span class="citation" data-cites="schumacher2025natural badie2025bioinspired weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[5]</a>, <a href="#/references" role="doc-biblioref" onclick="">[6]</a>, <a href="#/references" role="doc-biblioref" onclick="">[7]</a></span></p>
 <ul>
 <li>no reference trajectory in the reward</li>
 <li>bio-plausible objectives (effort, stability) + curricula</li>
@@ -279,27 +269,27 @@
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Simos, A. S. Chiappa, and A. Mathis, “Reinforcement learning-based motion imitation for physiologically plausible musculoskeletal motor control,” <em>arXiv</em>, 2025.</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Simos, A. S. Chiappa, and A. Mathis, “Reinforcement learning-based motion imitation for physiologically plausible musculoskeletal motor control,” <em>arXiv</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J. Park, E. Jung, J. Lee, and J. Won, “MAGNET: Muscle activation generation networks for diverse human movement,” <em>ACM SIGGRAPH conference papers</em>, 2025.</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J. Park, E. Jung, J. Lee, and J. Won, “MAGNET: Muscle activation generation networks for diverse human movement,” <em>ACM SIGGRAPH conference papers</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">R. J. Cotton, “KinTwin: Imitation learning with torque and muscle driven biomechanical models enables precise replication of able-bodied and impaired movement from markerless motion capture,” <em>arXiv</em>, 2025.</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">R. J. Cotton, “KinTwin: Imitation learning with torque and muscle driven biomechanical models enables precise replication of able-bodied and impaired movement from markerless motion capture,” <em>arXiv</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, “Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,” <em>Communications Engineering</em>, 2025.</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, “Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,” <em>Communications Engineering</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, “Natural walking with musculoskeletal models using deep reinforcement learning,” <em>IEEE Robotics and Automation Letters</em>, 2021.</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, “Natural walking with musculoskeletal models using deep reinforcement learning,” <em>IEEE Robotics and Automation Letters</em>, 2021.</div>
 </div>
 </div></aside></section>
 <section id="muscle-synergies" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Muscle Synergies</h2>
-<h3 id="the-cns-likely-recruits-groups-of-muscles-together-rather-than-controlling-each-one-individually-davella2003combinations-bizzi2013neural.">The CNS likely recruits groups of muscles together, rather than controlling each one individually <span class="citation" data-cites="davella2003combinations bizzi2013neural"><a href="#/references" role="doc-biblioref" onclick="">[11]</a>, <a href="#/references" role="doc-biblioref" onclick="">[12]</a></span>.</h3>
+<h3 id="the-cns-likely-recruits-groups-of-muscles-together-rather-than-controlling-each-one-individually-davella2003combinations-bizzi2013neural.">The CNS likely recruits groups of muscles together, rather than controlling each one individually <span class="citation" data-cites="davella2003combinations bizzi2013neural"><a href="#/references" role="doc-biblioref" onclick="">[8]</a>, <a href="#/references" role="doc-biblioref" onclick="">[9]</a></span>.</h3>
 <div title="Definition: Muscle Synergy (spatial)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -321,8 +311,8 @@
 <ul>
 <li>high-dimensional muscle control → many kinematically acceptable but physiologically implausible solutions</li>
 <li>~4–6 synergies per leg reproduce walking EMG</li>
-<li>clinically meaningful → paretic limb shows <strong>fewer, merged</strong> modules after stroke <span class="citation" data-cites="clark2010merging"><a href="#/references" role="doc-biblioref" onclick="">[13]</a></span></li>
-<li>already used in over-actuated RL for <strong>sample efficiency</strong> <span class="citation" data-cites="berg2024sar he2024dynsyn"><a href="#/references" role="doc-biblioref" onclick="">[14]</a>, <a href="#/references" role="doc-biblioref" onclick="">[15]</a></span></li>
+<li>clinically meaningful → paretic limb shows <strong>fewer, merged</strong> modules after stroke <span class="citation" data-cites="clark2010merging"><a href="#/references" role="doc-biblioref" onclick="">[10]</a></span></li>
+<li>already used in over-actuated RL for <strong>sample efficiency</strong> <span class="citation" data-cites="berg2024sar he2024dynsyn"><a href="#/references" role="doc-biblioref" onclick="">[11]</a>, <a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></li>
 </ul>
 </div>
 <aside class="notes">
@@ -345,20 +335,20 @@
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline"><span class="nocase">A. d’Avella, P. Saltiel, and E. Bizzi</span>, “Combinations of muscle synergies in the construction of a natural motor behavior,” <em>Nature Neuroscience</em>, 2003.</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline"><span class="nocase">A. d’Avella, P. Saltiel, and E. Bizzi</span>, “Combinations of muscle synergies in the construction of a natural motor behavior,” <em>Nature Neuroscience</em>, 2003.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">E. Bizzi and V. C. K. Cheung, “The neural origin of muscle synergies,” <em>Frontiers in Computational Neuroscience</em>, 2013.</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">E. Bizzi and V. C. K. Cheung, “The neural origin of muscle synergies,” <em>Frontiers in Computational Neuroscience</em>, 2013.</div>
 </div>
 </div><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, “Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,” <em>Journal of Neurophysiology</em>, 2010.</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, “Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,” <em>Journal of Neurophysiology</em>, 2010.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C. Berg, V. Caggiano, and V. Kumar, “SAR: Generalization of physiological agility and dexterity via synergistic action representation,” <em>Autonomous Robots</em>, 2024.</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">C. Berg, V. Caggiano, and V. Kumar, “SAR: Generalization of physiological agility and dexterity via synergistic action representation,” <em>Autonomous Robots</em>, 2024.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">K. He, C. Zuo, C. Ma, and Y. Sui, “DynSyn: Dynamical synergistic representation for efficient learning and control in overactuated embodied systems,” <em>arXiv</em>, 2024.</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">K. He, C. Zuo, C. Ma, and Y. Sui, “DynSyn: Dynamical synergistic representation for efficient learning and control in overactuated embodied systems,” <em>arXiv</em>, 2024.</div>
 </div>
 </div></aside></section></section>
 <section>
@@ -407,7 +397,7 @@
 <li><strong>Synergistic:</strong> policy → 10 synergy weights per leg → <span class="math inline">\(H\)</span> → 40 muscles</li>
 <li><strong>Independent (baseline):</strong> policy → every muscle directly</li>
 </ul>
-<p><strong>Test:</strong> compare both to treadmill data from 30 <em>other</em> people (22 + 8) <span class="citation" data-cites="camargo2021dataset scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[16]</a>, <a href="#/references" role="doc-biblioref" onclick="">[17]</a></span></p>
+<p><strong>Test:</strong> compare both to treadmill data from 30 <em>other</em> people (22 + 8) <span class="citation" data-cites="camargo2021dataset scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[13]</a>, <a href="#/references" role="doc-biblioref" onclick="">[14]</a></span></p>
 </div>
 <aside class="notes">
 <p>Steps 1 through 3 are just about building the synergies. They record one person walking, use a simulation (MocoInverse in OpenSim) to estimate what their muscles were doing, since there’s no EMG, and then use NMF to find groups of muscles that tend to activate together. That gives 10 synergies per leg — that’s the matrix H.</p>
@@ -427,10 +417,10 @@
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
 </div>
 </div></aside></section>
 <section id="data-collection" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -465,7 +455,7 @@
 <p><strong>Muscle activity estimation</strong></p>
 <ul>
 <li><strong>H2190</strong> model → 3D, 21 DoF, 90 muscles (incl.&nbsp;lumbar + 10 trunk muscles), ported Hyfydy → OpenSim</li>
-<li>scale → IK → <strong>MocoInverse</strong> <span class="citation" data-cites="dembia2020moco"><a href="#/references" role="doc-biblioref" onclick="">[18]</a></span>: minimize <span class="math inline">\(\sum u_i^2\)</span> s.t. measured kinematics + GRFs</li>
+<li>scale → IK → <strong>MocoInverse</strong> <span class="citation" data-cites="dembia2020moco"><a href="#/references" role="doc-biblioref" onclick="">[15]</a></span>: minimize <span class="math inline">\(\sum u_i^2\)</span> s.t. measured kinematics + GRFs</li>
 </ul>
 <p><strong>Synergy acquisition</strong> — NMF on right-leg activations</p>
 <p><span class="math display">\[
@@ -494,7 +484,7 @@
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, “OpenSim moco: Musculoskeletal optimal control,” <em>PLOS Computational Biology</em>, 2020.</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, “OpenSim moco: Musculoskeletal optimal control,” <em>PLOS Computational Biology</em>, 2020.</div>
 </div>
 </div></aside></section>
 <section id="training-a-policy-with-rl" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -517,13 +507,13 @@
 </ul>
 </div>
 <div>
-<p><strong>Environment:</strong> Hyfydy <span class="citation" data-cites="geijtenbeek2021hyfydy"><a href="#/references" role="doc-biblioref" onclick="">[19]</a></span></p>
+<p><strong>Environment:</strong> Hyfydy <span class="citation" data-cites="geijtenbeek2021hyfydy"><a href="#/references" role="doc-biblioref" onclick="">[16]</a></span></p>
 <ul>
 <li>40 Hz control, 1000-step (25 s) episodes</li>
 <li>speed curriculum: <span class="math inline">\(0.7 \to 1.6 \to 0.7\)</span> m/s</li>
 <li>10,000 random tile terrains, slopes <span class="math inline">\(\pm 6^\circ\)</span></li>
 </ul>
-<p><strong>Learner:</strong> SAC <span class="citation" data-cites="haarnoja2018sac"><a href="#/references" role="doc-biblioref" onclick="">[20]</a></span>, Stable-Baselines3</p>
+<p><strong>Learner:</strong> SAC <span class="citation" data-cites="haarnoja2018sac"><a href="#/references" role="doc-biblioref" onclick="">[17]</a></span>, Stable-Baselines3</p>
 <ul>
 <li>75M steps/seed, 5 seeds, RTX 4090</li>
 <li>MLP (512-512-256), buffer <span class="math inline">\(3 \times 10^6\)</span></li>
@@ -548,10 +538,10 @@
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">T. Geijtenbeek, “The hyfydy simulation software.” <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T. Geijtenbeek, “The hyfydy simulation software.” <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, “Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,” <em>International conference on machine learning</em>, 2018.</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, “Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,” <em>International conference on machine learning</em>, 2018.</div>
 </div>
 </div></aside></section>
 <section id="reward-design" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -586,8 +576,8 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <h2>Evaluation Protocol</h2>
 <h3 id="compare-simulated-gait-to-human-treadmill-data-relative-to-how-much-humans-differ-from-each-other.">Compare simulated gait to human treadmill data, relative to how much humans differ from each other.</h3>
 <ul>
-<li><strong>Speed:</strong> level walking, 0.7–1.8 m/s, 22 subjects <span class="citation" data-cites="camargo2021dataset"><a href="#/references" role="doc-biblioref" onclick="">[16]</a></span></li>
-<li><strong>Slope:</strong> <span class="math inline">\(\pm 5^\circ\)</span> at 1.2 m/s, 8 subjects <span class="citation" data-cites="scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[17]</a></span></li>
+<li><strong>Speed:</strong> level walking, 0.7–1.8 m/s, 22 subjects <span class="citation" data-cites="camargo2021dataset"><a href="#/references" role="doc-biblioref" onclick="">[13]</a></span></li>
+<li><strong>Slope:</strong> <span class="math inline">\(\pm 5^\circ\)</span> at 1.2 m/s, 8 subjects <span class="citation" data-cites="scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[14]</a></span></li>
 <li><strong>Metrics:</strong> sagittal joint angles, joint moments, GRFs (AP + vertical), EMG for 8 lower-limb muscles</li>
 </ul>
 <div class="fragment" data-fragment-index="0">
@@ -627,10 +617,10 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
 </div>
 </div></aside></section></section>
 <section>
@@ -816,7 +806,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 </thead>
 <tbody>
 <tr class="odd">
-<td>Weng et al.&nbsp;2021 <span class="citation" data-cites="weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[10]</a></span></td>
+<td>Weng et al.&nbsp;2021 <span class="citation" data-cites="weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[7]</a></span></td>
 <td>Sagittal, low-dim</td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">–</td>
@@ -824,7 +814,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <td style="text-align: center;">–</td>
 </tr>
 <tr class="even">
-<td>Badie et al.&nbsp;2025 <span class="citation" data-cites="badie2025bioinspired"><a href="#/references" role="doc-biblioref" onclick="">[9]</a></span></td>
+<td>Badie et al.&nbsp;2025 <span class="citation" data-cites="badie2025bioinspired"><a href="#/references" role="doc-biblioref" onclick="">[6]</a></span></td>
 <td>3D, compact muscles</td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
@@ -832,7 +822,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <td style="text-align: center;">–</td>
 </tr>
 <tr class="odd">
-<td>Schumacher et al.&nbsp;2025 <span class="citation" data-cites="schumacher2025natural"><a href="#/references" role="doc-biblioref" onclick="">[8]</a></span></td>
+<td>Schumacher et al.&nbsp;2025 <span class="citation" data-cites="schumacher2025natural"><a href="#/references" role="doc-biblioref" onclick="">[5]</a></span></td>
 <td>Low- to high-dim</td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
@@ -840,7 +830,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <td style="text-align: center;">–</td>
 </tr>
 <tr class="even">
-<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[4]</a></span></td>
+<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[1]</a></span></td>
 <td><strong>3D, 90 muscles</strong></td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
@@ -865,16 +855,16 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, “Natural walking with musculoskeletal models using deep reinforcement learning,” <em>IEEE Robotics and Automation Letters</em>, 2021.</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, “Natural walking with musculoskeletal models using deep reinforcement learning,” <em>IEEE Robotics and Automation Letters</em>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, “Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,” <em>Communications Engineering</em>, 2025.</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, “Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,” <em>Communications Engineering</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
 </div>
 </div></aside></section>
 <section id="limitations" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -919,7 +909,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <li>How can we leverage data from <strong>multiple subjects</strong>?</li>
 <li>How do we determine the <strong>optimal <span class="math inline">\(k\)</span></strong>?</li>
 <li>Could the synergy matrix be <strong>time-varying</strong> (over some window)?</li>
-<li>Would a <strong>patient-specific</strong> <span class="math inline">\(H\)</span> (e.g.&nbsp;post-stroke, merged modules) reproduce <em>pathological</em> gait? <span class="citation" data-cites="clark2010merging"><a href="#/references" role="doc-biblioref" onclick="">[13]</a></span></li>
+<li>Would a <strong>patient-specific</strong> <span class="math inline">\(H\)</span> (e.g.&nbsp;post-stroke, merged modules) reproduce <em>pathological</em> gait? <span class="citation" data-cites="clark2010merging"><a href="#/references" role="doc-biblioref" onclick="">[10]</a></span></li>
 <li>Does the prior transfer to <strong>assistive-device control</strong> (exoskeleton co-simulation)?</li>
 </ol>
 <aside class="notes">
@@ -938,7 +928,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, “Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,” <em>Journal of Neurophysiology</em>, 2010.</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, “Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,” <em>Journal of Neurophysiology</em>, 2010.</div>
 </div>
 </div></aside></section></section>
 <section>
@@ -980,65 +970,56 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <h2>References</h2>
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-grimmer2019mobility" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Grimmer, R. Riener, C. J. Walsh, and A. Seyfarth, <span>“Mobility related physical and functional losses due to aging and disease – a motivation for lower limb exoskeletons,”</span> <em>Journal of NeuroEngineering and Rehabilitation</em>, vol. 16, no. 1, p. 2, 2019.</div>
-</div>
-<div id="ref-freiberger2020mobility" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">E. Freiberger, C. C. Sieber, and R. Kob, <span>“Mobility in older community-dwelling persons: A narrative review,”</span> <em>Frontiers in Physiology</em>, vol. 11, p. 881, 2020.</div>
-</div>
-<div id="ref-song2021deeprl" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">S. Song <em>et al.</em>, <span>“Deep reinforcement learning for modeling human locomotion control in neuromechanical simulation,”</span> <em>Journal of NeuroEngineering and Rehabilitation</em>, vol. 18, no. 1, p. 126, 2021.</div>
-</div>
 <div id="ref-park2026synergy" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, <span>“Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,”</span> <em>arXiv preprint arXiv:2603.10474</em>, 2026.</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, <span>“Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,”</span> <em>arXiv preprint arXiv:2603.10474</em>, 2026.</div>
 </div>
 <div id="ref-simos2025imitation" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Simos, A. S. Chiappa, and A. Mathis, <span>“Reinforcement learning-based motion imitation for physiologically plausible musculoskeletal motor control,”</span> <em>arXiv preprint arXiv:2503.14637</em>, 2025.</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Simos, A. S. Chiappa, and A. Mathis, <span>“Reinforcement learning-based motion imitation for physiologically plausible musculoskeletal motor control,”</span> <em>arXiv preprint arXiv:2503.14637</em>, 2025.</div>
 </div>
 <div id="ref-park2025magnet" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J. Park, E. Jung, J. Lee, and J. Won, <span>“MAGNET: Muscle activation generation networks for diverse human movement,”</span> in <em>ACM SIGGRAPH conference papers</em>, 2025.</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J. Park, E. Jung, J. Lee, and J. Won, <span>“MAGNET: Muscle activation generation networks for diverse human movement,”</span> in <em>ACM SIGGRAPH conference papers</em>, 2025.</div>
 </div>
 <div id="ref-cotton2025kintwin" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">R. J. Cotton, <span>“KinTwin: Imitation learning with torque and muscle driven biomechanical models enables precise replication of able-bodied and impaired movement from markerless motion capture,”</span> <em>arXiv preprint arXiv:2505.13436</em>, 2025.</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">R. J. Cotton, <span>“KinTwin: Imitation learning with torque and muscle driven biomechanical models enables precise replication of able-bodied and impaired movement from markerless motion capture,”</span> <em>arXiv preprint arXiv:2505.13436</em>, 2025.</div>
 </div>
 <div id="ref-schumacher2025natural" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, <span>“Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,”</span> <em>iScience</em>, vol. 28, no. 4, 2025.</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, <span>“Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,”</span> <em>iScience</em>, vol. 28, no. 4, 2025.</div>
 </div>
 <div id="ref-badie2025bioinspired" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, <span>“Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,”</span> <em>Communications Engineering</em>, vol. 4, no. 1, p. 115, 2025.</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, <span>“Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,”</span> <em>Communications Engineering</em>, vol. 4, no. 1, p. 115, 2025.</div>
 </div>
 <div id="ref-weng2021natural" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, <span>“Natural walking with musculoskeletal models using deep reinforcement learning,”</span> <em>IEEE Robotics and Automation Letters</em>, vol. 6, no. 2, pp. 4156–4162, 2021.</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, <span>“Natural walking with musculoskeletal models using deep reinforcement learning,”</span> <em>IEEE Robotics and Automation Letters</em>, vol. 6, no. 2, pp. 4156–4162, 2021.</div>
 </div>
 <div id="ref-davella2003combinations" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline"><span class="nocase">A. d’Avella, P. Saltiel, and E. Bizzi</span>, <span>“Combinations of muscle synergies in the construction of a natural motor behavior,”</span> <em>Nature Neuroscience</em>, vol. 6, no. 3, pp. 300–308, 2003.</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline"><span class="nocase">A. d’Avella, P. Saltiel, and E. Bizzi</span>, <span>“Combinations of muscle synergies in the construction of a natural motor behavior,”</span> <em>Nature Neuroscience</em>, vol. 6, no. 3, pp. 300–308, 2003.</div>
 </div>
 <div id="ref-bizzi2013neural" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">E. Bizzi and V. C. K. Cheung, <span>“The neural origin of muscle synergies,”</span> <em>Frontiers in Computational Neuroscience</em>, vol. 7, p. 51, 2013.</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">E. Bizzi and V. C. K. Cheung, <span>“The neural origin of muscle synergies,”</span> <em>Frontiers in Computational Neuroscience</em>, vol. 7, p. 51, 2013.</div>
 </div>
 <div id="ref-clark2010merging" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, <span>“Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,”</span> <em>Journal of Neurophysiology</em>, vol. 103, no. 2, pp. 844–857, 2010.</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, <span>“Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,”</span> <em>Journal of Neurophysiology</em>, vol. 103, no. 2, pp. 844–857, 2010.</div>
 </div>
 <div id="ref-berg2024sar" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C. Berg, V. Caggiano, and V. Kumar, <span>“SAR: Generalization of physiological agility and dexterity via synergistic action representation,”</span> <em>Autonomous Robots</em>, vol. 48, no. 8, p. 28, 2024.</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">C. Berg, V. Caggiano, and V. Kumar, <span>“SAR: Generalization of physiological agility and dexterity via synergistic action representation,”</span> <em>Autonomous Robots</em>, vol. 48, no. 8, p. 28, 2024.</div>
 </div>
 <div id="ref-he2024dynsyn" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">K. He, C. Zuo, C. Ma, and Y. Sui, <span>“DynSyn: Dynamical synergistic representation for efficient learning and control in overactuated embodied systems,”</span> <em>arXiv preprint arXiv:2407.11472</em>, 2024.</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">K. He, C. Zuo, C. Ma, and Y. Sui, <span>“DynSyn: Dynamical synergistic representation for efficient learning and control in overactuated embodied systems,”</span> <em>arXiv preprint arXiv:2407.11472</em>, 2024.</div>
 </div>
 <div id="ref-camargo2021dataset" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, <span>“A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,”</span> <em>Journal of Biomechanics</em>, vol. 119, p. 110320, 2021.</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, <span>“A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,”</span> <em>Journal of Biomechanics</em>, vol. 119, p. 110320, 2021.</div>
 </div>
 <div id="ref-scherpereel2023dataset" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, <span>“A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,”</span> <em>Scientific Data</em>, vol. 10, no. 1, p. 924, 2023.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, <span>“A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,”</span> <em>Scientific Data</em>, vol. 10, no. 1, p. 924, 2023.</div>
 </div>
 <div id="ref-dembia2020moco" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, <span>“OpenSim moco: Musculoskeletal optimal control,”</span> <em>PLOS Computational Biology</em>, vol. 16, no. 12, p. e1008493, 2020.</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, <span>“OpenSim moco: Musculoskeletal optimal control,”</span> <em>PLOS Computational Biology</em>, vol. 16, no. 12, p. e1008493, 2020.</div>
 </div>
 <div id="ref-geijtenbeek2021hyfydy" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">T. Geijtenbeek, <span>“The hyfydy simulation software.”</span> <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T. Geijtenbeek, <span>“The hyfydy simulation software.”</span> <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
 </div>
 <div id="ref-haarnoja2018sac" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, <span>“Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,”</span> in <em>International conference on machine learning</em>, 2018, pp. 1861–1870.</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, <span>“Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,”</span> in <em>International conference on machine learning</em>, 2018, pp. 1861–1870.</div>
 </div>
 </div>
 </section></section>
