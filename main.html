@@ -177,19 +177,14 @@
 <li>Enables a simulation-based study of human gait, and how it physiologically changes due to pathology.</li>
 <li>Easier-to-collect data for training and personalizing assistive device controllers.</li>
 </ul>
-<p><em>Reinforcement learning (RL) for MSM locomotion.</em></p>
-<ul>
-<li>By deploying RL with a motion imitation reward, MSMs achieve generate diverse, “human-like” movement in complex environments. <!-- [@song2021deeprl] --></li>
-<li>Human-like <span class="math inline">\(\neq\)</span> physiologically plausible: the underlying neuromuscular coordination and joint kinetics are underdetermined.</li>
-</ul>
-<div class="fragment" data-fragment-index="0">
-<p><em>Muscle synergies to describe muscle groups.</em></p>
+<div class="columns">
+<div class="column" style="width:62%;">
+<p>Assistive devices, like exoskeletons, can significantly increase functional mobility, especially in older age <span class="citation" data-cites="grimmer2019mobility"><a href="#/references" role="doc-biblioref" onclick="">[1]</a></span>. <img data-src="figures/exos-help.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</div><div class="column" style="width:38%;">
+<div style="width:240px; height:420px; margin:0 auto; border:3px dashed #999; display:flex; align-items:center; justify-content:center; text-align:center; color:#666; font-size:0.7em;">
+msm with exo video
 </div>
-<div class="fragment" data-fragment-index="1">
-<blockquote>
-<p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[1]</a></span></p>
-</blockquote>
-</div>
+</div></div>
 <aside class="notes">
 <p>The paper starts from the clinical side: walking is central to independence, and losing mobility — from aging or disease — is tied to injury and lower well-being. So we want simulations that can tell us something real about how people walk.</p>
 <p>RL has gotten us a long way there. MSMs can now produce pretty diverse, human-like movement, and a lot of that progress has come from motion imitation.</p>
@@ -209,7 +204,7 @@
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Grimmer, R. Riener, C. J. Walsh, and A. Seyfarth, “Mobility related physical and functional losses due to aging and disease - a motivation for lower limb exoskeletons,” <em>Journal of NeuroEngineering and Rehabilitation</em>, Jan. 2019.</div>
 </div>
 </div></aside></section>
 <section>
@@ -219,37 +214,37 @@
 </section>
 <section id="learning-locomotion-with-msms" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Learning Locomotion with MSMs</h2>
-<h3 id="two-main-approaches">Two main approaches</h3>
-<div class="horiz">
+<p><em>Train a policy using reinforcement learning to output muscle activations that achieve high-level locomotion skills, like walking, incline-walking, running, etcetera.</em></p>
+<div class="columns">
+<div class="column" style="width:50%;">
 <div class="box">
-<p><strong>Motion imitation</strong> <span class="citation" data-cites="simos2025imitation park2025magnet cotton2025kintwin"><a href="#/references" role="doc-biblioref" onclick="">[2]</a>, <a href="#/references" role="doc-biblioref" onclick="">[3]</a>, <a href="#/references" role="doc-biblioref" onclick="">[4]</a></span></p>
+<p><span style="display:block; text-align:center"><strong>Motion Imitation</strong> <span class="citation" data-cites="simos2025imitation park2025magnet cotton2025kintwin"><a href="#/references" role="doc-biblioref" onclick="">[2]</a>, <a href="#/references" role="doc-biblioref" onclick="">[3]</a>, <a href="#/references" role="doc-biblioref" onclick="">[4]</a></span></span></p>
 <ul>
-<li>policy outputs muscle excitations</li>
-<li>reward → track a mocap clip</li>
-<li>reproduces reference kinematics well</li>
+<li>Motion imitation reward.</li>
+<li>Reproduces reference kinematics well.</li>
+<li>Often uses physiological implausible muscle activations.</li>
 </ul>
 </div>
+</div><div class="column" style="width:50%;">
 <div class="box">
-<p><strong>Predictive simulation</strong> <span class="citation" data-cites="schumacher2025natural badie2025bioinspired weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[5]</a>, <a href="#/references" role="doc-biblioref" onclick="">[6]</a>, <a href="#/references" role="doc-biblioref" onclick="">[7]</a></span></p>
-<ul>
-<li>no reference trajectory in the reward</li>
-<li>bio-plausible objectives (effort, stability) + curricula</li>
-<li>gait <em>emerges</em> from the task</li>
-</ul>
+<p><span style="display:block; text-align:center"><strong>Predictive Simulation</strong> <span class="citation" data-cites="schumacher2025natural badie2025bioinspired weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[5]</a>, <a href="#/references" role="doc-biblioref" onclick="">[6]</a>, <a href="#/references" role="doc-biblioref" onclick="">[7]</a></span></span> There are two main approaches:</p>
+<ol type="1">
+<li>Utilize bio-plausible objectives (effort, stability, pain).</li>
+<li>Build bio-inspired curricula (balance, walk, run).</li>
+</ol>
 </div>
-</div>
-<div class="fragment" data-fragment-index="0">
-<p><strong>The Problem with Imitation</strong></p>
+</div></div>
+<p>Neither approach connects kinematic accuracy with neuromuscular authenticity</p>
 <ul>
-<li>kinematically feasible <span class="math inline">\(\neq\)</span> muscularly plausible</li>
-<li>joint kinetics + muscle coordination are underdetermined</li>
-<li>brittle outside the demonstration (new speeds, slopes)</li>
+<li>Human-like <span class="math inline">\(\neq\)</span> physiologically plausible: the underlying neuromuscular coordination and joint kinetics are underdetermined. <!-- - Constraints or objectives are needed for more biological accuracy. --></li>
 </ul>
-<p><strong>The Gap in Predictive Simulation</strong></p>
-<ul>
-<li>looks plausible, but poor quantitative agreement with human <em>kinetics</em> and <em>EMG</em></li>
-</ul>
-</div>
+<!-- ::: {.fragment}
+*Muscle synergies to describe muscle groups.*
+:::
+
+::: {.fragment}
+> *Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?* [@park2026synergy]
+::: -->
 <aside class="notes">
 <p>Most of the recent progress in MSM locomotion has come from motion imitation. You give the policy a mocap clip and reward it for tracking it, and the kinematics come out looking great.</p>
 <p>But matching joint angles doesn’t mean the muscles are doing anything reasonable. Each muscle is controlled independently, so the policy can do things like co-contract within a muscle group in ways no person would. The kinetics and muscle coordination are basically unconstrained. These policies also tend to be brittle — move them to a speed or slope that wasn’t in the demo and they fall apart.</p>
@@ -288,7 +283,7 @@
 </div></aside></section>
 <section id="muscle-synergies" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Muscle Synergies</h2>
-<h3 id="the-cns-likely-recruits-groups-of-muscles-together-rather-than-controlling-each-one-individually-davella2003combinations-bizzi2013neural.">The CNS likely recruits groups of muscles together, rather than controlling each one individually <span class="citation" data-cites="davella2003combinations bizzi2013neural"><a href="#/references" role="doc-biblioref" onclick="">[8]</a>, <a href="#/references" role="doc-biblioref" onclick="">[9]</a></span>.</h3>
+<p>Evidence suggests that the central nervous system recruits <em>groups</em> of muscles together, rather than controlling each one individually <span class="citation" data-cites="davella2003combinations bizzi2013neural"><a href="#/references" role="doc-biblioref" onclick="">[8]</a>, <a href="#/references" role="doc-biblioref" onclick="">[9]</a></span>.</p>
 <div title="Definition: Muscle Synergy (spatial)">
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -829,7 +824,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <td style="text-align: center;">–</td>
 </tr>
 <tr class="even">
-<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[1]</a></span></td>
+<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[18]</a></span></td>
 <td><strong>3D, 90 muscles</strong></td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
@@ -863,7 +858,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
 </div>
 </div></aside></section>
 <section id="limitations" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -969,8 +964,8 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <h2>References</h2>
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-park2026synergy" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, <span>“Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,”</span> <em>arXiv preprint arXiv:2603.10474</em>, 2026.</div>
+<div id="ref-grimmer2019mobility" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. Grimmer, R. Riener, C. J. Walsh, and A. Seyfarth, <span>“Mobility related physical and functional losses due to aging and disease - a motivation for lower limb exoskeletons,”</span> <em>Journal of NeuroEngineering and Rehabilitation</em>, vol. 16, no. 1, p. 2, Jan. 2019, doi: <a href="https://doi.org/10.1186/s12984-018-0458-8">10.1186/s12984-018-0458-8</a>.</div>
 </div>
 <div id="ref-simos2025imitation" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Simos, A. S. Chiappa, and A. Mathis, <span>“Reinforcement learning-based motion imitation for physiologically plausible musculoskeletal motor control,”</span> <em>arXiv preprint arXiv:2503.14637</em>, 2025.</div>
@@ -1019,6 +1014,9 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 </div>
 <div id="ref-haarnoja2018sac" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, <span>“Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,”</span> in <em>International conference on machine learning</em>, 2018, pp. 1861–1870.</div>
+</div>
+<div id="ref-park2026synergy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, <span>“Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,”</span> <em>arXiv preprint arXiv:2603.10474</em>, 2026.</div>
 </div>
 </div>
 </section></section>

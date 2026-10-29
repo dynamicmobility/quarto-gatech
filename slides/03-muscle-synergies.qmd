@@ -1,6 +1,6 @@
 ## Muscle Synergies
 
-### The CNS likely recruits groups of muscles together, rather than controlling each one individually [@davella2003combinations; @bizzi2013neural].
+Evidence suggests that the central nervous system recruits *groups* of muscles together, rather than controlling each one individually [@davella2003combinations; @bizzi2013neural].
 
 ::: {.callout-tip title="Definition: Muscle Synergy (spatial)"}
 A fixed, non-negative weighting $\mathbf{h}_j \in \mathbb{R}^{m}_{\ge 0}$ over $m$ muscles. Activations are a time-varying combination of $k \ll m$ synergies:

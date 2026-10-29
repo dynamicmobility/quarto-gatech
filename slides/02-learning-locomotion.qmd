@@ -1,36 +1,41 @@
 ## Learning Locomotion with MSMs
 
-### Two main approaches
+*Train a policy using reinforcement learning to output muscle activations that achieve high-level locomotion skills, like walking, incline-walking, running, etcetera.*
 
-::: {.horiz}
+::::: {.columns}
+::: {.column width="50%"}
 ::: {.box}
-**Motion imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]
+[**Motion Imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]]{style="display:block; text-align:center"}
 
-- policy outputs muscle excitations
-- reward → track a mocap clip
-- reproduces reference kinematics well
+- Motion imitation reward.
+- Reproduces reference kinematics well.
+- Often uses physiological implausible muscle activations.
+:::
 :::
 
+::: {.column width="50%"}
 ::: {.box}
-**Predictive simulation** [@schumacher2025natural; @badie2025bioinspired; @weng2021natural]
+[**Predictive Simulation** [@schumacher2025natural; @badie2025bioinspired; @weng2021natural]]{style="display:block; text-align:center"}
+There are two main approaches:
 
-- no reference trajectory in the reward
-- bio-plausible objectives (effort, stability) + curricula
-- gait *emerges* from the task
+1. Utilize bio-plausible objectives (effort, stability, pain).
+2. Build bio-inspired curricula (balance, walk, run).
 :::
+:::
+:::::
+
+Neither approach connects kinematic accuracy with neuromuscular authenticity
+
+- Human-like $\neq$ physiologically plausible: the underlying neuromuscular coordination and joint kinetics are underdetermined.
+<!-- - Constraints or objectives are needed for more biological accuracy. -->
+
+<!-- ::: {.fragment}
+*Muscle synergies to describe muscle groups.*
 :::
 
 ::: {.fragment}
-**The Problem with Imitation**
-
-- kinematically feasible $\neq$ muscularly plausible
-- joint kinetics + muscle coordination are underdetermined
-- brittle outside the demonstration (new speeds, slopes)
-
-**The Gap in Predictive Simulation**
-
-- looks plausible, but poor quantitative agreement with human *kinetics* and *EMG*
-:::
+> *Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?* [@park2026synergy]
+::: -->
 
 ::: {.notes}
 Most of the recent progress in MSM locomotion has come from motion imitation. You give the policy a mocap clip and reward it for tracking it, and the kinematics come out looking great.
