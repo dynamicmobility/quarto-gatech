@@ -1,55 +1,60 @@
 ## Method Overview
 
-### Learn muscle synergies from one person's walking, then make the RL policy control *synergies* instead of individual muscles.
+<!-- Learn muscle synergies from one person's walking, then make the RL policy control *synergies* instead of individual muscles. -->
+> *Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?* [@park2026synergy]
 
 ::: {.horiz style="align-items: stretch;"}
-::: {style="flex: 1;" .box}
-**1. Record walking**
+::: {style="flex: 1; font-size: 0.75em;" .box}
+**1. Record real-world walking.**
 
-1 person, 10 strides
+- 1 person with motion capture and force plates.
+- Extract 10 strides from clip.
 
-mocap + force plates
-
-→ *joint angles + GRFs*
+$\rightarrow$ *Task-space markers & ground reaction forces (GRF).*
 :::
 
 ::: {.flow-arrow}
 →
 :::
 
-::: {style="flex: 1;" .box}
+::: {style="flex: 1; font-size: 0.75em;" .box}
 **2. Estimate muscle activity**
 
-simulation finds activations that reproduce the motion (no EMG)
-
-→ *40 leg muscle activations*
+- Build MSM (H2190) with subject anatomy.
+- Inverse kinematics to compute joint angles.
+- Subject to kinematic and GRF constraints, find valid muscle activations that consume the minimum energy.
 :::
 
 ::: {.flow-arrow}
 →
 :::
 
-::: {style="flex: 1;" .box}
-**3. Extract synergies**
+::: {style="flex: 1; font-size: 0.75em;" .box}
+**3. Identify muscle synergies**
 
-NMF finds groups of muscles that fire together
+Use matrix factorization to identify groups of muscles that activate together (temporally):
 
-→ *10 synergies ($H$)*
+$$ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{activations}}\kern-1.5em}}$$
+
+and set the *synergies* as the output of the RL policy.
 :::
 
 ::: {.flow-arrow}
 →
 :::
 
-::: {style="flex: 1;" .box-accent}
-**4. Train RL**
+::: {style="flex: 1; font-size: 0.75em;" .box}
+**4. Canonical RL**
 
-reward = walk at target speed (no tracking)
+With the synergy constraint baked in, optimize a composite reward function:
 
-→ *walking controller*
+$$R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}$$
+
+Train across a variety of velocities and terrains.
 :::
 :::
 
+# Bro
 ::: {.fragment}
 **Two controllers, same everything else:**
 

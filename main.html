@@ -352,46 +352,65 @@ msm with exo video
 </section>
 <section id="method-overview" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Method Overview</h2>
-<h3 id="learn-muscle-synergies-from-one-persons-walking-then-make-the-rl-policy-control-synergies-instead-of-individual-muscles.">Learn muscle synergies from one person’s walking, then make the RL policy control <em>synergies</em> instead of individual muscles.</h3>
+<!-- Learn muscle synergies from one person's walking, then make the RL policy control *synergies* instead of individual muscles. -->
+<blockquote>
+<p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[13]</a></span></p>
+</blockquote>
 <div class="horiz" style="align-items: stretch;">
-<div class="box" style="flex: 1;">
-<p><strong>1. Record walking</strong></p>
-<p>1 person, 10 strides</p>
-<p>mocap + force plates</p>
-<p>→ <em>joint angles + GRFs</em></p>
+<div class="box" style="flex: 1; font-size: 0.75em;">
+<p><strong>1. Record real-world walking.</strong></p>
+<ul>
+<li>1 person with motion capture and force plates.</li>
+<li>Extract 10 strides from clip.</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> <em>Task-space markers &amp; ground reaction forces (GRF).</em></p>
 </div>
 <div class="flow-arrow">
 <p>→</p>
 </div>
-<div class="box" style="flex: 1;">
+<div class="box" style="flex: 1; font-size: 0.75em;">
 <p><strong>2. Estimate muscle activity</strong></p>
-<p>simulation finds activations that reproduce the motion (no EMG)</p>
-<p>→ <em>40 leg muscle activations</em></p>
+<ul>
+<li>Build MSM (H2190) with subject anatomy.</li>
+<li>Inverse kinematics to compute joint angles.</li>
+<li>Subject to kinematic and GRF constraints, find valid muscle activations that consume the minimum energy.</li>
+</ul>
 </div>
 <div class="flow-arrow">
 <p>→</p>
 </div>
-<div class="box" style="flex: 1;">
-<p><strong>3. Extract synergies</strong></p>
-<p>NMF finds groups of muscles that fire together</p>
-<p>→ <em>10 synergies (<span class="math inline">\(H\)</span>)</em></p>
+<div class="box" style="flex: 1; font-size: 0.75em;">
+<p><strong>3. Identify muscle synergies</strong></p>
+<p>Use matrix factorization to identify groups of muscles that activate together (temporally):</p>
+<p><span class="math display">\[ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{activations}}\kern-1.5em}}\]</span></p>
+<p>and set the <em>synergies</em> as the output of the RL policy.</p>
 </div>
 <div class="flow-arrow">
 <p>→</p>
 </div>
-<div class="box-accent" style="flex: 1;">
-<p><strong>4. Train RL</strong></p>
-<p>reward = walk at target speed (no tracking)</p>
-<p>→ <em>walking controller</em></p>
+<div class="box" style="flex: 1; font-size: 0.75em;">
+<p><strong>4. Canonical RL</strong></p>
+<p>With the synergy constraint baked in, optimize a composite reward function:</p>
+<p><span class="math display">\[R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}\]</span></p>
+<p>Train across a variety of velocities and terrains.</p>
 </div>
 </div>
+
+<aside><div>
+<div class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
+</div>
+</div></aside></section></section>
+<section>
+<section id="bro" class="title-slide slide level1 gatech-hidden-section center" data-background-image="assets/background_section_blank.jpg" data-background-size="contain">
+<h1>Bro</h1>
 <div class="fragment" data-fragment-index="0">
 <p><strong>Two controllers, same everything else:</strong></p>
 <ul>
 <li><strong>Synergistic:</strong> policy → 10 synergy weights per leg → <span class="math inline">\(H\)</span> → 40 muscles</li>
 <li><strong>Independent (baseline):</strong> policy → every muscle directly</li>
 </ul>
-<p><strong>Test:</strong> compare both to treadmill data from 30 <em>other</em> people (22 + 8) <span class="citation" data-cites="camargo2021dataset scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[13]</a>, <a href="#/references" role="doc-biblioref" onclick="">[14]</a></span></p>
+<p><strong>Test:</strong> compare both to treadmill data from 30 <em>other</em> people (22 + 8) <span class="citation" data-cites="camargo2021dataset scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[14]</a>, <a href="#/references" role="doc-biblioref" onclick="">[15]</a></span></p>
 </div>
 <aside class="notes">
 <p>Steps 1 through 3 are just about building the synergies. They record one person walking, use a simulation (MocoInverse in OpenSim) to estimate what their muscles were doing, since there’s no EMG, and then use NMF to find groups of muscles that tend to activate together. That gives 10 synergies per leg — that’s the matrix H.</p>
@@ -411,10 +430,10 @@ msm with exo video
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
 </div>
 </div></aside></section>
 <section id="data-collection" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -449,7 +468,7 @@ msm with exo video
 <p><strong>Muscle activity estimation</strong></p>
 <ul>
 <li><strong>H2190</strong> model → 3D, 21 DoF, 90 muscles (incl.&nbsp;lumbar + 10 trunk muscles), ported Hyfydy → OpenSim</li>
-<li>scale → IK → <strong>MocoInverse</strong> <span class="citation" data-cites="dembia2020moco"><a href="#/references" role="doc-biblioref" onclick="">[15]</a></span>: minimize <span class="math inline">\(\sum u_i^2\)</span> s.t. measured kinematics + GRFs</li>
+<li>scale → IK → <strong>MocoInverse</strong> <span class="citation" data-cites="dembia2020moco"><a href="#/references" role="doc-biblioref" onclick="">[16]</a></span>: minimize <span class="math inline">\(\sum u_i^2\)</span> s.t. measured kinematics + GRFs</li>
 </ul>
 <p><strong>Synergy acquisition</strong> — NMF on right-leg activations</p>
 <p><span class="math display">\[
@@ -478,7 +497,7 @@ msm with exo video
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, “OpenSim moco: Musculoskeletal optimal control,” <em>PLOS Computational Biology</em>, 2020.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, “OpenSim moco: Musculoskeletal optimal control,” <em>PLOS Computational Biology</em>, 2020.</div>
 </div>
 </div></aside></section>
 <section id="training-a-policy-with-rl" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -501,13 +520,13 @@ msm with exo video
 </ul>
 </div>
 <div>
-<p><strong>Environment:</strong> Hyfydy <span class="citation" data-cites="geijtenbeek2021hyfydy"><a href="#/references" role="doc-biblioref" onclick="">[16]</a></span></p>
+<p><strong>Environment:</strong> Hyfydy <span class="citation" data-cites="geijtenbeek2021hyfydy"><a href="#/references" role="doc-biblioref" onclick="">[17]</a></span></p>
 <ul>
 <li>40 Hz control, 1000-step (25 s) episodes</li>
 <li>speed curriculum: <span class="math inline">\(0.7 \to 1.6 \to 0.7\)</span> m/s</li>
 <li>10,000 random tile terrains, slopes <span class="math inline">\(\pm 6^\circ\)</span></li>
 </ul>
-<p><strong>Learner:</strong> SAC <span class="citation" data-cites="haarnoja2018sac"><a href="#/references" role="doc-biblioref" onclick="">[17]</a></span>, Stable-Baselines3</p>
+<p><strong>Learner:</strong> SAC <span class="citation" data-cites="haarnoja2018sac"><a href="#/references" role="doc-biblioref" onclick="">[18]</a></span>, Stable-Baselines3</p>
 <ul>
 <li>75M steps/seed, 5 seeds, RTX 4090</li>
 <li>MLP (512-512-256), buffer <span class="math inline">\(3 \times 10^6\)</span></li>
@@ -532,10 +551,10 @@ msm with exo video
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T. Geijtenbeek, “The hyfydy simulation software.” <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Geijtenbeek, “The hyfydy simulation software.” <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, “Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,” <em>International conference on machine learning</em>, 2018.</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, “Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,” <em>International conference on machine learning</em>, 2018.</div>
 </div>
 </div></aside></section>
 <section id="reward-design" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -570,8 +589,8 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <h2>Evaluation Protocol</h2>
 <h3 id="compare-simulated-gait-to-human-treadmill-data-relative-to-how-much-humans-differ-from-each-other.">Compare simulated gait to human treadmill data, relative to how much humans differ from each other.</h3>
 <ul>
-<li><strong>Speed:</strong> level walking, 0.7–1.8 m/s, 22 subjects <span class="citation" data-cites="camargo2021dataset"><a href="#/references" role="doc-biblioref" onclick="">[13]</a></span></li>
-<li><strong>Slope:</strong> <span class="math inline">\(\pm 5^\circ\)</span> at 1.2 m/s, 8 subjects <span class="citation" data-cites="scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[14]</a></span></li>
+<li><strong>Speed:</strong> level walking, 0.7–1.8 m/s, 22 subjects <span class="citation" data-cites="camargo2021dataset"><a href="#/references" role="doc-biblioref" onclick="">[14]</a></span></li>
+<li><strong>Slope:</strong> <span class="math inline">\(\pm 5^\circ\)</span> at 1.2 m/s, 8 subjects <span class="citation" data-cites="scherpereel2023dataset"><a href="#/references" role="doc-biblioref" onclick="">[15]</a></span></li>
 <li><strong>Metrics:</strong> sagittal joint angles, joint moments, GRFs (AP + vertical), EMG for 8 lower-limb muscles</li>
 </ul>
 <div class="fragment" data-fragment-index="0">
@@ -611,10 +630,10 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 
 <aside><div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, “A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,” <em>Journal of Biomechanics</em>, 2021.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, “A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,” <em>Scientific Data</em>, 2023.</div>
 </div>
 </div></aside></section></section>
 <section>
@@ -824,7 +843,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <td style="text-align: center;">–</td>
 </tr>
 <tr class="even">
-<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[18]</a></span></td>
+<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[13]</a></span></td>
 <td><strong>3D, 90 muscles</strong></td>
 <td style="text-align: center;">✓</td>
 <td style="text-align: center;">✓</td>
@@ -858,7 +877,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
 </div>
 <div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
 </div>
 </div></aside></section>
 <section id="limitations" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
@@ -1000,23 +1019,23 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <div id="ref-he2024dynsyn" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[12] </div><div class="csl-right-inline">K. He, C. Zuo, C. Ma, and Y. Sui, <span>“DynSyn: Dynamical synergistic representation for efficient learning and control in overactuated embodied systems,”</span> <em>arXiv preprint arXiv:2407.11472</em>, 2024.</div>
 </div>
+<div id="ref-park2026synergy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, <span>“Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,”</span> <em>arXiv preprint arXiv:2603.10474</em>, 2026.</div>
+</div>
 <div id="ref-camargo2021dataset" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, <span>“A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,”</span> <em>Journal of Biomechanics</em>, vol. 119, p. 110320, 2021.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. Camargo, A. Ramanathan, W. Flanagan, and A. Young, <span>“A comprehensive, open-source dataset of lower limb biomechanics in multiple conditions of stairs, ramps, and level-ground ambulation and transitions,”</span> <em>Journal of Biomechanics</em>, vol. 119, p. 110320, 2021.</div>
 </div>
 <div id="ref-scherpereel2023dataset" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, <span>“A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,”</span> <em>Scientific Data</em>, vol. 10, no. 1, p. 924, 2023.</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">K. Scherpereel, D. Molinaro, O. Inan, M. Shepherd, and A. Young, <span>“A human lower-limb biomechanics and wearable sensors dataset during cyclic and non-cyclic activities,”</span> <em>Scientific Data</em>, vol. 10, no. 1, p. 924, 2023.</div>
 </div>
 <div id="ref-dembia2020moco" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, <span>“OpenSim moco: Musculoskeletal optimal control,”</span> <em>PLOS Computational Biology</em>, vol. 16, no. 12, p. e1008493, 2020.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. L. Dembia, N. A. Bianco, A. Falisse, J. L. Hicks, and S. L. Delp, <span>“OpenSim moco: Musculoskeletal optimal control,”</span> <em>PLOS Computational Biology</em>, vol. 16, no. 12, p. e1008493, 2020.</div>
 </div>
 <div id="ref-geijtenbeek2021hyfydy" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T. Geijtenbeek, <span>“The hyfydy simulation software.”</span> <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Geijtenbeek, <span>“The hyfydy simulation software.”</span> <a href="https://hyfydy.com" class="uri">https://hyfydy.com</a>, 2021.</div>
 </div>
 <div id="ref-haarnoja2018sac" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, <span>“Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,”</span> in <em>International conference on machine learning</em>, 2018, pp. 1861–1870.</div>
-</div>
-<div id="ref-park2026synergy" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, <span>“Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,”</span> <em>arXiv preprint arXiv:2603.10474</em>, 2026.</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, <span>“Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,”</span> in <em>International conference on machine learning</em>, 2018, pp. 1861–1870.</div>
 </div>
 </div>
 </section></section>
