@@ -1,17 +1,21 @@
 ## Motivation
 
-### Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being 
+<!-- ### Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being  -->
 <!-- [@grimmer2019mobility; @freiberger2020mobility]. -->
 
-- RL has enabled musculoskeletal models (MSMs) to generate diverse, human-like movement in complex environments 
+*Why learn locomotion policies for musculoskeletal models (MSMs)?*
+
+- Enables a simulation-based study of human gait, and how it physiologically changes due to pathology.
+- Easier-to-collect data for training and personalizing assistive device controllers.
+
+*Reinforcement learning (RL) for MSM locomotion.*
+
+- By deploying RL with a motion imitation reward, MSMs achieve generate diverse, "human-like" movement in complex environments.
 <!-- [@song2021deeprl] -->
-- much of musculoskeletal simulation progress has relied on motion imitation
+- Human-like $\neq$ physiologically plausible: the underlying neuromuscular coordination and joint kinetics are underdetermined.
 
 ::: {.fragment}
-#### Human-like motion ≠ human-like biomechanics
-
-- imitation reproduces reference kinematics, not the underlying neuromuscular coordination & joint kinetics
-<!-- - brittle outside the demonstrations -->
+*Muscle synergies to describe muscle groups.*
 :::
 
 ::: {.fragment}
