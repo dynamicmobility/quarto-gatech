@@ -1,0 +1,25 @@
+## Muscle Synergies
+
+- Evidence that the CNS doesn't control muscles one at a time: it recruits
+  **groups of muscles** that activate together with fixed relative weights
+  [@davella2003combinations; @bizzi2013neural]
+- A small number of synergies (≈ 4–6 per leg in walking EMG) reproduces complex
+  movement
+- Synergy structure is clinically meaningful: after stroke, the paretic limb shows
+  **fewer, merged** modules [@clark2010merging]
+
+. . .
+
+::: {#def-synergy name="Muscle synergy (spatial)"}
+A fixed, non-negative weighting $\mathbf{h}_j \in \mathbb{R}^{m}_{\ge 0}$ over $m$
+muscles. The activations are a time-varying combination of $k \ll m$ synergies:
+$$
+\mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j, \qquad w_j(t) \ge 0
+$$
+:::
+
+. . .
+
+- Synergy action spaces already help **sample efficiency** in over-actuated RL
+  [@berg2024sar; @he2024dynsyn]. The open question: do they give more
+  **human-like biomechanics**?

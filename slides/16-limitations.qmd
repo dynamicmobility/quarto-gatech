@@ -1,0 +1,19 @@
+## Limitations and Critical Notes
+
+**Stated by the authors**
+
+- Level walking and modest slopes only, so no running, turning, or stairs
+- Synergies come from **inverse simulation**, not EMG
+- Fixed synergy set and $k$ across all speeds and slopes
+- **Single participant** used to build $H$
+
+**Points for discussion**
+
+- The independent baseline has a 90-D action space and the synergistic controller
+  30-D; is the gain from *physiology* or just from *lower dimensionality*? A random
+  or PCA basis ablation is missing
+- Only the best of 5 seeds is analyzed, so variability across seeds isn't reported
+- MocoInverse minimizes squared activation, so $H$ partly carries that **optimization
+  prior** and not only a neural one
+- The reward is lower for the synergistic controller, so the fidelity gain has a
+  task-performance cost

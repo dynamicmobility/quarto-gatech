@@ -1,0 +1,7 @@
+## Reinforcement Learning Performance
+
+![](figures/fig1-rl-curves.png){fig-align="center" height="680"}
+
+- Both controllers train stably on uneven terrain with the same curriculum
+- The **independent** controller learns faster and reaches a **higher** return
+- A higher return here doesn't mean a more human-like gait (next slides)

@@ -1,0 +1,30 @@
+## Learning Locomotion with Musculoskeletal Models
+
+::: {.horiz}
+::: {.hl-purple}
+**Motion imitation** [@simos2025imitation; @park2025magnet]
+
+- Policy outputs muscle excitations
+- Reward: track a pre-recorded mocap clip
+- Reproduces reference kinematics well
+:::
+
+::: {.hl-blue}
+**Predictive simulation** [@schumacher2025natural; @badie2025bioinspired; @weng2021natural]
+
+- No reference trajectory in the reward
+- Bio-plausible objectives (effort, stability) and curricula
+- Gait *emerges* from the task
+:::
+:::
+
+**Problems with imitation:**
+
+- Kinematically feasible $\neq$ muscularly plausible: muscles are controlled
+  independently, so the policy can use conflicting activations (e.g. co-contraction
+  inside a muscle group) that no human would use
+- Joint kinetics and muscle coordination stay **underdetermined**
+- Brittle outside the demonstration distribution (new speeds, slopes)
+
+**The gap in predictive simulation:** motion looks plausible, but quantitative
+agreement with human *kinetics* and *EMG* across speeds and slopes is still poor.

@@ -1,0 +1,17 @@
+## Similarity of Muscle Activities
+
+::: {.columns}
+::: {.column width="55%"}
+![](figures/fig2-emg.png){height="820"}
+:::
+
+::: {.column width="45%"}
+- 1.2 m/s level walking, 8 muscles vs. EMG envelopes of 22 subjects
+- **Independent**: correlations fall *outside* cross-human variability for 5 / 8
+  muscles; often negative (GAS, ST, BF)
+- **Synergistic**: within the human envelope for **all 8**
+  - Plantarflexors (SOL, GAS) match timing and magnitude
+  - ST, BF, RF are weaker, but these muscles also vary most between humans
+- Caveat: TA correlation for the synergistic controller is still low ($r \approx 0.2$)
+:::
+:::

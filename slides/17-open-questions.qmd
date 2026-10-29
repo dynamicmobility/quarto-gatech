@@ -1,0 +1,9 @@
+## Open Questions
+
+1. How can we leverage data from multiple subjects?
+2. How do we determine the optimal $k$?
+3. Could the muscle synergy matrix be time-varying (over some window)?
+4. Would a patient-specific (e.g. post-stroke, merged-module) $H$ reproduce
+   *pathological* gait [@clark2010merging]?
+5. Does the prior transfer to assistive-device control loops (exoskeleton
+   co-simulation)?

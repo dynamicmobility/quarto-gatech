@@ -1,0 +1,11 @@
+## Positioning Against Prior Predictive MSM-RL
+
+| Work | Model | Kinematics | GRF | Joint moments | EMG |
+|---|---|:-:|:-:|:-:|:-:|
+| Weng et al. 2021 [@weng2021natural] | Sagittal, low-dim | ✓ | – | – | – |
+| Badie et al. 2025 [@badie2025bioinspired] | 3D, compact muscles | ✓ | ✓ | – | – |
+| Schumacher et al. 2025 [@schumacher2025natural] | Low- to high-dim | ✓ | ✓ | – | – |
+| **Park et al. 2026** [@park2026synergy] | **3D, 90 muscles** | ✓ | ✓ | ✓ | ✓ |
+
+- Contribution: the controller design *and* a much broader validation, across speeds
+  and slopes, against cross-human variability

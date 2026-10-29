@@ -1,0 +1,21 @@
+## Motivation: Musculoskeletal Modeling
+
+- Musculoskeletal models (MSMs) combine skeletal anatomy, muscle–tendon dynamics,
+  and neural control in a physics simulator
+- Goal: a **mechanistic** account of locomotion, i.e. *why* a gait emerges, not just
+  what it looks like
+  - How does coordination fail after stroke? How should an exoskeleton assist?
+- The challenge: the human motor system is **massively redundant**
+  - The model used here has 21 DoF but 90 muscles
+  - Many muscle-activation patterns produce the same joint motion
+
+::: {.fragment .hl-buzz}
+**This paper** [@park2026synergy]: constrain an RL controller to a low-dimensional
+**muscle synergy** action space and ask whether the resulting gait is more
+*biomechanically* human-like, not just *kinematically*.
+:::
+
+::: {.notes}
+Frame the talk: the question is fidelity at the level of kinetics and muscle
+activity, not whether the model can walk.
+:::

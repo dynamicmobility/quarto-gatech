@@ -1,0 +1,25 @@
+## Identifying Muscle Synergies from Data
+
+**Muscle activity estimation**
+
+- Model: **H2190**, 3D, 21 DoF, 90 muscles (incl. lumbar joint and 10 trunk muscles),
+  ported from Hyfydy to OpenSim
+- Scale the model to the subject, then inverse kinematics for joint angles
+- **MocoInverse** [@dembia2020moco]: minimize $\sum u_i^2$ (plus reserve/residual
+  effort) subject to the measured kinematics and GRFs
+
+**Synergy acquisition**: non-negative matrix factorization on the right-leg
+activations
+
+$$
+\underbrace{M}_{T \times 40} \;\approx\; \underbrace{W}_{T \times k}\;\underbrace{H}_{k \times 40},
+\qquad W, H \ge 0, \quad k = 10
+$$
+
+- $W$: temporal activation coefficients. They are **discarded**; the policy produces them online
+- $H$: spatial synergy weights, the fixed **prior** embedded in the controller
+
+::: {.fragment .hl-horizon}
+$k = 10$ is chosen without a reported VAF criterion, and is high compared with
+the 4–6 modules typical of EMG studies.
+:::

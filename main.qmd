@@ -10,50 +10,53 @@ date-format: "MMMM D, YYYY"
 format:
   gatech-revealjs:
     toc: false                  # agenda slide listing the `#` sections
-# bibliography: references.bib # add your own .bib to get per-slide references
+bibliography: refs.bib
 ---
 
-## Motivation: Musculoskeletal Modeling
-
-- Level-1 headings (`#`) group slides into sections
-- Level-2 headings (`##`) start a new slide
-- `#` divider slides are skipped by default; add `hide-section-slides: false`
-  under the format to show them
+{{< include slides/01-motivation.qmd >}}
 
 # Background
 
-## Learning Locomotion with Musculoskeletal Models
+{{< include slides/02-learning-locomotion.qmd >}}
 
-- Cover the standard approaches for learning locomotion on msms
-- namely, tracking a pre-recorded reference by having a policy output muscle activiatiosn
-- this is bad because kinematically feasible != muscle feasible (i.e. there could be conflicting activiations within the same muscle group)
-
-## Muscle Synergies
-
-- Muscle groups work together
+{{< include slides/03-muscle-synergies.qmd >}}
 
 # Method
 
-## Method Framework
+{{< include slides/04-method-framework.qmd >}}
 
-## Data collection
+{{< include slides/05-data-collection.qmd >}}
 
-## Identifying Muscle Synergies from Data
+{{< include slides/06-synergy-extraction.qmd >}}
 
-## Training a Policy with Reinforcement Learning
+{{< include slides/07-rl-training.qmd >}}
+
+{{< include slides/08-reward.qmd >}}
+
+{{< include slides/09-evaluation.qmd >}}
 
 # Results
 
-## Reinforcement Learning Performance
+{{< include slides/10-rl-performance.qmd >}}
 
-## Similarity of Muscle Activities
+{{< include slides/11-muscle-activity.qmd >}}
 
-## Kinematic and Kinetic Similarity
+{{< include slides/12-kinematics-speed.qmd >}}
 
-## Open Questions
-1. How can we leverage data from multiple subjects?
-2. How do we determine the optimal $k$?
-3. Could the muscle synergy matrix be time-varying (over some window)?
+{{< include slides/13-kinematics-slope.qmd >}}
+
+{{< include slides/14-rmse-summary.qmd >}}
+
+# Discussion
+
+{{< include slides/15-related-work.qmd >}}
+
+{{< include slides/16-limitations.qmd >}}
+
+{{< include slides/17-open-questions.qmd >}}
 
 # Conclusion
 
+{{< include slides/18-takeaways.qmd >}}
+
+## References

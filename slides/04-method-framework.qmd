@@ -1,0 +1,43 @@
+## Method Framework
+
+::: {.horiz}
+::: {.hl-purple}
+**1. Experiment**
+
+1 subject, 10 overground walking strides
+
+Mocap + force plates
+:::
+
+::: {.hl-blue}
+**2. Inverse analysis**
+
+OpenSim IK + MocoInverse
+
+$\rightarrow$ estimated activations of 40 muscles
+:::
+
+::: {.hl-electric}
+**3. Synergy extraction**
+
+NMF: $M \approx WH$
+
+Keep $H \in \mathbb{R}^{10 \times 40}$
+:::
+
+::: {.hl-canopy}
+**4. Predictive RL**
+
+SAC policy outputs synergy weights
+
+Hyfydy, H2190 model
+:::
+:::
+
+::: {.fragment}
+- Human data is used **only** to build the action space, never as a tracking target
+- Baseline: the same pipeline with an **independent** controller that sets every
+  muscle excitation directly
+- Evaluated against **two external** treadmill datasets (22 + 8 subjects)
+  [@camargo2021dataset; @scherpereel2023dataset]
+:::

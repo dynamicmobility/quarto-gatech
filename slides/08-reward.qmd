@@ -1,0 +1,19 @@
+## Reward Design
+
+$$
+R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
+  + w_{\text{rom}} R_{\text{rom}} + w_{\text{fall}} R_{\text{fall}}
+$$
+
+- **Velocity**: $R_{\text{vel}} = R_{\text{AP}}\, R_{\text{ML}}\, R_{\text{head}}$
+  - $R_{\text{AP}}$: plateaued Gaussian around $v_{\text{target}}$ ($\pm 0.05$ m/s dead band)
+  - $R_{\text{ML}}$: Gaussian penalty on lateral drift
+  - $R_{\text{head}}$: Gaussian penalty on head angular velocity, per axis
+- **Effort**: $R_{\text{effort}} = \sum_i a_i^2$ (negative weight)
+- **Range of motion**: penalize knee hyperextension and lumbar outside $[-20^\circ, 10^\circ]$
+- **Fall**: termination penalty
+
+::: {.fragment .hl-buzz}
+There is **no imitation term**. Only a target speed and generic biomechanical
+plausibility terms are used, so any human-likeness comes from the action space.
+:::

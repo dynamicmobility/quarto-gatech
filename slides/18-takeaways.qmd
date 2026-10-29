@@ -1,0 +1,15 @@
+## Takeaways
+
+- Using **muscle synergies as the action space** is a cheap, physiology-informed
+  prior: 10 strides from one person are enough
+- Without any imitation reward, it gives
+  - EMG timing within human variability for all 8 muscles tested
+  - Speed- and slope-dependent trends in the same direction as human data
+  - No extreme (RMSE ratio > 5) kinematic or kinetic deviations
+- Lower RL return but **higher biomechanical fidelity**: the reward isn't a good
+  proxy for human-likeness
+- Next step: a better *structure* for control, not only better *objectives*
+
+::: {.notes}
+Project page with videos: https://ces40320.github.io/WebHomepage__Walk-RL
+:::

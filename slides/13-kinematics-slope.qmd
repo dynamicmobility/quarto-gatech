@@ -1,0 +1,17 @@
+## Kinematic and Kinetic Similarity: Slope
+
+::: {.columns}
+::: {.column width="58%"}
+![](figures/fig4-slope.png){height="820"}
+:::
+
+::: {.column width="42%"}
+- Uphill ($+5^\circ$), level, and downhill ($-5^\circ$) at 1.2 m/s
+- Both controllers reproduce the basic GRF structure
+  - AP: braking then propulsion
+  - Vertical: double peak
+- The largest independent-controller error is the **knee moment in loading
+  response**, RMSE ratio **8.56**, about $2\times$ the synergistic controller's worst
+  moment error
+:::
+:::

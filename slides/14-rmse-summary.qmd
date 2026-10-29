@@ -1,0 +1,18 @@
+## Quantitative Summary: RMSE Ratios
+
+![](figures/fig5-rmse.png){fig-align="center" height="560"}
+
+::: {.horiz}
+::: {.hl-horizon}
+**Ratio > 3.0**: 23 independent vs. **7** synergistic
+:::
+::: {.hl-horizon}
+**Ratio > 5.0**: 7 independent vs. **0** synergistic
+:::
+::: {.hl-purple}
+**Synergistic worst case**: hip moment in loading response (4.16 / 4.54)
+:::
+:::
+
+- The synergistic controller trades a larger global **hip-angle offset** for far fewer
+  extreme knee, ankle, and GRF errors

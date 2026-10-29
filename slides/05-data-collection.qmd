@@ -1,0 +1,17 @@
+## Data Collection
+
+- **One** healthy young male participant (28 y, 69.6 kg, 176 cm)
+- 10 trials of 10 m **overground** walking; one stride kept per trial
+- Optical motion capture: 12 OptiTrack cameras at 100 Hz, 38 reflective markers
+- 5 force plates at 1000 Hz (4 AMTI, 1 Bertec)
+- Preprocessing
+  - 4th-order Butterworth low-pass filter, 12 Hz cutoff
+  - Heel strike = vertical GRF first exceeds 15 N
+
+. . .
+
+::: {.callout-note title="Note"}
+No EMG is recorded. Muscle activity is *estimated* from kinematics and GRFs (next
+slide), so the synergies come from an optimization, not measured muscle
+signals.
+:::

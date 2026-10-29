@@ -1,0 +1,21 @@
+## Evaluation Protocol
+
+- 10 rollouts per controller, last 10 strides of each, normalized to 0–100% gait cycle
+- Conditions matched to open-source treadmill datasets
+  - **Speed**: level walking, 0.7–1.8 m/s, 22 subjects [@camargo2021dataset]
+  - **Slope**: $\pm 5^\circ$ at 1.2 m/s, 8 subjects [@scherpereel2023dataset]
+- Compared: sagittal joint angles, joint moments, GRFs (AP + vertical), and EMG for
+  8 lower-limb muscles
+
+. . .
+
+::: {#def-rmse-ratio name="RMSE ratio"}
+$$
+\text{RMSE ratio} = \frac{\text{RMSE}(\text{sim}, \text{human})}
+{\overline{\text{RMSE}}(\text{human}_i, \text{human}_j)}
+$$
+A ratio near **1.0** means the simulation is as close to the data as one person
+is to another.
+:::
+
+- Also: Pearson $r$ between waveforms, against the cross-human distribution of $r$
