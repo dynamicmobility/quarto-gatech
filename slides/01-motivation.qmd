@@ -1,21 +1,27 @@
-## Motivation: Musculoskeletal Modeling
+## Motivation
 
-- Musculoskeletal models (MSMs) combine skeletal anatomy, muscle–tendon dynamics,
-  and neural control in a physics simulator
-- Goal: a **mechanistic** account of locomotion, i.e. *why* a gait emerges, not just
-  what it looks like
-  - How does coordination fail after stroke? How should an exoskeleton assist?
-- The challenge: the human motor system is **massively redundant**
-  - The model used here has 21 DoF but 90 muscles
-  - Many muscle-activation patterns produce the same joint motion
+### Locomotion is central to independence — and mobility loss is linked to injury and reduced well-being [@grimmer2019mobility; @freiberger2020mobility].
 
-::: {.fragment .hl-buzz}
-**This paper** [@park2026synergy]: constrain an RL controller to a low-dimensional
-**muscle synergy** action space and ask whether the resulting gait is more
-*biomechanically* human-like, not just *kinematically*.
+- RL has enabled musculoskeletal models (MSMs) to generate diverse, human-like movement in complex environments [@song2021deeprl]
+- much of this progress → **motion imitation**
+
+::: {.fragment}
+**But** human-like *motion* ≠ human-like *biomechanics*
+
+- imitation reproduces reference kinematics, not the underlying neuromuscular coordination + joint kinetics
+- brittle outside the demonstrations
+:::
+
+::: {.fragment}
+> *Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?* [@park2026synergy]
 :::
 
 ::: {.notes}
-Frame the talk: the question is fidelity at the level of kinetics and muscle
-activity, not whether the model can walk.
+The paper starts from the clinical side: walking is central to independence, and losing mobility — from aging or disease — is tied to injury and lower well-being. So we want simulations that can tell us something real about how people walk.
+
+RL has gotten us a long way there. MSMs can now produce pretty diverse, human-like movement, and a lot of that progress has come from motion imitation.
+
+The issue they point out is that imitation policies are really just copying the reference kinematics. They don't necessarily capture how the muscles are coordinated or what the joint kinetics look like, and they tend to break when you move outside the demonstrations.
+
+So their question is whether adding neurophysiological structure — muscle synergies — to the RL controller makes the simulated gait more biomechanically faithful, not just better looking.
 :::

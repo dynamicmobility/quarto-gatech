@@ -1,17 +1,19 @@
 ## Data Collection
 
-- **One** healthy young male participant (28 y, 69.6 kg, 176 cm)
-- 10 trials of 10 m **overground** walking; one stride kept per trial
-- Optical motion capture: 12 OptiTrack cameras at 100 Hz, 38 reflective markers
-- 5 force plates at 1000 Hz (4 AMTI, 1 Bertec)
-- Preprocessing
-  - 4th-order Butterworth low-pass filter, 12 Hz cutoff
-  - Heel strike = vertical GRF first exceeds 15 N
+**Subject:** 1 healthy young male (28 y, 69.6 kg, 176 cm)
 
-. . .
+**Protocol:** 10 trials of 10 m **overground** walking → 1 stride kept per trial
 
-::: {.callout-note title="Note"}
-No EMG is recorded. Muscle activity is *estimated* from kinematics and GRFs (next
-slide), so the synergies come from an optimization, not measured muscle
-signals.
+**Data collected:** optical motion capture (12 OptiTrack cameras, 100 Hz, 38 markers), 5 force plates (1000 Hz; 4 AMTI, 1 Bertec)
+
+**Preprocessing:** 4th-order Butterworth low-pass (12 Hz); heel strike = vertical GRF > 15 N
+
+::: {.fragment}
+> *No EMG was recorded — synergies come from an optimization, not measured muscle signals.*
+:::
+
+::: {.notes}
+The dataset is small — one participant, ten strides. That's kind of the point though, they want to show you don't need much data to build the prior.
+
+The thing to keep in mind for the rest of the talk is that there's no EMG here. The muscle activity is estimated from kinematics and ground reaction forces, which I'll show on the next slide. So the synergies are coming out of an optimization, not from actual muscle recordings.
 :::

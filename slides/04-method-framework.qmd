@@ -1,43 +1,68 @@
-## Method Framework
+## Method Overview
 
-::: {.horiz}
-::: {.hl-purple}
-**1. Experiment**
+### Learn muscle synergies from one person's walking, then make the RL policy control *synergies* instead of individual muscles.
 
-1 subject, 10 overground walking strides
+::: {.horiz style="align-items: stretch;"}
+::: {style="flex: 1;" .box}
+**1. Record walking**
 
-Mocap + force plates
+1 person, 10 strides
+
+mocap + force plates
+
+→ *joint angles + GRFs*
 :::
 
-::: {.hl-blue}
-**2. Inverse analysis**
-
-OpenSim IK + MocoInverse
-
-$\rightarrow$ estimated activations of 40 muscles
+::: {.flow-arrow}
+→
 :::
 
-::: {.hl-electric}
-**3. Synergy extraction**
+::: {style="flex: 1;" .box}
+**2. Estimate muscle activity**
 
-NMF: $M \approx WH$
+simulation finds activations that reproduce the motion (no EMG)
 
-Keep $H \in \mathbb{R}^{10 \times 40}$
+→ *40 leg muscle activations*
 :::
 
-::: {.hl-canopy}
-**4. Predictive RL**
+::: {.flow-arrow}
+→
+:::
 
-SAC policy outputs synergy weights
+::: {style="flex: 1;" .box}
+**3. Extract synergies**
 
-Hyfydy, H2190 model
+NMF finds groups of muscles that fire together
+
+→ *10 synergies ($H$)*
+:::
+
+::: {.flow-arrow}
+→
+:::
+
+::: {style="flex: 1;" .box-accent}
+**4. Train RL**
+
+reward = walk at target speed (no tracking)
+
+→ *walking controller*
 :::
 :::
 
 ::: {.fragment}
-- Human data is used **only** to build the action space, never as a tracking target
-- Baseline: the same pipeline with an **independent** controller that sets every
-  muscle excitation directly
-- Evaluated against **two external** treadmill datasets (22 + 8 subjects)
-  [@camargo2021dataset; @scherpereel2023dataset]
+**Two controllers, same everything else:**
+
+- **Synergistic:** policy → 10 synergy weights per leg → $H$ → 40 muscles
+- **Independent (baseline):** policy → every muscle directly
+
+**Test:** compare both to treadmill data from 30 *other* people (22 + 8) [@camargo2021dataset; @scherpereel2023dataset]
+:::
+
+::: {.notes}
+Steps 1 through 3 are just about building the synergies. They record one person walking, use a simulation (MocoInverse in OpenSim) to estimate what their muscles were doing, since there's no EMG, and then use NMF to find groups of muscles that tend to activate together. That gives 10 synergies per leg — that's the matrix H.
+
+Step 4 is where RL comes in. Instead of the policy choosing 40 separate muscle activations per leg, it chooses how much of each of the 10 synergies to use, and H turns that into muscle activations. The reward only says "walk at this speed" — the human data is never used as a tracking target.
+
+To see if this helps, they train a second controller that's identical except it sets every muscle directly. Then they compare both against treadmill data from 30 people who weren't used to build anything.
 :::

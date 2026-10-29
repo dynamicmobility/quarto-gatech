@@ -1,33 +1,39 @@
-## Training a Policy with Reinforcement Learning
+## Training a Policy with RL
 
 ::: {.horiz}
 ::: {}
 **Action space (30-D)**
 
-- 10 synergy weights, right leg
-- 10 synergy weights, left leg
+- 10 synergy weights → right leg
+- 10 synergy weights → left leg
 - 10 independent torso/pelvis activations
-- Leg muscles: $\mathbf{a}_{\text{leg}} = H^\top \mathbf{s}_{\text{leg}} \in \mathbb{R}^{40}$
-- Phase-based left/right **mirroring** at heel strike
+- $\mathbf{a}_{\text{leg}} = H^\top \mathbf{s}_{\text{leg}} \in \mathbb{R}^{40}$
+- left/right **mirroring** at heel strike
 
 **Observations**
 
-- Muscle fiber lengths/velocities, forces, excitations, activations
-- Joint angles/velocities, head orientation and angular velocity
-- Feet relative to pelvis, GRFs, COM velocity, **target speed**
+- muscle fiber lengths/velocities, forces, excitations, activations
+- joint angles/velocities, head orientation + angular velocity
+- feet relative to pelvis, GRFs, COM velocity, **target speed**
 :::
 
 ::: {}
-**Environment**: Hyfydy [@geijtenbeek2021hyfydy]
+**Environment:** Hyfydy [@geijtenbeek2021hyfydy]
 
 - 40 Hz control, 1000-step (25 s) episodes
-- Speed curriculum: $0.7 \to 1.6 \to 0.7$ m/s
+- speed curriculum: $0.7 \to 1.6 \to 0.7$ m/s
 - 10,000 random tile terrains, slopes $\pm 6^\circ$
 
-**Learner**: SAC [@haarnoja2018sac], Stable-Baselines3
+**Learner:** SAC [@haarnoja2018sac], Stable-Baselines3
 
-- 75M steps per seed, 5 seeds, RTX 4090
-- MLP policy (512-512-256), buffer $3 \times 10^6$
-- **Best seed** by return kept for analysis
+- 75M steps/seed, 5 seeds, RTX 4090
+- MLP (512-512-256), buffer $3 \times 10^6$
+- **best seed** (by return) kept for analysis
 :::
+:::
+
+::: {.notes}
+The policy outputs 10 synergy weights per leg plus 10 independent activations for the torso and pelvis, so 30 dimensions total instead of 90. Each leg's 40 muscle activations come from multiplying those weights through H.
+
+Training is in Hyfydy with SAC, using a speed curriculum and randomized uneven terrain. They run 5 seeds but only analyze the best one, which I'll come back to in the limitations.
 :::

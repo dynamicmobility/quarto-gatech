@@ -6,12 +6,19 @@
 :::
 
 ::: {.column width="42%"}
-- Uphill ($+5^\circ$), level, and downhill ($-5^\circ$) at 1.2 m/s
-- Both controllers reproduce the basic GRF structure
-  - AP: braking then propulsion
-  - Vertical: double peak
-- The largest independent-controller error is the **knee moment in loading
-  response**, RMSE ratio **8.56**, about $2\times$ the synergistic controller's worst
-  moment error
+Uphill ($+5^\circ$), level, downhill ($-5^\circ$) at 1.2 m/s
+
+**Both** reproduce basic GRF structure
+
+- AP → braking then propulsion
+- vertical → double peak
+
+**Independent** → largest error is **knee moment in loading response** (RMSE ratio **8.56**, ~$2\times$ synergistic's worst)
 :::
+:::
+
+::: {.notes}
+On slopes, both controllers get the overall shape of the ground reaction forces right — braking then propulsion in the AP direction, and the double peak in the vertical.
+
+Where they differ is in the joint moments. The independent controller's worst error is the knee moment in loading response, with an RMSE ratio of 8.56. That's about twice as bad as the synergistic controller's worst moment error.
 :::

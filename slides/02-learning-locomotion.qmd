@@ -1,30 +1,41 @@
-## Learning Locomotion with Musculoskeletal Models
+## Learning Locomotion with MSMs
+
+### Two main approaches — and neither gets the muscles right yet.
 
 ::: {.horiz}
-::: {.hl-purple}
-**Motion imitation** [@simos2025imitation; @park2025magnet]
+::: {.box}
+**Motion imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]
 
-- Policy outputs muscle excitations
-- Reward: track a pre-recorded mocap clip
-- Reproduces reference kinematics well
+- policy outputs muscle excitations
+- reward → track a mocap clip
+- reproduces reference kinematics well
 :::
 
-::: {.hl-blue}
+::: {.box}
 **Predictive simulation** [@schumacher2025natural; @badie2025bioinspired; @weng2021natural]
 
-- No reference trajectory in the reward
-- Bio-plausible objectives (effort, stability) and curricula
-- Gait *emerges* from the task
+- no reference trajectory in the reward
+- bio-plausible objectives (effort, stability) + curricula
+- gait *emerges* from the task
 :::
 :::
 
-**Problems with imitation:**
+::: {.fragment}
+**The Problem with Imitation**
 
-- Kinematically feasible $\neq$ muscularly plausible: muscles are controlled
-  independently, so the policy can use conflicting activations (e.g. co-contraction
-  inside a muscle group) that no human would use
-- Joint kinetics and muscle coordination stay **underdetermined**
-- Brittle outside the demonstration distribution (new speeds, slopes)
+- kinematically feasible $\neq$ muscularly plausible
+- joint kinetics + muscle coordination are underdetermined
+- brittle outside the demonstration (new speeds, slopes)
 
-**The gap in predictive simulation:** motion looks plausible, but quantitative
-agreement with human *kinetics* and *EMG* across speeds and slopes is still poor.
+**The Gap in Predictive Simulation**
+
+- looks plausible, but poor quantitative agreement with human *kinetics* and *EMG*
+:::
+
+::: {.notes}
+Most of the recent progress in MSM locomotion has come from motion imitation. You give the policy a mocap clip and reward it for tracking it, and the kinematics come out looking great.
+
+But matching joint angles doesn't mean the muscles are doing anything reasonable. Each muscle is controlled independently, so the policy can do things like co-contract within a muscle group in ways no person would. The kinetics and muscle coordination are basically unconstrained. These policies also tend to be brittle — move them to a speed or slope that wasn't in the demo and they fall apart.
+
+Predictive simulation drops the reference trajectory entirely and lets the gait emerge from things like effort and stability objectives. The motion looks plausible, but when you actually compare against human kinetics and EMG across speeds and slopes, the agreement still isn't good. That's the gap this paper is going after.
+:::

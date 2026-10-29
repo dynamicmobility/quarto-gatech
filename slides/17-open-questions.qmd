@@ -1,9 +1,11 @@
 ## Open Questions
 
-1. How can we leverage data from multiple subjects?
-2. How do we determine the optimal $k$?
-3. Could the muscle synergy matrix be time-varying (over some window)?
-4. Would a patient-specific (e.g. post-stroke, merged-module) $H$ reproduce
-   *pathological* gait [@clark2010merging]?
-5. Does the prior transfer to assistive-device control loops (exoskeleton
-   co-simulation)?
+1. How can we leverage data from **multiple subjects**?
+2. How do we determine the **optimal $k$**?
+3. Could the synergy matrix be **time-varying** (over some window)?
+4. Would a **patient-specific** $H$ (e.g. post-stroke, merged modules) reproduce *pathological* gait? [@clark2010merging]
+5. Does the prior transfer to **assistive-device control** (exoskeleton co-simulation)?
+
+::: {.notes}
+The last two are the ones I'm most interested in for my own work. If you could build H from a stroke patient — where the synergies are fewer and merged — would the policy reproduce their gait? And if so, could you use that as a training environment for exoskeleton controllers?
+:::

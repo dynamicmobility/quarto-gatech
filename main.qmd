@@ -4,12 +4,13 @@ subtitle: "Literature Review, FACTS Lab + Dynamo Lab"
 author:
   - name: "<b>Ayah Ahmad</b>"
     affiliation: Georgia Institute of Technology
-    # email: presenter@gatech.edu
+    # email: presenter@gatech
 date: last-modified
 date-format: "MMMM D, YYYY"
 format:
   gatech-revealjs:
     toc: false                  # agenda slide listing the `#` sections
+    css: styles.css
 bibliography: refs.bib
 ---
 

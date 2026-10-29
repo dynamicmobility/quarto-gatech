@@ -6,12 +6,23 @@
 :::
 
 ::: {.column width="45%"}
-- 1.2 m/s level walking, 8 muscles vs. EMG envelopes of 22 subjects
-- **Independent**: correlations fall *outside* cross-human variability for 5 / 8
-  muscles; often negative (GAS, ST, BF)
-- **Synergistic**: within the human envelope for **all 8**
-  - Plantarflexors (SOL, GAS) match timing and magnitude
-  - ST, BF, RF are weaker, but these muscles also vary most between humans
-- Caveat: TA correlation for the synergistic controller is still low ($r \approx 0.2$)
+1.2 m/s level walking → 8 muscles vs. EMG from 22 subjects
+
+**Independent**
+
+- outside human variability for **5 / 8** muscles
+- often negatively correlated (GAS, ST, BF)
+
+**Synergistic**
+
+- within human variability for **all 8**
+- plantarflexors (SOL, GAS) → timing + magnitude match
+- TA still low ($r \approx 0.2$)
 :::
+:::
+
+::: {.notes}
+This is the result I find most convincing. For the independent controller, five of the eight muscles fall outside the range of correlations you see between humans, and several are actually negatively correlated — GAS, ST, and BF are firing at basically the wrong time.
+
+The synergistic controller is within the human range for all eight. The plantarflexors look especially good. ST, BF, and RF are weaker, but those are also the muscles that vary most between people. The one caveat is TA, which is still only around r = 0.2.
 :::

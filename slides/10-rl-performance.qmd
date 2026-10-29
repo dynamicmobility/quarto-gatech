@@ -1,7 +1,11 @@
-## Reinforcement Learning Performance
+## RL Performance
+
+### The independent controller gets a higher return — but that doesn't mean it walks more like a human.
 
 ![](figures/fig1-rl-curves.png){fig-align="center" height="680"}
 
-- Both controllers train stably on uneven terrain with the same curriculum
-- The **independent** controller learns faster and reaches a **higher** return
-- A higher return here doesn't mean a more human-like gait (next slides)
+::: {.notes}
+Both controllers train stably on uneven terrain with the same curriculum. The independent controller learns faster and ends up with a higher return, which makes sense since it has more freedom.
+
+But as we'll see on the next few slides, a higher return here doesn't translate into a more human-like gait.
+:::

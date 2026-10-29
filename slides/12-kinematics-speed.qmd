@@ -6,13 +6,20 @@
 :::
 
 ::: {.column width="42%"}
-- Both controllers walk stably from **0.7 to 1.8 m/s**, past the 1.6 m/s
-  maximum of the training curriculum
-- Human data shows **monotonic** speed modulation in specific gait phases
-- **Synergistic** keeps these trends (red arrows)
-- **Independent** reverses or flattens them (green arrows):
-  - Hip angle in swing
-  - Knee angle in loading response and swing
-  - Ankle moment in loading response
+Both walk stably **0.7 → 1.8 m/s** (past the 1.6 m/s training max)
+
+**Synergistic** → keeps human speed trends (red arrows)
+
+**Independent** → reverses or flattens them (green arrows)
+
+- hip angle in swing
+- knee angle in loading response + swing
+- ankle moment in loading response
 :::
+:::
+
+::: {.notes}
+Both controllers can walk across the full speed range, including speeds faster than anything they saw in training.
+
+In the human data, certain gait phases change monotonically with speed — for example, more hip flexion in swing as you walk faster. The synergistic controller keeps those trends, marked with the red arrows. The independent controller either flips them or flattens them out, in the green arrows — hip angle in swing, knee angle in loading response and swing, and ankle moment in loading response.
 :::

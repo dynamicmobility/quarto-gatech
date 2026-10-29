@@ -1,25 +1,26 @@
-## Identifying Muscle Synergies from Data
+## Identifying Muscle Synergies
+
+### Estimate muscle activity with inverse simulation, then factor it with NMF.
 
 **Muscle activity estimation**
 
-- Model: **H2190**, 3D, 21 DoF, 90 muscles (incl. lumbar joint and 10 trunk muscles),
-  ported from Hyfydy to OpenSim
-- Scale the model to the subject, then inverse kinematics for joint angles
-- **MocoInverse** [@dembia2020moco]: minimize $\sum u_i^2$ (plus reserve/residual
-  effort) subject to the measured kinematics and GRFs
+- **H2190** model → 3D, 21 DoF, 90 muscles (incl. lumbar + 10 trunk muscles), ported Hyfydy → OpenSim
+- scale → IK → **MocoInverse** [@dembia2020moco]: minimize $\sum u_i^2$ s.t. measured kinematics + GRFs
 
-**Synergy acquisition**: non-negative matrix factorization on the right-leg
-activations
+**Synergy acquisition** — NMF on right-leg activations
 
 $$
 \underbrace{M}_{T \times 40} \;\approx\; \underbrace{W}_{T \times k}\;\underbrace{H}_{k \times 40},
 \qquad W, H \ge 0, \quad k = 10
 $$
 
-- $W$: temporal activation coefficients. They are **discarded**; the policy produces them online
-- $H$: spatial synergy weights, the fixed **prior** embedded in the controller
+- $W$ → temporal coefficients, **discarded** (policy produces these online)
+- $H$ → spatial weights, the fixed **prior** in the controller
 
-::: {.fragment .hl-horizon}
-$k = 10$ is chosen without a reported VAF criterion, and is high compared with
-the 4–6 modules typical of EMG studies.
+::: {.notes}
+They scale the H2190 model to the subject, run inverse kinematics, and then use MocoInverse to find the muscle activations that reproduce the measured motion and forces while minimizing squared activation.
+
+Then NMF splits that activation matrix into W, which is how much each synergy is active over time, and H, which is the actual synergy structure — which muscles go together and in what proportions. They throw W away, since that's what the policy is going to learn to produce. H is what gets baked into the controller.
+
+One thing I noticed: they pick k = 10 without reporting a VAF criterion, and 10 is on the high side compared to the 4 to 6 you usually see in EMG studies.
 :::

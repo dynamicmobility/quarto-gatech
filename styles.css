@@ -1,0 +1,31 @@
+/* Muted boxes in GT navy/gold, used instead of the neon .hl-* highlights */
+.box, .box-accent {
+  margin: 8px;
+  padding: 14px 20px;
+  border-radius: 6px;
+  background-color: #eef2f6;
+  border-left: 6px solid #003057;
+}
+
+.box-accent {
+  background-color: #f9f6e5;
+  border-left-color: #b3a369;
+}
+
+.flow-arrow {
+  align-self: center;
+  font-size: 1.5em;
+  color: #54585a;
+}
+
+/* Tone down the bright green tip callouts */
+.reveal div.callout.callout-tip {
+  border-left-color: #b3a369 !important;
+}
+.reveal div.callout.callout-tip .callout-title {
+  background-color: #f9f6e5 !important;
+}
+.reveal div.callout.callout-tip .callout-icon::before,
+.reveal div.callout.callout-tip .callout-title {
+  color: #003057 !important;
+}

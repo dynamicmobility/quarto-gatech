@@ -1,19 +1,19 @@
 ## Reward Design
 
+### No imitation term — any human-likeness has to come from the action space.
+
 $$
 R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
   + w_{\text{rom}} R_{\text{rom}} + w_{\text{fall}} R_{\text{fall}}
 $$
 
-- **Velocity**: $R_{\text{vel}} = R_{\text{AP}}\, R_{\text{ML}}\, R_{\text{head}}$
-  - $R_{\text{AP}}$: plateaued Gaussian around $v_{\text{target}}$ ($\pm 0.05$ m/s dead band)
-  - $R_{\text{ML}}$: Gaussian penalty on lateral drift
-  - $R_{\text{head}}$: Gaussian penalty on head angular velocity, per axis
-- **Effort**: $R_{\text{effort}} = \sum_i a_i^2$ (negative weight)
-- **Range of motion**: penalize knee hyperextension and lumbar outside $[-20^\circ, 10^\circ]$
-- **Fall**: termination penalty
+1. **Velocity** — $R_{\text{vel}} = R_{\text{AP}}\, R_{\text{ML}}\, R_{\text{head}}$ (track target speed, penalize lateral drift + head angular velocity)
+2. **Effort** — $\sum_i a_i^2$ (negative weight)
+3. **Range of motion** — penalize knee hyperextension, lumbar outside $[-20^\circ, 10^\circ]$
+4. **Fall** — termination penalty
 
-::: {.fragment .hl-buzz}
-There is **no imitation term**. Only a target speed and generic biomechanical
-plausibility terms are used, so any human-likeness comes from the action space.
+::: {.notes}
+The reward is pretty standard for predictive simulation. There's a velocity term — a plateaued Gaussian around the target speed with a plus or minus 0.05 m/s dead band, times Gaussian penalties on lateral drift and head angular velocity. Then effort, a range-of-motion penalty to keep the knee and lumbar in reasonable ranges, and a fall penalty.
+
+The main thing is what's missing: there's no imitation term. Nothing in the reward says "look like this person." So if the synergistic controller ends up more human-like, it's because of the action space.
 :::

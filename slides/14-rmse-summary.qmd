@@ -3,16 +3,19 @@
 ![](figures/fig5-rmse.png){fig-align="center" height="560"}
 
 ::: {.horiz}
-::: {.hl-horizon}
+::: {.box}
 **Ratio > 3.0**: 23 independent vs. **7** synergistic
 :::
-::: {.hl-horizon}
+::: {.box}
 **Ratio > 5.0**: 7 independent vs. **0** synergistic
 :::
-::: {.hl-purple}
+::: {.box-accent}
 **Synergistic worst case**: hip moment in loading response (4.16 / 4.54)
 :::
 :::
 
-- The synergistic controller trades a larger global **hip-angle offset** for far fewer
-  extreme knee, ankle, and GRF errors
+::: {.notes}
+Putting it all together: the independent controller has 23 measures with an RMSE ratio above 3, versus 7 for the synergistic controller. Above 5, it's 7 versus zero.
+
+The synergistic controller isn't perfect — it has a bigger overall offset in hip angle, and its worst case is hip moment in loading response. But it avoids the really extreme knee, ankle, and GRF errors that the independent controller has.
+:::

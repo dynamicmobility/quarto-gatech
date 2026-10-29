@@ -1,4 +1,6 @@
-## Positioning Against Prior Predictive MSM-RL
+## Comparison to Prior Predictive MSM-RL
+
+### This paper validates against much more than kinematics.
 
 | Work | Model | Kinematics | GRF | Joint moments | EMG |
 |---|---|:-:|:-:|:-:|:-:|
@@ -7,5 +9,6 @@
 | Schumacher et al. 2025 [@schumacher2025natural] | Low- to high-dim | ✓ | ✓ | – | – |
 | **Park et al. 2026** [@park2026synergy] | **3D, 90 muscles** | ✓ | ✓ | ✓ | ✓ |
 
-- Contribution: the controller design *and* a much broader validation, across speeds
-  and slopes, against cross-human variability
+::: {.notes}
+Compared to other predictive MSM-RL work, the contribution here is partly the controller design, but also how much they validate. Most prior work stops at kinematics, maybe GRFs. This paper also looks at joint moments and EMG, across speeds and slopes, and compares everything to how much humans vary from each other.
+:::

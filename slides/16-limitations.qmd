@@ -1,19 +1,29 @@
-## Limitations and Critical Notes
+## Limitations
 
-**Stated by the authors**
+:::: {.columns}
+::: {.column width="45%"}
+**Stated by the Authors**
 
-- Level walking and modest slopes only, so no running, turning, or stairs
-- Synergies come from **inverse simulation**, not EMG
-- Fixed synergy set and $k$ across all speeds and slopes
-- **Single participant** used to build $H$
+- level walking + modest slopes only (no running, turning, stairs)
+- synergies from **inverse simulation**, not EMG
+- fixed synergy set + $k$ across all conditions
+- **single participant** used to build $H$
+:::
 
-**Points for discussion**
+::: {.column width="55%" .fragment}
+**My Concerns**
 
-- The independent baseline has a 90-D action space and the synergistic controller
-  30-D; is the gain from *physiology* or just from *lower dimensionality*? A random
-  or PCA basis ablation is missing
-- Only the best of 5 seeds is analyzed, so variability across seeds isn't reported
-- MocoInverse minimizes squared activation, so $H$ partly carries that **optimization
-  prior** and not only a neural one
-- The reward is lower for the synergistic controller, so the fidelity gain has a
-  task-performance cost
+- 90-D vs. 30-D → is the gain from *physiology* or just *lower dimensionality*? (no random/PCA basis ablation)
+- only the best of 5 seeds analyzed
+- MocoInverse minimizes $\sum u_i^2$ → $H$ partly encodes an **optimization prior**
+- lower reward → fidelity has a task-performance cost
+:::
+::::
+
+::: {.notes}
+The authors are upfront about most of the obvious limitations — only walking and small slopes, synergies from simulation instead of EMG, one fixed synergy set, and one participant.
+
+A few things I'd add. The biggest one for me is the comparison itself: the independent controller has a 90-dimensional action space and the synergistic one has 30. So is the improvement because the synergies are physiological, or just because the action space is smaller? A random or PCA basis of the same size would answer that, and it's not in the paper.
+
+They also only analyze the best of 5 seeds, so we don't know how consistent the results are. And since MocoInverse minimizes squared activation, H is probably carrying some of that optimization prior too, not only neural structure. Finally, the synergistic controller gets a lower reward, so the fidelity does come at some cost to task performance.
+:::

@@ -1,25 +1,27 @@
 ## Muscle Synergies
 
-- Evidence that the CNS doesn't control muscles one at a time: it recruits
-  **groups of muscles** that activate together with fixed relative weights
-  [@davella2003combinations; @bizzi2013neural]
-- A small number of synergies (≈ 4–6 per leg in walking EMG) reproduces complex
-  movement
-- Synergy structure is clinically meaningful: after stroke, the paretic limb shows
-  **fewer, merged** modules [@clark2010merging]
+### The CNS likely recruits groups of muscles together, rather than controlling each one individually [@davella2003combinations; @bizzi2013neural].
 
-. . .
-
-::: {#def-synergy name="Muscle synergy (spatial)"}
-A fixed, non-negative weighting $\mathbf{h}_j \in \mathbb{R}^{m}_{\ge 0}$ over $m$
-muscles. The activations are a time-varying combination of $k \ll m$ synergies:
+::: {.callout-tip title="Definition: Muscle Synergy (spatial)"}
+A fixed, non-negative weighting $\mathbf{h}_j \in \mathbb{R}^{m}_{\ge 0}$ over $m$ muscles. Activations are a time-varying combination of $k \ll m$ synergies:
 $$
 \mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j, \qquad w_j(t) \ge 0
 $$
 :::
 
-. . .
+::: {.fragment}
+- high-dimensional muscle control → many kinematically acceptable but physiologically implausible solutions
+- ~4–6 synergies per leg reproduce walking EMG
+- clinically meaningful → paretic limb shows **fewer, merged** modules after stroke [@clark2010merging]
+- already used in over-actuated RL for **sample efficiency** [@berg2024sar; @he2024dynsyn]
+:::
 
-- Synergy action spaces already help **sample efficiency** in over-actuated RL
-  [@berg2024sar; @he2024dynsyn]. The open question: do they give more
-  **human-like biomechanics**?
+::: {.notes}
+The idea behind muscle synergies is that the nervous system doesn't drive 40 leg muscles one at a time. It recruits groups of muscles that fire together with fixed relative weights, and then just modulates how much of each group to use over time. In walking EMG, around 4 to 6 of these per leg explain most of what's going on.
+
+This also matters clinically — after stroke, the paretic leg tends to have fewer synergies, and they look like merged versions of the healthy ones.
+
+People have already used synergies as an action space in RL, but mostly because it makes learning faster. This is where the paper brings in the redundancy problem: with that many muscles, there are lots of solutions that get the kinematics right but aren't physiologically plausible. Synergies are a way to cut that space down to something closer to what the nervous system actually does.
+
+What hasn't really been tested is whether it also makes the resulting biomechanics more human-like, which is what this paper does.
+:::
