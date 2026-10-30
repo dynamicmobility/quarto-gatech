@@ -1,32 +1,37 @@
 ## Learning Locomotion with MSMs
 
-*Train a policy using reinforcement learning to output muscle activations that achieve high-level locomotion skills, like walking, incline-walking, running, etcetera.*
+*RL has enabled musculoskeletal simulations to generate diverse, human-like movement [@song2021deeprl]. Most of this progress uses motion-imitation rewards; predictive simulation works without them.*
 
 ::::: {.columns}
 ::: {.column width="50%"}
-::: {.box}
+::: {.box style="font-size: 0.85em;"}
 [**Motion Imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]]{style="display:block; text-align:center"}
 
-- Tracks pre-recorded mocap trajectories (motion-mimicking reward).
-- Reproduces reference kinematics well.
-- Can allow physiologically implausible internal solutions; brittle outside the demonstrations.
+Reward = track pre-recorded mocap
+
+- ✓ reproduces reference kinematics
+- ✗ only constrains surface motion → muscles + joint kinetics underdetermined
+- ✗ brittle outside the clips (new speed, slope, task)
 :::
 :::
 
-::: {.column width="50%"}
-::: {.box}
-[**Predictive Simulation** [@schumacher2025natural; @badie2025bioinspired; @weng2021natural]]{style="display:block; text-align:center"}
-There are two main approaches:
+::: {.column width="50%" .fragment}
+::: {.box style="font-size: 0.85em;"}
+[**Predictive Simulation**]{style="display:block; text-align:center"}
 
-1. Utilize bio-plausible objectives (effort, stability, pain).
-2. Build bio-inspired curricula (balance, walk, run).
+Reward = task + bio-plausible terms, **no** reference
+
+- pursued *to overcome* imitation's limits
+- complementary strategies: bio-plausible objectives [@schumacher2025natural], bio-inspired curricula [@badie2025bioinspired; @weng2021natural]
+- ✗ still poor match to human **joint kinetics** + **muscle patterns**
 :::
 :::
 :::::
 
-Neither approach connects kinematic accuracy with neuromuscular authenticity
+::: {.fragment}
+> *Gap: **visually plausible** motion ≠ **experimentally grounded** biomechanics*
+:::
 
-- Human-like $\neq$ physiologically plausible: the underlying neuromuscular coordination and joint kinetics are underdetermined.
 <!-- - Constraints or objectives are needed for more biological accuracy. -->
 
 <!-- ::: {.fragment}
@@ -38,9 +43,11 @@ Neither approach connects kinematic accuracy with neuromuscular authenticity
 ::: -->
 
 ::: {.notes}
-Most of the recent progress has come from motion imitation — the policy tracks a mocap clip using motion-mimicking rewards. That works well for reproducing the reference kinematics.
+RL has made it possible for musculoskeletal simulations to generate diverse, human-like movement. The paper splits that work by whether the reward includes motion imitation.
 
-But the paper's point is that imitation only constrains the surface-level motion. The muscle coordination and joint kinetics underneath are left underdetermined, so the policy can land on internal solutions that aren't physiologically plausible, which makes it hard to use the model to explain anything causally. And since these policies are optimized around the demonstrations, they can be brittle when the speed, slope, or task changes.
+Most of the recent progress has come from motion imitation, where the reward is to track a recorded mocap clip. That's great for reproducing the reference kinematics. But the paper's point is that it only constrains the surface-level motion: the muscle coordination and joint kinetics underneath are left underdetermined, so the policy can land on internal solutions that aren't physiologically plausible. And since it's optimized around the demonstrations, it can be brittle when the speed, slope, or task changes.
 
-Predictive simulation drops the imitation reward. The paper groups it into two strategies: shaping behavior with biologically plausible objectives, like Schumacher et al., and bio-inspired curricula, like Badie and Weng. These have made progress, but matching human joint kinetics and muscle patterns across speeds and slopes is still hard. The paper calls this the gap between visually plausible motion and experimentally grounded biomechanics.
+Predictive simulation was pursued to get around that — there's no reference motion in the reward, just the task plus biologically plausible terms. The paper describes two complementary strategies: shaping behavior with biologically plausible objectives, like Schumacher et al., and bio-inspired curricula, like Badie and Weng.
+
+But even predictive simulation still struggles to quantitatively match human joint kinetics and muscle patterns across speeds and slopes. So the paper frames this as a gap between motion that looks right and biomechanics that actually match experiments — and argues we need controllers that are both physiologically constrained and generalizable. That's where synergies come in.
 :::

@@ -1,6 +1,5 @@
 ## Muscle Activation Estimation
 
-*We measured how the person moved and the forces on their feet — but not what their muscles did. Many muscle patterns could produce the same motion, so pick the one that uses the least effort.*
 
 1. **Build the model:** H2190 (3D, 21 DoF, 90 muscles, incl. lumbar joint + 10 trunk muscles), converted from Hyfydy to OpenSim
 2. **Scale:** fit the model to the participant's body size (markers from one walking trial)
