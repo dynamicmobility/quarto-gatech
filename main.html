@@ -230,7 +230,7 @@
 <li>✗ brittle outside the clips (new speed, slope, task)</li>
 </ul>
 </div>
-</div><div class="column fragment" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="box" style="font-size: 0.85em;">
 <p><span style="display:block; text-align:center"><strong>Predictive Simulation</strong></span></p>
 <p>Reward = task + bio-plausible terms, <strong>no</strong> reference</p>
@@ -357,7 +357,7 @@
 \mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\mathbf{h}_j\)</span> → <strong>which</strong> muscles are in group <span class="math inline">\(j\)</span>, and how strongly (fixed)</li>
+<li><span class="math inline">\(h_j\)</span> → <strong>which</strong> muscles are in group <span class="math inline">\(j\)</span>, and how strongly (fixed)</li>
 <li><span class="math inline">\(w_j(t)\)</span> → <strong>how much</strong> group <span class="math inline">\(j\)</span> is on at time <span class="math inline">\(t\)</span> (what the controller chooses)</li>
 <li><span class="math inline">\(k\)</span> groups ≪ number of muscles</li>
 </ul>
@@ -654,7 +654,6 @@
 </div></aside></section>
 <section id="muscle-activation-estimation" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Muscle Activation Estimation</h2>
-<p><em>We measured how the person moved and the forces on their feet — but not what their muscles did. Many muscle patterns could produce the same motion, so pick the one that uses the least effort.</em></p>
 <ol type="1">
 <li><strong>Build the model:</strong> H2190 (3D, 21 DoF, 90 muscles, incl.&nbsp;lumbar joint + 10 trunk muscles), converted from Hyfydy to OpenSim</li>
 <li><strong>Scale:</strong> fit the model to the participant’s body size (markers from one walking trial)</li>

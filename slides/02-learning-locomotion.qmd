@@ -15,13 +15,13 @@ Reward = track pre-recorded mocap
 :::
 :::
 
-::: {.column width="50%" .fragment}
+::: {.column width="50%"}
 ::: {.box style="font-size: 0.85em;"}
 [**Predictive Simulation**]{style="display:block; text-align:center"}
 
-Reward = task + bio-plausible terms, **no** reference
+Reward = task + biologically-plausible terms, **no** reference
 
-- pursued *to overcome* imitation's limits
+<!-- - pursued *to overcome* imitation's limits -->
 - complementary strategies: bio-plausible objectives [@schumacher2025natural], bio-inspired curricula [@badie2025bioinspired; @weng2021natural]
 - ✗ still poor match to human **joint kinetics** + **muscle patterns**
 :::

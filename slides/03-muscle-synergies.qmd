@@ -46,7 +46,7 @@ $$
 \mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j
 $$
 
-- $\mathbf{h}_j$ → **which** muscles are in group $j$, and how strongly (fixed)
+- $h_j$ → **which** muscles are in group $j$, and how strongly (fixed)
 - $w_j(t)$ → **how much** group $j$ is on at time $t$ (what the controller chooses)
 - $k$ groups ≪ number of muscles
 :::
