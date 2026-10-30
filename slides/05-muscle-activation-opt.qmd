@@ -1,0 +1,8 @@
+## Muscle Activation Estimation
+
+
+::: {.notes}
+The dataset is small — one participant, ten strides. That's kind of the point though, they want to show you don't need much data to build the prior.
+
+The thing to keep in mind for the rest of the talk is that there's no EMG here. The muscle activity is estimated from kinematics and ground reaction forces, which I'll show on the next slide. So the synergies are coming out of an optimization, not from actual muscle recordings.
+:::

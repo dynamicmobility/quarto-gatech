@@ -26,12 +26,38 @@ bibliography: refs.bib
 
 {{< include slides/04-method-framework.qmd >}}
 
+## Method Overview
+
+::: {.active-1}
+{{< include slides/04a-method-flow.qmd >}}
+:::
+
 {{< include slides/05-data-collection.qmd >}}
+
+## Method Overview
+
+::: {.active-2}
+{{< include slides/04a-method-flow.qmd >}}
+:::
+
+{{< include slides/05-muscle-activation-opt.qmd >}}
+
+
+## Method Overview
+
+::: {.active-3}
+{{< include slides/04a-method-flow.qmd >}}
+:::
 
 {{< include slides/06-synergy-extraction.qmd >}}
 
-{{< include slides/07-rl-training.qmd >}}
+## Method Overview
 
+::: {.active-4}
+{{< include slides/04a-method-flow.qmd >}}
+:::
+
+{{< include slides/07-rl-training.qmd >}}
 {{< include slides/08-reward.qmd >}}
 
 {{< include slides/09-evaluation.qmd >}}

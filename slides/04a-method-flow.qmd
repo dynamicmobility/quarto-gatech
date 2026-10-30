@@ -1,0 +1,53 @@
+<!-- Learn muscle synergies from one person's walking, then make the RL policy control *synergies* instead of individual muscles. -->
+> *Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?* [@park2026synergy]
+
+::: {.horiz style="align-items: stretch;"}
+::: {.step .s1 style="flex: 1; font-size: 0.75em;"}
+**1. Record real-world walking.**
+
+- 1 person with motion capture and force plates.
+- Extract 10 strides from clip.
+
+$\rightarrow$ *Task-space markers & ground reaction forces (GRF).*
+:::
+
+::: {.flow-arrow}
+→
+:::
+
+::: {.step .s2 style="flex: 1; font-size: 0.75em;"}
+**2. Estimate muscle activity**
+
+- Build MSM (H2190) with subject anatomy.
+- Inverse kinematics to compute joint angles.
+- Subject to kinematic and GRF constraints, find valid muscle activations that consume the minimum energy.
+:::
+
+::: {.flow-arrow}
+→
+:::
+
+::: {.step .s3 style="flex: 1; font-size: 0.75em;"}
+**3. Identify muscle synergies**
+
+Use matrix factorization to identify groups of muscles that activate together (temporally):
+
+$$ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{activations}}\kern-1.5em}}$$
+
+and set the *synergies* as the output of the RL policy.
+:::
+
+::: {.flow-arrow}
+→
+:::
+
+::: {.step .s4 style="flex: 1; font-size: 0.75em;"}
+**4. Canonical RL**
+
+With the synergy constraint baked in, optimize a composite reward function:
+
+$$R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}$$
+
+Train across a variety of velocities and terrains.
+:::
+:::
