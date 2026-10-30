@@ -7,15 +7,14 @@
 - **Slope:** $\pm 5^\circ$ at 1.2 m/s, 8 subjects [@scherpereel2023dataset]
 - **Metrics:** sagittal joint angles, joint moments, GRFs (AP + vertical), EMG for 8 lower-limb muscles
 
-<!-- ::: {.fragment}
-::: {.callout-tip title="Definition: RMSE Ratio"}
-$$
-\text{RMSE ratio} = \frac{\text{RMSE}(\text{sim}, \text{human})}
-{\text{mean RMSE}(\text{human}_i, \text{human}_j)}
-$$
-ratio ≈ **1.0** → the sim is as close to the data as one person is to another
+::: {.fragment}
+**How they score it**
+
+- **RMSE ratio:** sim-vs-human error ÷ average human-vs-human error in the same dataset
+  - ≈ 1.0 → the sim is as far from the data as one person is from another
+  - computed per variable and gait phase → count how many exceed 2, 3, and 5
+- **EMG:** correlation with human EMG, compared to the spread of correlations between humans
 :::
-::: -->
 
 ::: {.notes}
 For each controller they run 10 rollouts, take the last 10 strides of each, and normalize to the gait cycle. Then they compare against two public treadmill datasets — one for speed, one for slope. Importantly, this isn't the data they collected: the one participant's overground walking was only used to build the synergies, so the evaluation is on completely different people, on a treadmill.

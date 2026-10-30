@@ -23,6 +23,10 @@
 :::
 ::::
 
+::: {.fragment}
+> *Synergy action spaces already make RL with muscle models more sample-efficient and robust [@berg2024sar; @he2024dynsyn].*
+:::
+
 
 ::: {.notes}
 I want to make sure everyone's on the same page about what a synergy is, since the whole paper rests on it.
@@ -31,9 +35,9 @@ Normally, an RL controller for a musculoskeletal model sets every muscle on its 
 
 The synergy idea comes from motor neuroscience: there's evidence that the nervous system doesn't work that way. Instead it activates groups of muscles together, and within a group the muscles always fire in the same proportions. So the controller only has to decide how much of each group to use.
 
-The figure on the right shows how this works with two synergies and four muscles. Each synergy, the bar plots in the middle, is a fixed recipe — the blue one uses mostly muscle 1, some of muscle 2, a little of muscle 3, and none of muscle 4. Each synergy also has an activation coefficient over time, the line plots on the outside, which says how much that group is turned on. You multiply the two together, and then add up the contributions from each synergy to get each muscle's activity over time — the shaded colors at the bottom show how much of each muscle's activity comes from each synergy. It's kind of like a chord on a piano: you press one thing and get several notes at fixed volumes.
-
 In this paper, they use 10 groups per leg instead of 40 individual muscles.
+
+Synergy action spaces aren't new in RL — they've already been shown to make learning with muscle models more sample-efficient and robust. What this paper asks is whether they also make the biomechanics more human-like.
 :::
 
 ## Muscle Synergies: Definition
@@ -46,7 +50,7 @@ $$
 \mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j
 $$
 
-- $h_j$ → **which** muscles are in group $j$, and how strongly (fixed)
+- $\mathbf{h}_j$ → **which** muscles are in group $j$, and how strongly (fixed)
 - $w_j(t)$ → **how much** group $j$ is on at time $t$ (what the controller chooses)
 - $k$ groups ≪ number of muscles
 :::
@@ -63,20 +67,4 @@ $$
 Here's the same idea more formally. The figure shows two synergies and four muscles. Each synergy, the bar plots in the middle, is a fixed recipe — the blue one uses mostly muscle 1, some of muscle 2, a little of muscle 3, and none of muscle 4. Each synergy also has an activation coefficient over time, the line plots on the outside, which says how much that group is turned on. You multiply the two together, and then add up the contributions from each synergy to get each muscle's activity — the shaded colors at the bottom show how much of each muscle's activity comes from each synergy.
 
 In the equation, the h's are the fixed recipes, and the w's are how much each group is on over time — that's the part the controller chooses. The figure uses different letters, W for the synergy and C for the coefficient, so I put the mapping at the bottom.
-:::
-
-## Muscle Synergies: Why Use Them for RL?
-
-- **Problem:** controlling every muscle separately → many muscle patterns give the same motion, and many aren't physiologically plausible
-- **Evidence:** a small number of synergies can reproduce complex movement; EMG breaks down into consistent groups across tasks [@davella2003combinations; @clark2010merging]
-- **Already known:** synergy action spaces make RL with muscle models more sample-efficient and robust [@berg2024sar; @he2024dynsyn]
-
-::: {.fragment}
-> *Not known yet: do synergies make the resulting biomechanics more **human-like**? → this paper*
-:::
-
-::: {.notes}
-So why would you want this for RL? The paper's argument is that if you let RL control every muscle independently, there are lots of muscle patterns that produce the same motion, and many of them aren't anything a human would do. Synergies restrict the controller to combinations that look more like what the nervous system does — and EMG studies across different tasks do show these kinds of consistent groups.
-
-Synergy action spaces have already been used in RL with muscle models, mainly because they make learning more sample-efficient and robust. What hasn't been established is whether they also make the biomechanics more human-like — that's what this paper tests.
 :::

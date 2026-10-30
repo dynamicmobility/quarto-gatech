@@ -2,15 +2,15 @@
 
 ### Factor the estimated right-leg muscle activations into a small set of synergies.
 
-**Synergy acquisition** — NMF (scikit-learn) on right-leg activations
+Non-negative matrix factorization (NMF) on the 40 right-leg muscles, $k = 10$ synergies:
 
 $$
-\underbrace{M}_{T \times 40} \;\approx\; \underbrace{W}_{T \times k}\;\underbrace{H}_{k \times 40},
-\qquad W, H \ge 0, \quad k = 10
+\underbrace{M}_{\text{activation matrix}} \;\approx\; \underbrace{W}_{\text{temporal activations}} \; \underbrace{H}_{\text{spatial weights}}
 $$
 
-- $W$ → temporal activation coefficients
-- $H$ → spatial synergy weights, embedded in the controller as the fixed prior
+- $M$ ($T \times 40$) → estimated activation of each muscle over time
+- $W$ ($T \times 10$) → how much each synergy is on over time; the policy produces these during RL
+- $H$ ($10 \times 40$) → which muscles are in each synergy; **fixed** and embedded in the controller
 
 ::: {.notes}
 Now they take the estimated activations for the 40 right-leg muscles and run NMF. NMF splits the right-leg activation matrix into W, which is how much each synergy is active over time, and H, which is which muscles go together and in what proportions. H is what gets embedded in the controller. The time-varying part is what the policy produces at each step.

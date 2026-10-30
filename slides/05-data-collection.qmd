@@ -9,11 +9,11 @@
 **Preprocessing:** 4th-order Butterworth low-pass (12 Hz) on markers + GRFs; heel strike = vertical GRF first exceeds 15 N
 
 ::: {.fragment}
-> *Synergies come from **estimated** muscle activity (inverse simulation), not from EMG.*
+> ***No EMG** was collected.*
 :::
 
 ::: {.notes}
 The dataset is small — one participant, ten strides. The paper's conclusion leans on this: they get human-like locomotion with minimal experimental data.
 
-The thing to keep in mind is that the synergies aren't extracted from EMG. Muscle activity is estimated from the kinematics and ground reaction forces, which I'll show on the next slide. The authors list this as a limitation themselves.
+The thing to keep in mind is that they only recorded motion capture and force plates — no EMG. So we know how the person moved and the forces on their feet, but not what their muscles were doing. The next slide is how they estimate that.
 :::

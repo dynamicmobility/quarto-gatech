@@ -6,14 +6,11 @@
 :::
 
 ::: {.column width="42%"}
-Uphill ($+5^\circ$), level, downhill ($-5^\circ$) at 1.2 m/s
+Uphill, level, downhill ($\pm 5^\circ$) at 1.2 m/s
 
-**Both** reproduce basic GRF structure
+**Both** → reproduce the basic GRF shape
 
-- AP → braking to propulsion
-- vertical → double peak
-
-**Independent** → knee moment in loading response reaches RMSE ratio **8.56** (~$2\times$ synergistic's max joint moment error)
+**Independent** → knee moment in loading response hits RMSE ratio **8.56** (~$2\times$ synergistic's worst)
 :::
 :::
 

@@ -8,15 +8,9 @@
 ::: {.column width="42%"}
 Both walk stably **0.7 → 1.8 m/s**
 
-**Synergistic** → largely preserves human phase-specific speed trends (red arrows)
+**Synergistic** → keeps human speed trends (red arrows)
 
-**Independent** → reversed or attenuated modulation (green arrows)
-
-- hip angle in swing
-- knee angle in loading response + swing
-- ankle moment in loading response
-
-Largest kinematic error → independent knee angle in swing (RMSE ratio **7.98**)
+**Independent** → reverses or flattens them (green arrows): hip + knee angle in swing, knee angle + ankle moment in loading response
 :::
 :::
 

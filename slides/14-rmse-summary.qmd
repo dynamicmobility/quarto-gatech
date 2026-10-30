@@ -4,13 +4,13 @@
 
 ::: {.horiz}
 ::: {.box}
-**Ratio > 3.0**: 23 independent vs. **7** synergistic
+**Ratio > 3**: 23 independent vs. **7** synergistic
 :::
 ::: {.box}
-**Ratio > 5.0**: 7 independent vs. **0** synergistic
+**Ratio > 5**: 7 independent vs. **0** synergistic
 :::
 ::: {.box-accent}
-**Synergistic largest kinetic error**: hip flexion moment in loading response (4.16 speed / 4.54 slope)
+**Synergistic worst moment**: hip flexion, loading response (4.16 / 4.54)
 :::
 :::
 

@@ -4,7 +4,7 @@
 
 ::::: {.columns}
 ::: {.column width="50%"}
-::: {.box style="font-size: 0.85em;"}
+::: {.box style="font-size: 0.8em;"}
 [**Motion Imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]]{style="display:block; text-align:center"}
 
 Reward = track pre-recorded mocap
@@ -16,13 +16,15 @@ Reward = track pre-recorded mocap
 :::
 
 ::: {.column width="50%"}
-::: {.box style="font-size: 0.85em;"}
+::: {.box style="font-size: 0.8em;"}
 [**Predictive Simulation**]{style="display:block; text-align:center"}
 
 Reward = task + biologically-plausible terms, **no** reference
 
 <!-- - pursued *to overcome* imitation's limits -->
-- complementary strategies: bio-plausible objectives [@schumacher2025natural], bio-inspired curricula [@badie2025bioinspired; @weng2021natural]
+- two complementary strategies:
+  - **objectives** → what's rewarded [@schumacher2025natural]
+  - **curricula** → how training progresses, for efficiency + robustness [@badie2025bioinspired; @weng2021natural]
 - ✗ still poor match to human **joint kinetics** + **muscle patterns**
 :::
 :::
@@ -47,7 +49,7 @@ RL has made it possible for musculoskeletal simulations to generate diverse, hum
 
 Most of the recent progress has come from motion imitation, where the reward is to track a recorded mocap clip. That's great for reproducing the reference kinematics. But the paper's point is that it only constrains the surface-level motion: the muscle coordination and joint kinetics underneath are left underdetermined, so the policy can land on internal solutions that aren't physiologically plausible. And since it's optimized around the demonstrations, it can be brittle when the speed, slope, or task changes.
 
-Predictive simulation was pursued to get around that — there's no reference motion in the reward, just the task plus biologically plausible terms. The paper describes two complementary strategies: shaping behavior with biologically plausible objectives, like Schumacher et al., and bio-inspired curricula, like Badie and Weng.
+Predictive simulation was pursued to get around that — there's no reference motion in the reward, just the task plus biologically plausible terms. The paper describes two complementary strategies. One changes what's rewarded: shaping behavior with biologically plausible objectives, like Schumacher et al. The other changes how training is structured: bio-inspired curricula, like Badie and Weng, which improve learning efficiency and robustness. They're complementary because they work on different parts of the problem — the reward versus the training process.
 
 But even predictive simulation still struggles to quantitatively match human joint kinetics and muscle patterns across speeds and slopes. So the paper frames this as a gap between motion that looks right and biomechanics that actually match experiments — and argues we need controllers that are both physiologically constrained and generalizable. That's where synergies come in.
 :::
