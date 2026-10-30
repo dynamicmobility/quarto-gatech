@@ -7,9 +7,9 @@
 ::: {.box}
 [**Motion Imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]]{style="display:block; text-align:center"}
 
-- Motion imitation reward.
+- Tracks pre-recorded mocap trajectories (motion-mimicking reward).
 - Reproduces reference kinematics well.
-- Often uses physiological implausible muscle activations.
+- Can allow physiologically implausible internal solutions; brittle outside the demonstrations.
 :::
 :::
 
@@ -38,9 +38,9 @@ Neither approach connects kinematic accuracy with neuromuscular authenticity
 ::: -->
 
 ::: {.notes}
-Most of the recent progress in MSM locomotion has come from motion imitation. You give the policy a mocap clip and reward it for tracking it, and the kinematics come out looking great.
+Most of the recent progress has come from motion imitation — the policy tracks a mocap clip using motion-mimicking rewards. That works well for reproducing the reference kinematics.
 
-But matching joint angles doesn't mean the muscles are doing anything reasonable. Each muscle is controlled independently, so the policy can do things like co-contract within a muscle group in ways no person would. The kinetics and muscle coordination are basically unconstrained. These policies also tend to be brittle — move them to a speed or slope that wasn't in the demo and they fall apart.
+But the paper's point is that imitation only constrains the surface-level motion. The muscle coordination and joint kinetics underneath are left underdetermined, so the policy can land on internal solutions that aren't physiologically plausible, which makes it hard to use the model to explain anything causally. And since these policies are optimized around the demonstrations, they can be brittle when the speed, slope, or task changes.
 
-Predictive simulation drops the reference trajectory entirely and lets the gait emerge from things like effort and stability objectives. The motion looks plausible, but when you actually compare against human kinetics and EMG across speeds and slopes, the agreement still isn't good. That's the gap this paper is going after.
+Predictive simulation drops the imitation reward. The paper groups it into two strategies: shaping behavior with biologically plausible objectives, like Schumacher et al., and bio-inspired curricula, like Badie and Weng. These have made progress, but matching human joint kinetics and muscle patterns across speeds and slopes is still hard. The paper calls this the gap between visually plausible motion and experimentally grounded biomechanics.
 :::

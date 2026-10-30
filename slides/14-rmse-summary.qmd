@@ -10,12 +10,12 @@
 **Ratio > 5.0**: 7 independent vs. **0** synergistic
 :::
 ::: {.box-accent}
-**Synergistic worst case**: hip moment in loading response (4.16 / 4.54)
+**Synergistic largest kinetic error**: hip flexion moment in loading response (4.16 speed / 4.54 slope)
 :::
 :::
 
 ::: {.notes}
-Putting it all together: the independent controller has 23 measures with an RMSE ratio above 3, versus 7 for the synergistic controller. Above 5, it's 7 versus zero.
+Both controllers have quite a few measures above an RMSE ratio of 2 — 39 for independent and 31 for synergistic — so neither is perfect. The difference shows up at higher thresholds: above 3, it's 23 versus 7, and above 5, it's 7 versus zero.
 
-The synergistic controller isn't perfect — it has a bigger overall offset in hip angle, and its worst case is hip moment in loading response. But it avoids the really extreme knee, ankle, and GRF errors that the independent controller has.
+The synergistic controller has a bigger global offset in hip angle, which gives it moderately higher RMSE ratios there. Its largest kinetic error is hip flexion moment in loading response. But it avoids the extreme knee, ankle, and GRF errors the independent controller has — for example, the independent controller's AP GRF in swing hits 7.19 under the speed conditions because of delayed toe-off.
 :::

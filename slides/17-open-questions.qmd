@@ -1,11 +1,18 @@
 ## Open Questions
 
-1. How can we leverage data from **multiple subjects**?
-2. How do we determine the **optimal $k$**?
-3. Could the synergy matrix be **time-varying** (over some window)?
-4. Would a **patient-specific** $H$ (e.g. post-stroke, merged modules) reproduce *pathological* gait? [@clark2010merging]
-5. Does the prior transfer to **assistive-device control** (exoskeleton co-simulation)?
+**From the paper's discussion + future work**
+
+1. Would a **patient-specific** (or impairment-graded) synergy basis reproduce *pathological* gait, e.g. post-stroke? [@clark2010merging]
+2. Can this support designing **assistive-device / exoskeleton controllers** and rehab strategies?
+3. Can **state-dependent or adaptive** synergy bases improve fidelity?
+4. How does it extend to **subject-diverse datasets** and EMG-driven or hybrid synergy estimation?
+
+**My own**
+
+5. How should the **number of synergies $k$** be chosen?
 
 ::: {.notes}
-The last two are the ones I'm most interested in for my own work. If you could build H from a stroke patient — where the synergies are fewer and merged — would the policy reproduce their gait? And if so, could you use that as a training environment for exoskeleton controllers?
+The first four are directions the authors bring up themselves. In the discussion, they argue synergy-constrained control could matter even more for pathological gait — post-stroke EMG shows fewer, less distinct modules in the paretic limb — so swapping in a patient-specific synergy basis could make the simulation reflect the neuromotor constraints behind the impairment. They also mention assistive-device and exoskeleton control in the conclusion.
+
+These are the ones I'm most interested in for my own work: if you could build H from a stroke patient, could you use that as a training environment for exoskeleton controllers?
 :::

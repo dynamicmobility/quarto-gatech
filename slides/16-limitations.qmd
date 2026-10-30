@@ -4,26 +4,27 @@
 ::: {.column width="45%"}
 **Stated by the Authors**
 
-- level walking + modest slopes only (no running, turning, stairs)
+- level walking + modest slopes only (running, turning, stairs untested)
 - synergies from **inverse simulation**, not EMG
-- fixed synergy set + $k$ across all conditions
-- **single participant** used to build $H$
+- synergy set + dimensionality fixed across tasks and speeds
+- **single participant** used for calibration
 :::
 
 ::: {.column width="55%" .fragment}
 **My Concerns**
 
-- 90-D vs. 30-D → is the gain from *physiology* or just *lower dimensionality*? (no random/PCA basis ablation)
-- only the best of 5 seeds analyzed
-- MocoInverse minimizes $\sum u_i^2$ → $H$ partly encodes an **optimization prior**
-- lower reward → fidelity has a task-performance cost
+- action space is 30-D vs. the independent baseline's per-muscle control → is the gain from *physiology* or just *lower dimensionality*? (no random/PCA basis ablation)
+- biomechanical analysis uses only the best of 5 seeds
+- no criterion reported for choosing $k = 10$
+- MocoInverse minimizes squared controls → $H$ partly encodes that **optimization prior**
+- lower reward → fidelity comes with a task-performance cost
 :::
 ::::
 
 ::: {.notes}
-The authors are upfront about most of the obvious limitations — only walking and small slopes, synergies from simulation instead of EMG, one fixed synergy set, and one participant.
+The authors list four limitations: only walking on level ground and modest slopes, synergies from inverse simulation instead of EMG, a fixed synergy set and dimensionality, and a single participant. They do point out that even with one person's synergies, fidelity improved across speeds and slopes.
 
-A few things I'd add. The biggest one for me is the comparison itself: the independent controller has a 90-dimensional action space and the synergistic one has 30. So is the improvement because the synergies are physiological, or just because the action space is smaller? A random or PCA basis of the same size would answer that, and it's not in the paper.
+A few things I'd add. The biggest one for me is the comparison itself: the synergistic controller's action space is 30-dimensional, while the independent one controls every muscle. The paper itself says synergies reduce the effective action dimensionality. So is the improvement because the synergies are physiological, or just because the action space is smaller? A random or PCA basis of the same size would answer that.
 
-They also only analyze the best of 5 seeds, so we don't know how consistent the results are. And since MocoInverse minimizes squared activation, H is probably carrying some of that optimization prior too, not only neural structure. Finally, the synergistic controller gets a lower reward, so the fidelity does come at some cost to task performance.
+The training curves show all five seeds, but the biomechanical analysis only uses the best one, so we don't know how consistent the gait results are across seeds. They also don't say how k = 10 was chosen. Since MocoInverse minimizes squared controls, H is probably carrying some of that optimization prior too. And the synergistic controller gets a lower reward, so the fidelity does cost some task performance.
 :::

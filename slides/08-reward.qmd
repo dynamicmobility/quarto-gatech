@@ -1,19 +1,27 @@
 ## Reward Design
 
-### No imitation term — any human-likeness has to come from the action space.
+*Same reward for both controllers: walk at the target speed, without wasting effort, straining joints, or falling.*
 
 $$
 R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
   + w_{\text{rom}} R_{\text{rom}} + w_{\text{fall}} R_{\text{fall}}
 $$
 
-1. **Velocity** — $R_{\text{vel}} = R_{\text{AP}}\, R_{\text{ML}}\, R_{\text{head}}$ (track target speed, penalize lateral drift + head angular velocity)
-2. **Effort** — $\sum_i a_i^2$ (negative weight)
-3. **Range of motion** — penalize knee hyperextension, lumbar outside $[-20^\circ, 10^\circ]$
-4. **Fall** — termination penalty
+1. **Velocity:** walk at the target speed, without drifting sideways or shaking the head
+2. **Effort:** penalize total muscle activation
+3. **Range of motion:** penalize knee hyperextension + extreme lumbar bending
+4. **Fall:** penalize falling
+
+::: {.fragment}
+> *No imitation term → the human data is never used as a target.*
+:::
 
 ::: {.notes}
-The reward is pretty standard for predictive simulation. There's a velocity term — a plateaued Gaussian around the target speed with a plus or minus 0.05 m/s dead band, times Gaussian penalties on lateral drift and head angular velocity. Then effort, a range-of-motion penalty to keep the knee and lumbar in reasonable ranges, and a fall penalty.
+The reward has four parts, and both controllers get exactly the same one.
 
-The main thing is what's missing: there's no imitation term. Nothing in the reward says "look like this person." So if the synergistic controller ends up more human-like, it's because of the action space.
+The velocity term is a plateaued Gaussian: full reward within 0.05 m/s of the target speed, dropping off outside that. It's multiplied by Gaussian penalties on sideways velocity and on head angular velocity along each axis, so the model walks straight and keeps its head steady.
+
+The effort term is the sum of squared muscle activations, with a negative weight. The range-of-motion term penalizes knee hyperextension on both legs and lumbar extension outside −20 to 10 degrees. And the fall term is 1 when an episode ends in a fall.
+
+The main thing is what's missing: there's no imitation term. Nothing in the reward says "look like this person." So the differences we'll see between the two controllers come from the action space.
 :::

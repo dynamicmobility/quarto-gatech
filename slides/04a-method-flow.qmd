@@ -6,7 +6,7 @@
 **1. Record real-world walking.**
 
 - 1 person with motion capture and force plates.
-- Extract 10 strides from clip.
+- 10 overground walking trials, 1 stride kept per trial.
 
 $\rightarrow$ *Task-space markers & ground reaction forces (GRF).*
 :::
@@ -20,7 +20,7 @@ $\rightarrow$ *Task-space markers & ground reaction forces (GRF).*
 
 - Build MSM (H2190) with subject anatomy.
 - Inverse kinematics to compute joint angles.
-- Subject to kinematic and GRF constraints, find valid muscle activations that consume the minimum energy.
+- Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).
 :::
 
 ::: {.flow-arrow}
@@ -30,11 +30,11 @@ $\rightarrow$ *Task-space markers & ground reaction forces (GRF).*
 ::: {.step .s3 style="flex: 1; font-size: 0.75em;"}
 **3. Identify muscle synergies**
 
-Use matrix factorization to identify groups of muscles that activate together (temporally):
+Use non-negative matrix factorization (40 right-leg muscles, $k = 10$) to identify groups of muscles that activate together:
 
-$$ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{activations}}\kern-1.5em}}$$
+$$ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}$$
 
-and set the *synergies* as the output of the RL policy.
+$H$ is fixed; the RL policy outputs the synergy *activations*.
 :::
 
 ::: {.flow-arrow}

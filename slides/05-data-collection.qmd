@@ -1,19 +1,19 @@
 ## Data Collection
 
-**Subject:** 1 healthy young male (28 y, 69.6 kg, 176 cm)
+**Subject:** 1 healthy young male (28 y, 69.56 kg, 176 cm), no history of neuromuscular or cardiovascular disorders
 
 **Protocol:** 10 trials of 10 m **overground** walking → 1 stride kept per trial
 
-**Data collected:** optical motion capture (12 OptiTrack cameras, 100 Hz, 38 markers), 5 force plates (1000 Hz; 4 AMTI, 1 Bertec)
+**Data collected:** optical motion capture (12 OptiTrack Prime 13 cameras, 100 Hz, 38 markers), 5 force plates (1000 Hz; 4 AMTI, 1 Bertec)
 
-**Preprocessing:** 4th-order Butterworth low-pass (12 Hz); heel strike = vertical GRF > 15 N
+**Preprocessing:** 4th-order Butterworth low-pass (12 Hz) on markers + GRFs; heel strike = vertical GRF first exceeds 15 N
 
 ::: {.fragment}
-> *No EMG was recorded — synergies come from an optimization, not measured muscle signals.*
+> *Synergies come from **estimated** muscle activity (inverse simulation), not from EMG.*
 :::
 
 ::: {.notes}
-The dataset is small — one participant, ten strides. That's kind of the point though, they want to show you don't need much data to build the prior.
+The dataset is small — one participant, ten strides. The paper's conclusion leans on this: they get human-like locomotion with minimal experimental data.
 
-The thing to keep in mind for the rest of the talk is that there's no EMG here. The muscle activity is estimated from kinematics and ground reaction forces, which I'll show on the next slide. So the synergies are coming out of an optimization, not from actual muscle recordings.
+The thing to keep in mind is that the synergies aren't extracted from EMG. Muscle activity is estimated from the kinematics and ground reaction forces, which I'll show on the next slide. The authors list this as a limitation themselves.
 :::

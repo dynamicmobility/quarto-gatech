@@ -6,16 +6,16 @@
 ::: {.fragment}
 **Two controllers, same everything else:**
 
-- **Synergistic:** policy → 10 synergy weights per leg → $H$ → 40 muscles
-- **Independent (baseline):** policy → every muscle directly
+- **Synergistic:** policy → 10 synergy activations per leg → $H$ → leg muscle activations
+- **Independent (baseline):** policy → individual muscle excitations directly
 
-**Test:** compare both to treadmill data from 30 *other* people (22 + 8) [@camargo2021dataset; @scherpereel2023dataset]
+**Test:** compare both to treadmill data from two open-source datasets (22 + 8 people) [@camargo2021dataset; @scherpereel2023dataset]
 :::
 
 ::: {.notes}
-Steps 1 through 3 are just about building the synergies. They record one person walking, use a simulation (MocoInverse in OpenSim) to estimate what their muscles were doing, since there's no EMG, and then use NMF to find groups of muscles that tend to activate together. That gives 10 synergies per leg — that's the matrix H.
+Steps 1 through 3 are just about building the synergies. They record one person walking overground, use MocoInverse in OpenSim to estimate the muscle activations, and then run NMF on the 40 right-leg muscles to get 10 synergies — that's the matrix H.
 
-Step 4 is where RL comes in. Instead of the policy choosing 40 separate muscle activations per leg, it chooses how much of each of the 10 synergies to use, and H turns that into muscle activations. The reward only says "walk at this speed" — the human data is never used as a tracking target.
+Step 4 is where RL comes in. Instead of choosing every leg muscle activation separately, the policy outputs 10 synergy activations per leg, and H turns those into muscle activations. The reward only has a target speed plus effort, range-of-motion, and fall terms — the recorded motion is never used as a tracking target.
 
-To see if this helps, they train a second controller that's identical except it sets every muscle directly. Then they compare both against treadmill data from 30 people who weren't used to build anything.
+To see if this helps, they train a second controller that directly controls individual muscle excitations. Then they compare both against two open-source treadmill datasets.
 :::

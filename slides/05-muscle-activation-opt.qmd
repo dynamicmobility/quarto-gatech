@@ -1,8 +1,22 @@
 ## Muscle Activation Estimation
 
+*We measured how the person moved and the forces on their feet — but not what their muscles did. Many muscle patterns could produce the same motion, so pick the one that uses the least effort.*
+
+1. **Build the model:** H2190 (3D, 21 DoF, 90 muscles, incl. lumbar joint + 10 trunk muscles), converted from Hyfydy to OpenSim
+2. **Scale:** fit the model to the participant's body size (markers from one walking trial)
+3. **Inverse kinematics:** marker positions → joint angles $\mathbf{q}(t)$
+4. **MocoInverse** [@dembia2020moco]: joint angles + GRFs → estimated activations for **all 90 muscles**
+
+
 
 ::: {.notes}
-The dataset is small — one participant, ten strides. That's kind of the point though, they want to show you don't need much data to build the prior.
+At this point we know how the person moved and the ground reaction forces, but we didn't measure what the muscles were doing. And because there are way more muscles than joints, lots of different muscle patterns could produce that exact same motion.
 
-The thing to keep in mind for the rest of the talk is that there's no EMG here. The muscle activity is estimated from kinematics and ground reaction forces, which I'll show on the next slide. So the synergies are coming out of an optimization, not from actual muscle recordings.
+So they use an optimization to pick one. First they take the H2190 model — 3D, 21 degrees of freedom, 90 muscles — which was originally built for Hyfydy and converted to OpenSim. They scale it to the participant's body using the markers from one walking trial, and run inverse kinematics to get joint angles.
+
+Then MocoInverse solves an optimal control problem: find the muscle controls that reproduce the measured joint angles and ground reaction forces, while minimizing the sum of squared muscle controls. It also includes reserve and residual actuator efforts. In general OpenSim terms, these are small extra torques and forces that make up the difference if the muscles and the model can't exactly reproduce the data — they're penalized so the muscles do as much of the work as possible.
+
+The output is estimated activations for all 90 muscles. The 40 right-leg muscles are what they use to extract synergies next.
+
+The thing to keep in mind is that this is an estimate from an optimization, not EMG — and the "least effort" assumption is baked into the muscle patterns the synergies come from.
 :::

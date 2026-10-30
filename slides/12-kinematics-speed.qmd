@@ -6,20 +6,24 @@
 :::
 
 ::: {.column width="42%"}
-Both walk stably **0.7 → 1.8 m/s** (past the 1.6 m/s training max)
+Both walk stably **0.7 → 1.8 m/s**
 
-**Synergistic** → keeps human speed trends (red arrows)
+**Synergistic** → largely preserves human phase-specific speed trends (red arrows)
 
-**Independent** → reverses or flattens them (green arrows)
+**Independent** → reversed or attenuated modulation (green arrows)
 
 - hip angle in swing
 - knee angle in loading response + swing
 - ankle moment in loading response
+
+Largest kinematic error → independent knee angle in swing (RMSE ratio **7.98**)
 :::
 :::
 
 ::: {.notes}
-Both controllers can walk across the full speed range, including speeds faster than anything they saw in training.
+Both controllers walk stably across the full speed range.
 
-In the human data, certain gait phases change monotonically with speed — for example, more hip flexion in swing as you walk faster. The synergistic controller keeps those trends, marked with the red arrows. The independent controller either flips them or flattens them out, in the green arrows — hip angle in swing, knee angle in loading response and swing, and ankle moment in loading response.
+In the human data, joint angles and moments change monotonically with speed in specific gait phases. The synergistic controller mostly keeps those trends — the red arrows. The independent controller has several places where the trend is reversed or flattened — the green arrows — most clearly in hip angle during swing, knee angle in loading response and swing, and ankle moment in loading response.
+
+The worst one is the independent controller's knee angle in swing, with an RMSE ratio of 7.98. That's the largest kinematic deviation in the paper, and it lines up with where the speed trend is reversed.
 :::

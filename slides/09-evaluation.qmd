@@ -1,23 +1,24 @@
 ## Evaluation Protocol
 
-### Compare simulated gait to human treadmill data, relative to how much humans differ from each other.
+*Compare both controllers' gait to human treadmill data, relative to how much humans differ from each other.*
 
+- **Data:** two open-source treadmill datasets, **not** the data used to build the synergies
 - **Speed:** level walking, 0.7–1.8 m/s, 22 subjects [@camargo2021dataset]
 - **Slope:** $\pm 5^\circ$ at 1.2 m/s, 8 subjects [@scherpereel2023dataset]
 - **Metrics:** sagittal joint angles, joint moments, GRFs (AP + vertical), EMG for 8 lower-limb muscles
 
-::: {.fragment}
+<!-- ::: {.fragment}
 ::: {.callout-tip title="Definition: RMSE Ratio"}
 $$
 \text{RMSE ratio} = \frac{\text{RMSE}(\text{sim}, \text{human})}
-{\overline{\text{RMSE}}(\text{human}_i, \text{human}_j)}
+{\text{mean RMSE}(\text{human}_i, \text{human}_j)}
 $$
 ratio ≈ **1.0** → the sim is as close to the data as one person is to another
 :::
-:::
+::: -->
 
 ::: {.notes}
-For each controller they run 10 rollouts, take the last 10 strides of each, and normalize to the gait cycle. Then they compare against two public treadmill datasets — one for speed, one for slope.
+For each controller they run 10 rollouts, take the last 10 strides of each, and normalize to the gait cycle. Then they compare against two public treadmill datasets — one for speed, one for slope. Importantly, this isn't the data they collected: the one participant's overground walking was only used to build the synergies, so the evaluation is on completely different people, on a treadmill.
 
 I like the RMSE ratio a lot. Instead of just reporting raw error, they divide by how different humans are from each other. So a ratio of 1 means the simulation is about as close to a person as another person would be. They also report Pearson correlations between waveforms and compare those to the spread of correlations between humans.
 :::

@@ -1,27 +1,82 @@
-## Muscle Synergies
+## Muscle Synergies: Conceptually
 
-Evidence suggests that the central nervous system recruits *groups* of muscles together, rather than controlling each one individually [@davella2003combinations; @bizzi2013neural].
+*Evidence suggests the nervous system doesn't control each muscle separately — it activates fixed **groups** of muscles together [@bizzi2013neural].*
 
-::: {.callout-tip title="Definition: Muscle Synergy (spatial)"}
-A fixed, non-negative weighting $\mathbf{h}_j \in \mathbb{R}^{m}_{\ge 0}$ over $m$ muscles. Activations are a time-varying combination of $k \ll m$ synergies:
-$$
-\mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j, \qquad w_j(t) \ge 0
-$$
+:::: {.columns}
+::: {.column width="50%"}
+::: {.box}
+**Without synergies**
+
+- the controller sets every leg muscle on its own
+- in this model → **40 knobs** per leg
+:::
 :::
 
+::: {.column width="50%" .fragment}
+::: {.box-accent}
+**With synergies**
+
+- each knob turns on a *group* of muscles, in fixed proportions
+- the controller only decides how much of each group to use
+- in this paper → **10 knobs** per leg
+:::
+:::
+::::
+
+
+::: {.notes}
+I want to make sure everyone's on the same page about what a synergy is, since the whole paper rests on it.
+
+Normally, an RL controller for a musculoskeletal model sets every muscle on its own. In this model that's 40 muscles per leg, so 40 knobs to turn at every time step.
+
+The synergy idea comes from motor neuroscience: there's evidence that the nervous system doesn't work that way. Instead it activates groups of muscles together, and within a group the muscles always fire in the same proportions. So the controller only has to decide how much of each group to use.
+
+The figure on the right shows how this works with two synergies and four muscles. Each synergy, the bar plots in the middle, is a fixed recipe — the blue one uses mostly muscle 1, some of muscle 2, a little of muscle 3, and none of muscle 4. Each synergy also has an activation coefficient over time, the line plots on the outside, which says how much that group is turned on. You multiply the two together, and then add up the contributions from each synergy to get each muscle's activity over time — the shaded colors at the bottom show how much of each muscle's activity comes from each synergy. It's kind of like a chord on a piano: you press one thing and get several notes at fixed volumes.
+
+In this paper, they use 10 groups per leg instead of 40 individual muscles.
+:::
+
+## Muscle Synergies: Definition
+
+:::: {.columns}
+
+::: {.column width="42%"}
+::: {.callout-tip title="Definition: Muscle Synergy"}
+$$
+\mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j
+$$
+
+- $\mathbf{h}_j$ → **which** muscles are in group $j$, and how strongly (fixed)
+- $w_j(t)$ → **how much** group $j$ is on at time $t$ (what the controller chooses)
+- $k$ groups ≪ number of muscles
+:::
+:::
+
+::: {.column width="58%"}
+![](figures/synergy-calculation.png){fig-align="center" width="100%"}
+
+<small>In the figure: $W$ = $\mathbf{h}_j$, $C(t)$ = $w_j(t)$</small>
+:::
+::::
+
+::: {.notes}
+Here's the same idea more formally. The figure shows two synergies and four muscles. Each synergy, the bar plots in the middle, is a fixed recipe — the blue one uses mostly muscle 1, some of muscle 2, a little of muscle 3, and none of muscle 4. Each synergy also has an activation coefficient over time, the line plots on the outside, which says how much that group is turned on. You multiply the two together, and then add up the contributions from each synergy to get each muscle's activity — the shaded colors at the bottom show how much of each muscle's activity comes from each synergy.
+
+In the equation, the h's are the fixed recipes, and the w's are how much each group is on over time — that's the part the controller chooses. The figure uses different letters, W for the synergy and C for the coefficient, so I put the mapping at the bottom.
+:::
+
+## Muscle Synergies: Why Use Them for RL?
+
+- **Problem:** controlling every muscle separately → many muscle patterns give the same motion, and many aren't physiologically plausible
+- **Evidence:** a small number of synergies can reproduce complex movement; EMG breaks down into consistent groups across tasks [@davella2003combinations; @clark2010merging]
+- **Already known:** synergy action spaces make RL with muscle models more sample-efficient and robust [@berg2024sar; @he2024dynsyn]
+
 ::: {.fragment}
-- high-dimensional muscle control → many kinematically acceptable but physiologically implausible solutions
-- ~4–6 synergies per leg reproduce walking EMG
-- clinically meaningful → paretic limb shows **fewer, merged** modules after stroke [@clark2010merging]
-- already used in over-actuated RL for **sample efficiency** [@berg2024sar; @he2024dynsyn]
+> *Not known yet: do synergies make the resulting biomechanics more **human-like**? → this paper*
 :::
 
 ::: {.notes}
-The idea behind muscle synergies is that the nervous system doesn't drive 40 leg muscles one at a time. It recruits groups of muscles that fire together with fixed relative weights, and then just modulates how much of each group to use over time. In walking EMG, around 4 to 6 of these per leg explain most of what's going on.
+So why would you want this for RL? The paper's argument is that if you let RL control every muscle independently, there are lots of muscle patterns that produce the same motion, and many of them aren't anything a human would do. Synergies restrict the controller to combinations that look more like what the nervous system does — and EMG studies across different tasks do show these kinds of consistent groups.
 
-This also matters clinically — after stroke, the paretic leg tends to have fewer synergies, and they look like merged versions of the healthy ones.
-
-People have already used synergies as an action space in RL, but mostly because it makes learning faster. This is where the paper brings in the redundancy problem: with that many muscles, there are lots of solutions that get the kinematics right but aren't physiologically plausible. Synergies are a way to cut that space down to something closer to what the nervous system actually does.
-
-What hasn't really been tested is whether it also makes the resulting biomechanics more human-like, which is what this paper does.
+Synergy action spaces have already been used in RL with muscle models, mainly because they make learning more sample-efficient and robust. What hasn't been established is whether they also make the biomechanics more human-like — that's what this paper tests.
 :::

@@ -1,26 +1,19 @@
 ## Identifying Muscle Synergies
 
-### Estimate muscle activity with inverse simulation, then factor it with NMF.
+### Factor the estimated right-leg muscle activations into a small set of synergies.
 
-**Muscle activity estimation**
-
-- **H2190** model → 3D, 21 DoF, 90 muscles (incl. lumbar + 10 trunk muscles), ported Hyfydy → OpenSim
-- scale → IK → **MocoInverse** [@dembia2020moco]: minimize $\sum u_i^2$ s.t. measured kinematics + GRFs
-
-**Synergy acquisition** — NMF on right-leg activations
+**Synergy acquisition** — NMF (scikit-learn) on right-leg activations
 
 $$
 \underbrace{M}_{T \times 40} \;\approx\; \underbrace{W}_{T \times k}\;\underbrace{H}_{k \times 40},
 \qquad W, H \ge 0, \quad k = 10
 $$
 
-- $W$ → temporal coefficients, **discarded** (policy produces these online)
-- $H$ → spatial weights, the fixed **prior** in the controller
+- $W$ → temporal activation coefficients
+- $H$ → spatial synergy weights, embedded in the controller as the fixed prior
 
 ::: {.notes}
-They scale the H2190 model to the subject, run inverse kinematics, and then use MocoInverse to find the muscle activations that reproduce the measured motion and forces while minimizing squared activation.
+Now they take the estimated activations for the 40 right-leg muscles and run NMF. NMF splits the right-leg activation matrix into W, which is how much each synergy is active over time, and H, which is which muscles go together and in what proportions. H is what gets embedded in the controller. The time-varying part is what the policy produces at each step.
 
-Then NMF splits that activation matrix into W, which is how much each synergy is active over time, and H, which is the actual synergy structure — which muscles go together and in what proportions. They throw W away, since that's what the policy is going to learn to produce. H is what gets baked into the controller.
-
-One thing I noticed: they pick k = 10 without reporting a VAF criterion, and 10 is on the high side compared to the 4 to 6 you usually see in EMG studies.
+One thing I noticed: the paper doesn't say how they picked k = 10 — there's no variance-accounted-for criterion or anything like that reported.
 :::

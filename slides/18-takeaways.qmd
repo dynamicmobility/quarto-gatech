@@ -1,21 +1,23 @@
 ## Takeaways
 
-### Muscle synergies as the action space are a cheap, physiology-informed prior → 10 strides from one person.
+### Synergies as the action space → physiology-informed prior from minimal data (10 strides, 1 person).
 
-Without any imitation reward:
+With only a high-level velocity target (no imitation reward):
 
-- EMG timing within human variability for **all 8** muscles
-- speed- and slope-dependent trends match human data
+- muscle activation timing within cross-human variability for **all 8** muscles at 1.2 m/s
+- largely preserves speed- and slope-dependent trends in human data
 - **no** extreme (RMSE ratio > 5) kinematic or kinetic errors
 
 ::: {.fragment}
-> *Lower RL return but higher biomechanical fidelity — reward isn't a good proxy for human-likeness. Better controller **structure** may matter as much as better objectives.*
+> *Leveraging not only human-like musculoskeletal **structure**, but also a human-like **control strategy**.*
 :::
 
 ::: {.notes}
-The main takeaway for me is that you can get a lot more human-like biomechanics just by changing the structure of the action space, with very little data and no imitation reward.
+The paper's main takeaway is that you can get much more human-like biomechanics just by constraining the action space to synergies, with very little data and only a velocity target.
 
-And the fact that the more human-like controller gets a lower return says something about how we evaluate these models — reward alone isn't telling us whether the gait is realistic.
+The quote at the bottom is from their conclusion — the idea is to use not just a human-like body, but also the control strategy from motor neuroscience.
+
+My own takeaway: the more human-like controller gets a lower reward, so reward alone doesn't tell us whether the gait is realistic.
 
 Project page with videos: https://ces40320.github.io/WebHomepage__Walk-RL
 :::

@@ -1,39 +1,22 @@
 ## Training a Policy with RL
 
-::: {.horiz}
-::: {}
-**Action space (30-D)**
+*Two controllers are trained with the same setup — they differ only in what the policy outputs.*
 
-- 10 synergy weights → right leg
-- 10 synergy weights → left leg
-- 10 independent torso/pelvis activations
-- $\mathbf{a}_{\text{leg}} = H^\top \mathbf{s}_{\text{leg}} \in \mathbb{R}^{40}$
-- left/right **mirroring** at heel strike
+- **Synergistic controller (30 actions):** 10 right-leg synergy activations + 10 left-leg synergy activations + 10 torso/pelvis muscle activations → fixed synergy matrix $H$ turns them into leg muscle activations
+- **Independent controller (baseline):** sets every muscle excitation directly
 
-**Observations**
+**Same for both:**
 
-- muscle fiber lengths/velocities, forces, excitations, activations
-- joint angles/velocities, head orientation + angular velocity
-- feet relative to pelvis, GRFs, COM velocity, **target speed**
-:::
-
-::: {}
-**Environment:** Hyfydy [@geijtenbeek2021hyfydy]
-
-- 40 Hz control, 1000-step (25 s) episodes
-- speed curriculum: $0.7 \to 1.6 \to 0.7$ m/s
-- 10,000 random tile terrains, slopes $\pm 6^\circ$
-
-**Learner:** SAC [@haarnoja2018sac], Stable-Baselines3
-
-- 75M steps/seed, 5 seeds, RTX 4090
-- MLP (512-512-256), buffer $3 \times 10^6$
-- **best seed** (by return) kept for analysis
-:::
-:::
+- **Observations:** muscle states, joint angles + velocities, head motion, foot positions, GRFs, COM velocity, **target speed**
+- **Environment:** Hyfydy [@geijtenbeek2021hyfydy], random uneven terrain ($-6^\circ$ to $+6^\circ$), target speed swept $0.7 \to 1.6 \to 0.7$ m/s
+- **Algorithm:** SAC [@haarnoja2018sac], 75M steps × 5 seeds → best policy kept for analysis
 
 ::: {.notes}
-The policy outputs 10 synergy weights per leg plus 10 independent activations for the torso and pelvis, so 30 dimensions total instead of 90. Each leg's 40 muscle activations come from multiplying those weights through H.
+Here's the RL setup. They train two controllers that are identical except for the action space. The synergistic policy outputs 30 numbers at each step: 10 synergy activations for each leg, plus 10 independent activations for the torso and pelvis muscles. Each leg's 40 muscle activations come from multiplying the synergy activations through H. The independent controller is the baseline — it sets each muscle excitation directly, with no synergy structure. They also mirror activation patterns from one side to the other at heel strike to keep the gait coordinated and symmetric.
 
-Training is in Hyfydy with SAC, using a speed curriculum and randomized uneven terrain. They run 5 seeds but only analyze the best one, which I'll come back to in the limitations.
+The observations are pretty standard: muscle fiber lengths and velocities, forces, excitations, and activations; joint angles and velocities; head orientation and angular velocity; foot positions relative to the pelvis; ground reaction forces; center of mass velocity; and the current target speed.
+
+Training is in Hyfydy with the H2190 model, at 40 Hz with 25-second episodes. The terrain is 10,000 randomly generated tile surfaces with slopes from −6 to +6 degrees, and the target speed steps from 0.7 up to 1.6 and back down across episodes.
+
+They use SAC from Stable-Baselines3 — 75 million steps per seed on an RTX 4090, with 5 seeds shared between both controllers. For the biomechanical analysis they keep the policy with the highest evaluation return, to characterize the best each controller can do.
 :::

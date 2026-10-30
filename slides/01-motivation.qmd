@@ -15,16 +15,14 @@ Assistive devices, like exoskeletons, can significantly increase functional mobi
 :::
 
 ::: {.column width="38%"}
-<div style="width:240px; height:420px; margin:0 auto; border:3px dashed #999; display:flex; align-items:center; justify-content:center; text-align:center; color:#666; font-size:0.7em;">msm with exo video</div>
+![](figures/msm.gif){fig-align="center" height="600"}
 :::
 :::::
 
 ::: {.notes}
-The paper starts from the clinical side: walking is central to independence, and losing mobility — from aging or disease — is tied to injury and lower well-being. So we want simulations that can tell us something real about how people walk.
+The paper starts from the clinical side: locomotion underpins independence, and declines in mobility are associated with injury, hospitalization, and reduced well-being.
 
-RL has gotten us a long way there. MSMs can now produce pretty diverse, human-like movement, and a lot of that progress has come from motion imitation.
+Their argument is that understanding locomotion needs a mechanistic account — not just describing how people walk, but explaining how the neuromuscular system produces movement, and how that fails, adapts, or reorganizes with pathology, training, or assistive interventions. Musculoskeletal simulation is a good framework for that because it puts skeletal anatomy, muscle and tendon dynamics, and neural control into one physics-based model.
 
-The issue they point out is that imitation policies are really just copying the reference kinematics. They don't necessarily capture how the muscles are coordinated or what the joint kinetics look like, and they tend to break when you move outside the demonstrations.
-
-So their question is whether adding neurophysiological structure — muscle synergies — to the RL controller makes the simulated gait more biomechanically faithful, not just better looking.
+That's also why it matters for assistive devices: if the simulation is physiologically realistic, it can be used to design and evaluate exoskeleton controllers — the paper names this as a direction in its discussion and conclusion.
 :::
