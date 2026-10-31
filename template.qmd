@@ -13,6 +13,8 @@ format:
   gatech-revealjs:
     toc: true                  # agenda slide listing the `#` sections
 # bibliography: references.bib # add your own .bib to get per-slide references
+# bold-authors:                # names to bold in per-slide references, as the bibliography prints them
+#   - "J. Doe"
 ---
 
 # Background

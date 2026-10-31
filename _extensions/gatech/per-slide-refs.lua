@@ -117,6 +117,9 @@ local function collect_cites(blk)
   return ids
 end
 
+-- Names to bold in citations; set from `bold-authors` in Pandoc().
+local bold_names = {}
+
 local function lua_escape(s)
   return (s:gsub('([%^%$%(%)%%%.%[%]%*%+%-%?])', '%%%1'))
 end
@@ -151,6 +154,18 @@ local function transform_md(md)
   -- Drop standalone publisher "IEEE" (redundant for IEEE venues).
   md = md:gsub(',%s*IEEE%s*,', ',')
   md = md:gsub(',%s*IEEE%s*%.', '.')
+
+  -- Bold the names listed under `bold-authors` in the document metadata.
+  -- Longest first, via placeholders, so a name that is a substring of another
+  -- listed name is not bolded twice.
+  local marks = {}
+  for i, name in ipairs(bold_names) do
+    md = md:gsub(lua_escape(name), function()
+      table.insert(marks, '**' .. name .. '**')
+      return '\0' .. #marks .. '\0'
+    end)
+  end
+  md = md:gsub('%z(%d+)%z', function(i) return marks[tonumber(i)] end)
 
   md = md:gsub('%s+$', '')
   if md ~= '' and not md:match('[%.%?!]$') then md = md .. '.' end
@@ -297,6 +312,16 @@ end
 function Pandoc(doc)
   if not has_citations(doc) then return doc end
   abbrev = load_abbrev()
+
+  bold_names = {}
+  local meta_names = doc.meta['bold-authors']
+  if meta_names then
+    if pandoc.utils.type(meta_names) ~= 'List' then meta_names = { meta_names } end
+    for _, n in ipairs(meta_names) do
+      table.insert(bold_names, pandoc.utils.stringify(n))
+    end
+    table.sort(bold_names, function(a, b) return #a > #b end)
+  end
 
   -- Run citeproc on a copy to harvest CSL-rendered entries.
   -- The original `doc` stays untouched so Quarto's own citeproc pass
