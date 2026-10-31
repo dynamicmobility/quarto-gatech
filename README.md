@@ -115,6 +115,7 @@ single slide, set it on the heading:
 |---|---|
 | `background_title.png` | Title slide |
 | `background_slide.png` | `##` content slides and the TOC |
+| `background_slide_nologo.png` | `background_slide.png` without the logo and corner curve; use per slide with `{background-image="assets/background_slide_nologo.png" background-size="contain"}` |
 | `background_section_blank.jpg` | `#` section slides |
 | `background_section_{building,car,students}.jpg` | Alternative section backgrounds |
 
