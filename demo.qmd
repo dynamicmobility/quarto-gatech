@@ -4,10 +4,12 @@ subtitle: Every feature of `gatech-revealjs` on one deck
 format:
   gatech-revealjs: default
 author:
-  - name: Brendan Gould
-  - name: Evanns Morales
+  - name: John Doe
+  - name: Jane Doe
 date: last-modified
 bibliography: references.bib
+bold-authors:                  # names to bold in per-slide citations, as the bibliography prints them
+  - "J. Doe"
 ---
 
 # Section {.gatech-show-section}
@@ -88,6 +90,11 @@ The transformer architecture has since become foundational in deep learning [@va
 ::: {.fragment}
 Safety filters are commonly built on control barrier functions [@ames2019cbf].
 :::
+
+## Bolding Authors
+
+The presenters can be bolded in per-slide references by listing them under `bold-authors`
+in the front matter [@doe2025example].
 
 ## Citations and Footnotes
 

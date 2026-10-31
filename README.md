@@ -82,6 +82,16 @@ abbreviated using `_extensions/gatech/citation-abbrev.lua` (extend it for venues
 doesn't know), and page, volume, and DOI details are dropped. When you export to PDF,
 the references flow inline so they aren't cut off at the bottom of the page.
 
+To bold your own name (or anyone's) in the per-slide references, list it under
+`bold-authors:` in the front matter, written as the bibliography prints it (IEEE style
+gives `J. Doe`; a middle initial needs its own entry, e.g. `J. A. Doe`):
+
+```yaml
+bold-authors:
+  - "J. Doe"
+  - "J. A. Doe"
+```
+
 To collect every reference on a final slide, end the deck with an empty `## References`
 heading.
 
