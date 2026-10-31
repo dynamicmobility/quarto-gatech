@@ -1,25 +1,16 @@
 ## Limitations
 
-:::: {.columns}
-::: {.column width="45%"}
-**Stated by the Authors**
+
 
 - level walking + modest slopes only (running, turning, stairs untested)
-- synergies from **inverse simulation**, not EMG
+- synergies from inverse simulation, not EMG
 - synergy set + dimensionality fixed across tasks and speeds
-- **single participant** used for calibration
-:::
+- single participant used for simulation
 
-::: {.column width="55%" .fragment}
-**My Concerns**
-
-- action space is 30-D vs. the independent baseline's per-muscle control → is the gain from *physiology* or just *lower dimensionality*? (no random/PCA basis ablation)
 - biomechanical analysis uses only the best of 5 seeds
 - no criterion reported for choosing $k = 10$
-- MocoInverse minimizes squared controls → $H$ partly encodes that **optimization prior**
-- lower reward → fidelity comes with a task-performance cost
-:::
-::::
+<!-- - MocoInverse minimizes squared controls → $H$ partly encodes that **optimization prior** -->
+<!-- - lower reward → fidelity comes with a task-performance cost -->
 
 ::: {.notes}
 The authors list four limitations: only walking on level ground and modest slopes, synergies from inverse simulation instead of EMG, a fixed synergy set and dimensionality, and a single participant. They do point out that even with one person's synergies, fidelity improved across speeds and slopes.

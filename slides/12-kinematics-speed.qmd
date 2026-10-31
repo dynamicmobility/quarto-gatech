@@ -20,4 +20,9 @@ Both controllers walk stably across the full speed range.
 In the human data, joint angles and moments change monotonically with speed in specific gait phases. The synergistic controller mostly keeps those trends — the red arrows. The independent controller has several places where the trend is reversed or flattened — the green arrows — most clearly in hip angle during swing, knee angle in loading response and swing, and ankle moment in loading response.
 
 The worst one is the independent controller's knee angle in swing, with an RMSE ratio of 7.98. That's the largest kinematic deviation in the paper, and it lines up with where the speed trend is reversed.
+
+Arrows highlight gait phases exhibiting clear speed-dependent magnitude
+modulation. Red arrows denote trends observed in the experimental data and similarly captured by the synergistic
+controller, whereas green arrows indicate regions where the independent controller deviates from the experimentally
+observed pattern
 :::

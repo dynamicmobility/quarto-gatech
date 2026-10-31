@@ -2,52 +2,31 @@
 > *Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?* [@park2026synergy]
 
 ::: {.horiz style="align-items: stretch;"}
-::: {.step .s1 style="flex: 1; font-size: 0.75em;"}
-**1. Record real-world walking.**
-
-- 1 person with motion capture and force plates.
-- 10 overground walking trials, 1 stride kept per trial.
-
-$\rightarrow$ *Task-space markers & ground reaction forces (GRF).*
+::: {.step .s1 style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;"}
+**1. Data Collection**
 :::
 
-::: {.flow-arrow}
+::: {.flow-arrow style="font-size: 2.5em;"}
 →
 :::
 
-::: {.step .s2 style="flex: 1; font-size: 0.75em;"}
-**2. Estimate muscle activity**
-
-- Build MSM (H2190) with subject anatomy.
-- Inverse kinematics to compute joint angles.
-- Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).
+::: {.step .s2 style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;"}
+**2. Muscle Activation Estimation**
 :::
 
-::: {.flow-arrow}
+::: {.flow-arrow style="font-size: 2.5em;"}
 →
 :::
 
-::: {.step .s3 style="flex: 1; font-size: 0.75em;"}
-**3. Identify muscle synergies**
-
-Use non-negative matrix factorization (40 right-leg muscles, $k = 10$) to identify groups of muscles that activate together:
-
-$$ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}$$
-
-$H$ is fixed; the RL policy outputs the synergy *activations*.
+::: {.step .s3 style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;"}
+**3. Muscle Synergy Identification**
 :::
 
-::: {.flow-arrow}
+::: {.flow-arrow style="font-size: 2.5em;"}
 →
 :::
 
-::: {.step .s4 style="flex: 1; font-size: 0.75em;"}
-**4. Canonical RL**
-
-With the synergy constraint baked in, optimize a composite reward function:
-
-$$R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}$$
-
-Train across a variety of velocities and terrains.
+::: {.step .s4 style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;"}
+**4. RL Policy Training**
 :::
 :::

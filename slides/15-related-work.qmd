@@ -1,4 +1,4 @@
-## Comparison to Prior Predictive MSM-RL
+<!-- ## Comparison to Prior Predictive MSM-RL
 
 ### This paper validates against much more than kinematics.
 
@@ -11,4 +11,4 @@
 
 ::: {.notes}
 Compared to other predictive MSM-RL work, the contribution here is partly the controller design, but also how much they validate. Most prior work stops at kinematics, maybe GRFs. This paper also looks at joint moments and EMG, across speeds and slopes, and compares everything to how much humans vary from each other.
-:::
+::: -->

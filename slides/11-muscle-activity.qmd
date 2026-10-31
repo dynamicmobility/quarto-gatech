@@ -20,4 +20,20 @@ For the independent controller, five of the eight muscles fall outside the range
 The synergistic controller is within the human range for all eight. The plantarflexors agree in both timing and magnitude. ST, BF, and RF have lower correlations, but the paper points out those muscles also have the broadest variability between people.
 
 One thing worth noting from the figure: for TA and RF, the independent controller's median correlation is actually higher than the synergistic one, even though both are within the human range.
+
+
+imilarity between predicted muscle activations and experimental EMG envelopes across eight lower-limb
+muscles. Top box plots show Pearson correlation coefficients between predicted muscle activations and experimental
+EMG envelopes during level treadmill walking at 1.2 m/s for soleus (SOL), gastrocnemius medialis (GAS), tibialis
+anterior (TA), semitendinosus (ST), biceps femoris (BF), rectus femoris (RF), vastus medialis (VM), and vastus
+lateralis (VL). Gray box plots represent the cross-human experimental benchmark derived from 22 participants of the
+open-source dataset, and the surrounding gray shaded regions indicate the corresponding envelope of cross-human
+variability. Orange and blue box plots correspond to independent and synergistic control conditions, respectively. Round
+dots denote individual correlation coefficients (n = 231 for cross-human pairwise comparisons; n = 22 per controller
+for correlations between simulated and experimental activations). Bottom line plots show representative activation
+profiles over the normalized gait cycle, where gray curves indicate experimental EMG envelopes across participants,
+and colored curves represent predicted activations from the independent (orange) and synergistic (blue) controllers.
+Muscle activations were normalized to reference voluntary contraction (RVC): for each muscle, predicted activations
+were scaled to the maximum amplitude observed within each controller, whereas experimental EMG envelopes were
+normalized to the subject-specific maximum amplitude.
 :::

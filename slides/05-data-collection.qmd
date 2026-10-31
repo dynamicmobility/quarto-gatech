@@ -8,6 +8,8 @@
 
 **Preprocessing:** 4th-order Butterworth low-pass (12 Hz) on markers + GRFs; heel strike = vertical GRF first exceeds 15 N
 
+![](figures/optitrack.png){fig-align="center" height="300"}
+
 ::: {.fragment}
 > ***No EMG** was collected.*
 :::

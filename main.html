@@ -178,7 +178,7 @@
 <p><em>Why learn locomotion policies for musculoskeletal models (MSMs)?</em></p>
 <ul>
 <li>Enables a simulation-based study of human gait, and how it physiologically changes due to pathology.</li>
-<li>Easier-to-collect data for training and personalizing assistive device controllers.</li>
+<li>Easier data collection for training and personalizing assistive device controllers.</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:62%;">
@@ -216,38 +216,38 @@
 <h1>Background</h1>
 
 </section>
-<section id="learning-locomotion-with-msms" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
-<h2>Learning Locomotion with MSMs</h2>
+<section id="learning-locomotion-with-musculoskeletal-models" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
+<h2>Learning Locomotion with Musculoskeletal Models</h2>
 <p><em>RL has enabled musculoskeletal simulations to generate diverse, human-like movement <span class="citation" data-cites="song2021deeprl"><a href="#/references" role="doc-biblioref" onclick="">[2]</a></span>. Most of this progress uses motion-imitation rewards; predictive simulation works without them.</em></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="box" style="font-size: 0.8em;">
 <p><span style="display:block; text-align:center"><strong>Motion Imitation</strong> <span class="citation" data-cites="simos2025imitation park2025magnet cotton2025kintwin"><a href="#/references" role="doc-biblioref" onclick="">[3]</a>, <a href="#/references" role="doc-biblioref" onclick="">[4]</a>, <a href="#/references" role="doc-biblioref" onclick="">[5]</a></span></span></p>
-<p>Reward = track pre-recorded mocap</p>
+<p>Reward = track pre-recorded motion capture</p>
 <ul>
-<li>✓ reproduces reference kinematics</li>
-<li>✗ only constrains surface motion → muscles + joint kinetics underdetermined</li>
-<li>✗ brittle outside the clips (new speed, slope, task)</li>
+<li>reproduces reference kinematics</li>
+<li>only constrains surface motion → muscles + joint kinetics underdetermined</li>
+<li>brittle outside the clips (new speed, slope, task)</li>
 </ul>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="box" style="font-size: 0.8em;">
 <p><span style="display:block; text-align:center"><strong>Predictive Simulation</strong></span></p>
 <p>Reward = task + biologically-plausible terms, <strong>no</strong> reference</p>
-<!-- - pursued *to overcome* imitation's limits -->
 <ul>
+<li>pursued to overcome imitation’s limits</li>
 <li>two complementary strategies:
 <ul>
-<li><strong>objectives</strong> → what’s rewarded <span class="citation" data-cites="schumacher2025natural"><a href="#/references" role="doc-biblioref" onclick="">[6]</a></span></li>
-<li><strong>curricula</strong> → how training progresses, for efficiency + robustness <span class="citation" data-cites="badie2025bioinspired weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[7]</a>, <a href="#/references" role="doc-biblioref" onclick="">[8]</a></span></li>
+<li><strong>objectives</strong>: shaping bevaior with biologically plausible objectives <span class="citation" data-cites="schumacher2025natural"><a href="#/references" role="doc-biblioref" onclick="">[6]</a></span></li>
+<li><strong>curricula</strong>: improving learning efficiency/robustness using bio-inspired curriculum design <span class="citation" data-cites="badie2025bioinspired weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[7]</a>, <a href="#/references" role="doc-biblioref" onclick="">[8]</a></span></li>
 </ul></li>
-<li>✗ still poor match to human <strong>joint kinetics</strong> + <strong>muscle patterns</strong></li>
+<li>✗ still poor match to human joint kinetics + muscle patterns</li>
 </ul>
 </div>
 </div></div>
 <div class="fragment" data-fragment-index="0">
 <blockquote>
-<p><em>Gap: <strong>visually plausible</strong> motion ≠ <strong>experimentally grounded</strong> biomechanics</em></p>
+<p><em>Gap the paper is trying to address: visually plausible motion ≠ experimentally grounded biomechanics</em></p>
 </blockquote>
 </div>
 <!-- - Constraints or objectives are needed for more biological accuracy. -->
@@ -300,23 +300,23 @@
 </div></aside></section>
 <section id="muscle-synergies-conceptually" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Muscle Synergies: Conceptually</h2>
-<p><em>Evidence suggests the nervous system doesn’t control each muscle separately — it activates fixed <strong>groups</strong> of muscles together <span class="citation" data-cites="bizzi2013neural"><a href="#/references" role="doc-biblioref" onclick="">[9]</a></span>.</em></p>
+<p><em>Evidence suggests the nervous system doesn’t control each muscle separately; it activates fixed groups of muscles together <span class="citation" data-cites="bizzi2013neural"><a href="#/references" role="doc-biblioref" onclick="">[9]</a></span>.</em></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="box">
-<p><strong>Without synergies</strong></p>
+<p><strong>Without synergies (Independent Controller)</strong></p>
 <ul>
 <li>the controller sets every leg muscle on its own</li>
-<li>in this model → <strong>40 knobs</strong> per leg</li>
+<li>in this model: 40 muscles per leg</li>
 </ul>
 </div>
-</div><div class="column fragment" style="width:50%;">
+</div><div class="column" style="width:50%;">
 <div class="box-accent">
-<p><strong>With synergies</strong></p>
+<p><strong>With synergies (Synergistic Controller)</strong></p>
 <ul>
-<li>each knob turns on a <em>group</em> of muscles, in fixed proportions</li>
+<li>turns on a group of muscles, in fixed proportions</li>
 <li>the controller only decides how much of each group to use</li>
-<li>in this paper → <strong>10 knobs</strong> per leg</li>
+<li>in this paper: 10 muscle synergies per leg</li>
 </ul>
 </div>
 </div></div>
@@ -374,8 +374,8 @@
 \mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\mathbf{h}_j\)</span> → <strong>which</strong> muscles are in group <span class="math inline">\(j\)</span>, and how strongly (fixed)</li>
-<li><span class="math inline">\(w_j(t)\)</span> → <strong>how much</strong> group <span class="math inline">\(j\)</span> is on at time <span class="math inline">\(t\)</span> (what the controller chooses)</li>
+<li><span class="math inline">\(\mathbf{h}_j\)</span>: which muscles are in group <span class="math inline">\(j\)</span>, and how strongly (fixed)</li>
+<li><span class="math inline">\(w_j(t)\)</span>: how much group <span class="math inline">\(j\)</span> is on at time <span class="math inline">\(t\)</span> (what the controller chooses)</li>
 <li><span class="math inline">\(k\)</span> groups ≪ number of muscles</li>
 </ul>
 </div>
@@ -417,42 +417,26 @@
 <p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></p>
 </blockquote>
 <div class="horiz" style="align-items: stretch;">
-<div class="step s1" style="flex: 1; font-size: 0.75em;">
-<p><strong>1. Record real-world walking.</strong></p>
-<ul>
-<li>1 person with motion capture and force plates.</li>
-<li>10 overground walking trials, 1 stride kept per trial.</li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> <em>Task-space markers &amp; ground reaction forces (GRF).</em></p>
+<div class="step s1" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>1. Data Collection</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s2" style="flex: 1; font-size: 0.75em;">
-<p><strong>2. Estimate muscle activity</strong></p>
-<ul>
-<li>Build MSM (H2190) with subject anatomy.</li>
-<li>Inverse kinematics to compute joint angles.</li>
-<li>Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).</li>
-</ul>
+<div class="step s2" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>2. Muscle Activation Estimation</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s3" style="flex: 1; font-size: 0.75em;">
-<p><strong>3. Identify muscle synergies</strong></p>
-<p>Use non-negative matrix factorization (40 right-leg muscles, <span class="math inline">\(k = 10\)</span>) to identify groups of muscles that activate together:</p>
-<p><span class="math display">\[ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}\]</span></p>
-<p><span class="math inline">\(H\)</span> is fixed; the RL policy outputs the synergy <em>activations</em>.</p>
+<div class="step s3" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>3. Muscle Synergy Identification</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s4" style="flex: 1; font-size: 0.75em;">
-<p><strong>4. Canonical RL</strong></p>
-<p>With the synergy constraint baked in, optimize a composite reward function:</p>
-<p><span class="math display">\[R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}\]</span></p>
-<p>Train across a variety of velocities and terrains.</p>
+<div class="step s4" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>4. RL Policy Training</strong></p>
 </div>
 </div>
 
@@ -504,42 +488,26 @@
 <p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></p>
 </blockquote>
 <div class="horiz" style="align-items: stretch;">
-<div class="step s1" style="flex: 1; font-size: 0.75em;">
-<p><strong>1. Record real-world walking.</strong></p>
-<ul>
-<li>1 person with motion capture and force plates.</li>
-<li>10 overground walking trials, 1 stride kept per trial.</li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> <em>Task-space markers &amp; ground reaction forces (GRF).</em></p>
+<div class="step s1" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>1. Data Collection</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s2" style="flex: 1; font-size: 0.75em;">
-<p><strong>2. Estimate muscle activity</strong></p>
-<ul>
-<li>Build MSM (H2190) with subject anatomy.</li>
-<li>Inverse kinematics to compute joint angles.</li>
-<li>Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).</li>
-</ul>
+<div class="step s2" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>2. Muscle Activation Estimation</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s3" style="flex: 1; font-size: 0.75em;">
-<p><strong>3. Identify muscle synergies</strong></p>
-<p>Use non-negative matrix factorization (40 right-leg muscles, <span class="math inline">\(k = 10\)</span>) to identify groups of muscles that activate together:</p>
-<p><span class="math display">\[ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}\]</span></p>
-<p><span class="math inline">\(H\)</span> is fixed; the RL policy outputs the synergy <em>activations</em>.</p>
+<div class="step s3" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>3. Muscle Synergy Identification</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s4" style="flex: 1; font-size: 0.75em;">
-<p><strong>4. Canonical RL</strong></p>
-<p>With the synergy constraint baked in, optimize a composite reward function:</p>
-<p><span class="math display">\[R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}\]</span></p>
-<p>Train across a variety of velocities and terrains.</p>
+<div class="step s4" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>4. RL Policy Training</strong></p>
 </div>
 </div>
 </div>
@@ -555,6 +523,11 @@
 <p><strong>Protocol:</strong> 10 trials of 10 m <strong>overground</strong> walking → 1 stride kept per trial</p>
 <p><strong>Data collected:</strong> optical motion capture (12 OptiTrack Prime 13 cameras, 100 Hz, 38 markers), 5 force plates (1000 Hz; 4 AMTI, 1 Bertec)</p>
 <p><strong>Preprocessing:</strong> 4th-order Butterworth low-pass (12 Hz) on markers + GRFs; heel strike = vertical GRF first exceeds 15 N</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/optitrack.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
 <div class="fragment" data-fragment-index="0">
 <blockquote>
 <p><em><strong>No EMG</strong> was collected.</em></p>
@@ -583,42 +556,26 @@
 <p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></p>
 </blockquote>
 <div class="horiz" style="align-items: stretch;">
-<div class="step s1" style="flex: 1; font-size: 0.75em;">
-<p><strong>1. Record real-world walking.</strong></p>
-<ul>
-<li>1 person with motion capture and force plates.</li>
-<li>10 overground walking trials, 1 stride kept per trial.</li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> <em>Task-space markers &amp; ground reaction forces (GRF).</em></p>
+<div class="step s1" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>1. Data Collection</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s2" style="flex: 1; font-size: 0.75em;">
-<p><strong>2. Estimate muscle activity</strong></p>
-<ul>
-<li>Build MSM (H2190) with subject anatomy.</li>
-<li>Inverse kinematics to compute joint angles.</li>
-<li>Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).</li>
-</ul>
+<div class="step s2" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>2. Muscle Activation Estimation</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s3" style="flex: 1; font-size: 0.75em;">
-<p><strong>3. Identify muscle synergies</strong></p>
-<p>Use non-negative matrix factorization (40 right-leg muscles, <span class="math inline">\(k = 10\)</span>) to identify groups of muscles that activate together:</p>
-<p><span class="math display">\[ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}\]</span></p>
-<p><span class="math inline">\(H\)</span> is fixed; the RL policy outputs the synergy <em>activations</em>.</p>
+<div class="step s3" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>3. Muscle Synergy Identification</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s4" style="flex: 1; font-size: 0.75em;">
-<p><strong>4. Canonical RL</strong></p>
-<p>With the synergy constraint baked in, optimize a composite reward function:</p>
-<p><span class="math display">\[R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}\]</span></p>
-<p>Train across a variety of velocities and terrains.</p>
+<div class="step s4" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>4. RL Policy Training</strong></p>
 </div>
 </div>
 </div>
@@ -636,6 +593,22 @@
 <li><strong>Inverse kinematics:</strong> marker positions → joint angles <span class="math inline">\(\mathbf{q}(t)\)</span></li>
 <li><strong>MocoInverse</strong> <span class="citation" data-cites="dembia2020moco"><a href="#/references" role="doc-biblioref" onclick="">[15]</a></span>: joint angles + GRFs → estimated activations for <strong>all 90 muscles</strong></li>
 </ol>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/h2190.png" height="380"></p>
+<figcaption>H2190 model</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="figures/scale.png" height="380"></p>
+<figcaption>Scaling to the participant (OpenSim)</figcaption>
+</figure>
+</div>
+</div></div>
 <aside class="notes">
 <p>At this point we know how the person moved and the ground reaction forces, but we didn’t measure what the muscles were doing. And because there are way more muscles than joints, lots of different muscle patterns could produce that exact same motion.</p>
 <p>So they use an optimization to pick one. First they take the H2190 model — 3D, 21 degrees of freedom, 90 muscles — which was originally built for Hyfydy and converted to OpenSim. They scale it to the participant’s body using the markers from one walking trial, and run inverse kinematics to get joint angles.</p>
@@ -667,42 +640,26 @@
 <p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></p>
 </blockquote>
 <div class="horiz" style="align-items: stretch;">
-<div class="step s1" style="flex: 1; font-size: 0.75em;">
-<p><strong>1. Record real-world walking.</strong></p>
-<ul>
-<li>1 person with motion capture and force plates.</li>
-<li>10 overground walking trials, 1 stride kept per trial.</li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> <em>Task-space markers &amp; ground reaction forces (GRF).</em></p>
+<div class="step s1" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>1. Data Collection</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s2" style="flex: 1; font-size: 0.75em;">
-<p><strong>2. Estimate muscle activity</strong></p>
-<ul>
-<li>Build MSM (H2190) with subject anatomy.</li>
-<li>Inverse kinematics to compute joint angles.</li>
-<li>Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).</li>
-</ul>
+<div class="step s2" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>2. Muscle Activation Estimation</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s3" style="flex: 1; font-size: 0.75em;">
-<p><strong>3. Identify muscle synergies</strong></p>
-<p>Use non-negative matrix factorization (40 right-leg muscles, <span class="math inline">\(k = 10\)</span>) to identify groups of muscles that activate together:</p>
-<p><span class="math display">\[ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}\]</span></p>
-<p><span class="math inline">\(H\)</span> is fixed; the RL policy outputs the synergy <em>activations</em>.</p>
+<div class="step s3" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>3. Muscle Synergy Identification</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s4" style="flex: 1; font-size: 0.75em;">
-<p><strong>4. Canonical RL</strong></p>
-<p>With the synergy constraint baked in, optimize a composite reward function:</p>
-<p><span class="math display">\[R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}\]</span></p>
-<p>Train across a variety of velocities and terrains.</p>
+<div class="step s4" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>4. RL Policy Training</strong></p>
 </div>
 </div>
 </div>
@@ -747,42 +704,26 @@
 <p><em>Can embedding neurophysiological structure (muscle synergies) into RL improve the biomechanical fidelity of predictive simulation?</em> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></p>
 </blockquote>
 <div class="horiz" style="align-items: stretch;">
-<div class="step s1" style="flex: 1; font-size: 0.75em;">
-<p><strong>1. Record real-world walking.</strong></p>
-<ul>
-<li>1 person with motion capture and force plates.</li>
-<li>10 overground walking trials, 1 stride kept per trial.</li>
-</ul>
-<p><span class="math inline">\(\rightarrow\)</span> <em>Task-space markers &amp; ground reaction forces (GRF).</em></p>
+<div class="step s1" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>1. Data Collection</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s2" style="flex: 1; font-size: 0.75em;">
-<p><strong>2. Estimate muscle activity</strong></p>
-<ul>
-<li>Build MSM (H2190) with subject anatomy.</li>
-<li>Inverse kinematics to compute joint angles.</li>
-<li>Subject to kinematic and GRF constraints, find muscle activations that minimize squared muscle controls (MocoInverse).</li>
-</ul>
+<div class="step s2" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>2. Muscle Activation Estimation</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s3" style="flex: 1; font-size: 0.75em;">
-<p><strong>3. Identify muscle synergies</strong></p>
-<p>Use non-negative matrix factorization (40 right-leg muscles, <span class="math inline">\(k = 10\)</span>) to identify groups of muscles that activate together:</p>
-<p><span class="math display">\[ \underbrace{M}_{\substack{\text{activation} \\ \text{matrix}}} \approx \overbrace{W}^{\llap{\substack{\text{temporal} \\ \text{activations}}\kern-1.5em}} \underbrace{H}_{\llap{\substack{\text{spatial} \\ \text{weights}}\kern-1.5em}}\]</span></p>
-<p><span class="math inline">\(H\)</span> is fixed; the RL policy outputs the synergy <em>activations</em>.</p>
+<div class="step s3" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>3. Muscle Synergy Identification</strong></p>
 </div>
-<div class="flow-arrow">
+<div class="flow-arrow" style="font-size: 2.5em;">
 <p>→</p>
 </div>
-<div class="step s4" style="flex: 1; font-size: 0.75em;">
-<p><strong>4. Canonical RL</strong></p>
-<p>With the synergy constraint baked in, optimize a composite reward function:</p>
-<p><span class="math display">\[R = \mathbf{w}\begin{bmatrix}R_{\textrm{Velocity}} \\ R_{\textrm{Effort}} \\ R_{\textrm{R.o.M.}} \\ R_{\textrm{Fall}}\end{bmatrix}\]</span></p>
-<p>Train across a variety of velocities and terrains.</p>
+<div class="step s4" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 460px; font-size: 1.45em;">
+<p><strong>4. RL Policy Training</strong></p>
 </div>
 </div>
 </div>
@@ -797,13 +738,13 @@
 <p><em>Two controllers are trained with the same setup — they differ only in what the policy outputs.</em></p>
 <ul>
 <li><strong>Synergistic controller (30 actions):</strong> 10 right-leg synergy activations + 10 left-leg synergy activations + 10 torso/pelvis muscle activations → fixed synergy matrix <span class="math inline">\(H\)</span> turns them into leg muscle activations</li>
-<li><strong>Independent controller (baseline):</strong> sets every muscle excitation directly</li>
+<li><strong>Independent controller (baseline):</strong> sets every muscle excitation (80) directly</li>
 </ul>
 <p><strong>Same for both:</strong></p>
 <ul>
-<li><strong>Observations:</strong> muscle states, joint angles + velocities, head motion, foot positions, GRFs, COM velocity, <strong>target speed</strong></li>
+<li><strong>Observations:</strong> muscle states, joint angles + velocities, head motion, foot positions, GRFs, COM velocity, target speed</li>
 <li><strong>Environment:</strong> Hyfydy <span class="citation" data-cites="geijtenbeek2021hyfydy"><a href="#/references" role="doc-biblioref" onclick="">[16]</a></span>, random uneven terrain (<span class="math inline">\(-6^\circ\)</span> to <span class="math inline">\(+6^\circ\)</span>), target speed swept <span class="math inline">\(0.7 \to 1.6 \to 0.7\)</span> m/s</li>
-<li><strong>Algorithm:</strong> SAC <span class="citation" data-cites="haarnoja2018sac"><a href="#/references" role="doc-biblioref" onclick="">[17]</a></span>, 75M steps × 5 seeds → best policy kept for analysis</li>
+<li><strong>Algorithm:</strong> SAC <span class="citation" data-cites="haarnoja2018sac"><a href="#/references" role="doc-biblioref" onclick="">[17]</a></span>, 75M steps × 5 seeds</li>
 </ul>
 <aside class="notes">
 <p>Here’s the RL setup. They train two controllers that are identical except for the action space. The synergistic policy outputs 30 numbers at each step: 10 synergy activations for each leg, plus 10 independent activations for the torso and pelvis muscles. Each leg’s 40 muscle activations come from multiplying the synergy activations through H. The independent controller is the baseline — it sets each muscle excitation directly, with no synergy structure. They also mirror activation patterns from one side to the other at heel strike to keep the gait coordinated and symmetric.</p>
@@ -864,6 +805,9 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="section" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
+<h2></h2>
 </section>
 <section id="evaluation-protocol" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Evaluation Protocol</h2>
@@ -950,6 +894,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <p>For the independent controller, five of the eight muscles fall outside the range of correlations you see between humans, and GAS, ST, and BF are actually negatively correlated with the EMG.</p>
 <p>The synergistic controller is within the human range for all eight. The plantarflexors agree in both timing and magnitude. ST, BF, and RF have lower correlations, but the paper points out those muscles also have the broadest variability between people.</p>
 <p>One thing worth noting from the figure: for TA and RF, the independent controller’s median correlation is actually higher than the synergistic one, even though both are within the human range.</p>
+<p>imilarity between predicted muscle activations and experimental EMG envelopes across eight lower-limb muscles. Top box plots show Pearson correlation coefficients between predicted muscle activations and experimental EMG envelopes during level treadmill walking at 1.2 m/s for soleus (SOL), gastrocnemius medialis (GAS), tibialis anterior (TA), semitendinosus (ST), biceps femoris (BF), rectus femoris (RF), vastus medialis (VM), and vastus lateralis (VL). Gray box plots represent the cross-human experimental benchmark derived from 22 participants of the open-source dataset, and the surrounding gray shaded regions indicate the corresponding envelope of cross-human variability. Orange and blue box plots correspond to independent and synergistic control conditions, respectively. Round dots denote individual correlation coefficients (n = 231 for cross-human pairwise comparisons; n = 22 per controller for correlations between simulated and experimental activations). Bottom line plots show representative activation profiles over the normalized gait cycle, where gray curves indicate experimental EMG envelopes across participants, and colored curves represent predicted activations from the independent (orange) and synergistic (blue) controllers. Muscle activations were normalized to reference voluntary contraction (RVC): for each muscle, predicted activations were scaled to the maximum amplitude observed within each controller, whereas experimental EMG envelopes were normalized to the subject-specific maximum amplitude.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -976,6 +921,7 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <p>Both controllers walk stably across the full speed range.</p>
 <p>In the human data, joint angles and moments change monotonically with speed in specific gait phases. The synergistic controller mostly keeps those trends — the red arrows. The independent controller has several places where the trend is reversed or flattened — the green arrows — most clearly in hip angle during swing, knee angle in loading response and swing, and ankle moment in loading response.</p>
 <p>The worst one is the independent controller’s knee angle in swing, with an RMSE ratio of 7.98. That’s the largest kinematic deviation in the paper, and it lines up with where the speed trend is reversed.</p>
+<p>Arrows highlight gait phases exhibiting clear speed-dependent magnitude modulation. Red arrows denote trends observed in the experimental data and similarly captured by the synergistic controller, whereas green arrows indicate regions where the independent controller deviates from the experimentally observed pattern</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1049,114 +995,18 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 <section>
 <section id="discussion" class="title-slide slide level1 gatech-hidden-section center" data-background-image="assets/background_section_blank.jpg" data-background-size="contain">
 <h1>Discussion</h1>
-
+<!-- {{< include slides/15-related-work.qmd >}} -->
 </section>
-<section id="comparison-to-prior-predictive-msm-rl" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
-<h2>Comparison to Prior Predictive MSM-RL</h2>
-<h3 id="this-paper-validates-against-much-more-than-kinematics.">This paper validates against much more than kinematics.</h3>
-<table class="caption-top" style="width:100%;">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Work</th>
-<th>Model</th>
-<th style="text-align: center;">Kinematics</th>
-<th style="text-align: center;">GRF</th>
-<th style="text-align: center;">Joint moments</th>
-<th style="text-align: center;">EMG</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Weng et al.&nbsp;2021 <span class="citation" data-cites="weng2021natural"><a href="#/references" role="doc-biblioref" onclick="">[8]</a></span></td>
-<td>Sagittal, low-dim</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;">–</td>
-</tr>
-<tr class="even">
-<td>Badie et al.&nbsp;2025 <span class="citation" data-cites="badie2025bioinspired"><a href="#/references" role="doc-biblioref" onclick="">[7]</a></span></td>
-<td>3D, compact muscles</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;">–</td>
-</tr>
-<tr class="odd">
-<td>Schumacher et al.&nbsp;2025 <span class="citation" data-cites="schumacher2025natural"><a href="#/references" role="doc-biblioref" onclick="">[6]</a></span></td>
-<td>Low- to high-dim</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;">–</td>
-</tr>
-<tr class="even">
-<td><strong>Park et al.&nbsp;2026</strong> <span class="citation" data-cites="park2026synergy"><a href="#/references" role="doc-biblioref" onclick="">[12]</a></span></td>
-<td><strong>3D, 90 muscles</strong></td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
-<td style="text-align: center;">✓</td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
-<p>Compared to other predictive MSM-RL work, the contribution here is partly the controller design, but also how much they validate. Most prior work stops at kinematics, maybe GRFs. This paper also looks at joint moments and EMG, across speeds and slopes, and compares everything to how much humans vary from each other.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-
-<aside><div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J. Weng, E. Hashemi, and A. Arami, “Natural walking with musculoskeletal models using deep reinforcement learning,” <em>IEEE Robotics and Automation Letters</em>, 2021.</div>
-</div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">N. Badie, F. Al-Hafez, P. Schumacher, D. F. B. Haeufle, J. Peters, and S. Schmitt, “Bioinspired morphology and task curricula for learning locomotion in bipedal muscle-actuated systems,” <em>Communications Engineering</em>, 2025.</div>
-</div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">P. Schumacher <em>et al.</em>, “Emergence of natural and robust bipedal walking by learning from biologically plausible objectives,” <em>iScience</em>, 2025.</div>
-</div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">I. Park, E. Choi, J. Ahn, and J. Ahn, “Muscle synergy priors enhance biomechanical fidelity in predictive musculoskeletal locomotion simulation,” <em>arXiv</em>, 2026.</div>
-</div>
-</div></aside></section>
 <section id="limitations" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Limitations</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><strong>Stated by the Authors</strong></p>
 <ul>
-<li>level walking + modest slopes only (running, turning, stairs untested)</li>
-<li>synergies from <strong>inverse simulation</strong>, not EMG</li>
-<li>synergy set + dimensionality fixed across tasks and speeds</li>
-<li><strong>single participant</strong> used for calibration</li>
+<li><p>level walking + modest slopes only (running, turning, stairs untested)</p></li>
+<li><p>synergies from inverse simulation, not EMG</p></li>
+<li><p>synergy set + dimensionality fixed across tasks and speeds</p></li>
+<li><p>single participant used for simulation</p></li>
+<li><p>biomechanical analysis uses only the best of 5 seeds</p></li>
+<li><p>no criterion reported for choosing <span class="math inline">\(k = 10\)</span> <!-- - MocoInverse minimizes squared controls → $H$ partly encodes that **optimization prior** --> <!-- - lower reward → fidelity comes with a task-performance cost --></p></li>
 </ul>
-</div><div class="column fragment" style="width:55%;">
-<p><strong>My Concerns</strong></p>
-<ul>
-<li>action space is 30-D vs.&nbsp;the independent baseline’s per-muscle control → is the gain from <em>physiology</em> or just <em>lower dimensionality</em>? (no random/PCA basis ablation)</li>
-<li>biomechanical analysis uses only the best of 5 seeds</li>
-<li>no criterion reported for choosing <span class="math inline">\(k = 10\)</span></li>
-<li>MocoInverse minimizes squared controls → <span class="math inline">\(H\)</span> partly encodes that <strong>optimization prior</strong></li>
-<li>lower reward → fidelity comes with a task-performance cost</li>
-</ul>
-</div></div>
 <aside class="notes">
 <p>The authors list four limitations: only walking on level ground and modest slopes, synergies from inverse simulation instead of EMG, a fixed synergy set and dimensionality, and a single participant. They do point out that even with one person’s synergies, fidelity improved across speeds and slopes.</p>
 <p>A few things I’d add. The biggest one for me is the comparison itself: the synergistic controller’s action space is 30-dimensional, while the independent one controls every muscle. The paper itself says synergies reduce the effective action dimensionality. So is the improvement because the synergies are physiological, or just because the action space is smaller? A random or PCA basis of the same size would answer that.</p>
@@ -1172,40 +1022,8 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="open-questions" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
-<h2>Open Questions</h2>
-<p><strong>From the paper’s discussion + future work</strong></p>
-<ol type="1">
-<li>Would a <strong>patient-specific</strong> (or impairment-graded) synergy basis reproduce <em>pathological</em> gait, e.g.&nbsp;post-stroke? <span class="citation" data-cites="clark2010merging"><a href="#/references" role="doc-biblioref" onclick="">[18]</a></span></li>
-<li>Can this support designing <strong>assistive-device / exoskeleton controllers</strong> and rehab strategies?</li>
-<li>Can <strong>state-dependent or adaptive</strong> synergy bases improve fidelity?</li>
-<li>How does it extend to <strong>subject-diverse datasets</strong> and EMG-driven or hybrid synergy estimation?</li>
-</ol>
-<p><strong>My own</strong></p>
-<ol start="5" type="1">
-<li>How should the <strong>number of synergies <span class="math inline">\(k\)</span></strong> be chosen?</li>
-</ol>
-<aside class="notes">
-<p>The first four are directions the authors bring up themselves. In the discussion, they argue synergy-constrained control could matter even more for pathological gait — post-stroke EMG shows fewer, less distinct modules in the paretic limb — so swapping in a patient-specific synergy basis could make the simulation reflect the neuromotor constraints behind the impairment. They also mention assistive-device and exoskeleton control in the conclusion.</p>
-<p>These are the ones I’m most interested in for my own work: if you could build H from a stroke patient, could you use that as a training environment for exoskeleton controllers?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-
-<aside><div>
-<div class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, “Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,” <em>Journal of Neurophysiology</em>, 2010.</div>
-</div>
-</div></aside></section></section>
+<!-- {{< include slides/17-open-questions.qmd >}} -->
+</section></section>
 <section>
 <section id="conclusion" class="title-slide slide level1 gatech-hidden-section center" data-background-image="assets/background_section_blank.jpg" data-background-size="contain">
 <h1>Conclusion</h1>
@@ -1213,18 +1031,13 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 </section>
 <section id="takeaways" class="slide level2" data-background-image="assets/background_slide.png" data-background-size="contain">
 <h2>Takeaways</h2>
-<h3 id="synergies-as-the-action-space-physiology-informed-prior-from-minimal-data-10-strides-1-person.">Synergies as the action space → physiology-informed prior from minimal data (10 strides, 1 person).</h3>
+<h3 id="synergies-as-the-action-space---physiology-informed-prior-from-minimal-data">Synergies as the action space -&gt; physiology-informed prior from minimal data (</h3>
 <p>With only a high-level velocity target (no imitation reward):</p>
 <ul>
-<li>muscle activation timing within cross-human variability for <strong>all 8</strong> muscles at 1.2 m/s</li>
+<li>muscle activation timing within cross-human variability for all 8 muscles at 1.2 m/s</li>
 <li>largely preserves speed- and slope-dependent trends in human data</li>
-<li><strong>no</strong> extreme (RMSE ratio &gt; 5) kinematic or kinetic errors</li>
+<li>no extreme (RMSE ratio &gt; 5) kinematic or kinetic errors</li>
 </ul>
-<div class="fragment" data-fragment-index="0">
-<blockquote>
-<p><em>Leveraging not only human-like musculoskeletal <strong>structure</strong>, but also a human-like <strong>control strategy</strong>.</em></p>
-</blockquote>
-</div>
 <aside class="notes">
 <p>The paper’s main takeaway is that you can get much more human-like biomechanics just by constraining the action space to synergies, with very little data and only a velocity target.</p>
 <p>The quote at the bottom is from their conclusion — the idea is to use not just a human-like body, but also the control strategy from motor neuroscience.</p>
@@ -1296,9 +1109,6 @@ R = w_{\text{vel}} R_{\text{vel}} + w_{\text{effort}} R_{\text{effort}}
 </div>
 <div id="ref-haarnoja2018sac" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[17] </div><div class="csl-right-inline">T. Haarnoja, A. Zhou, P. Abbeel, and S. Levine, <span>“Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor,”</span> in <em>International conference on machine learning</em>, 2018, pp. 1861–1870.</div>
-</div>
-<div id="ref-clark2010merging" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">D. J. Clark, L. H. Ting, F. E. Zajac, R. R. Neptune, and S. A. Kautz, <span>“Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke,”</span> <em>Journal of Neurophysiology</em>, vol. 103, no. 2, pp. 844–857, 2010.</div>
 </div>
 </div>
 </section></section>

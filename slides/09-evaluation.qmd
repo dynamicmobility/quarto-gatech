@@ -1,3 +1,5 @@
+##  
+
 ## Evaluation Protocol
 
 *Compare both controllers' gait to human treadmill data, relative to how much humans differ from each other.*
@@ -11,9 +13,8 @@
 **How they score it**
 
 - **RMSE ratio:** sim-vs-human error ÷ average human-vs-human error in the same dataset
-  - ≈ 1.0 → the sim is as far from the data as one person is from another
-  - computed per variable and gait phase → count how many exceed 2, 3, and 5
-- **EMG:** correlation with human EMG, compared to the spread of correlations between humans
+  - ≈ 1.0 means that the simulation is equivalent to typical variability between individuals in the human dataset
+- **Pearson r correlation coefficient:** correlation with human EMG, compared to the spread of correlations between humans
 :::
 
 ::: {.notes}

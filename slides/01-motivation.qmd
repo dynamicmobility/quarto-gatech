@@ -6,7 +6,7 @@
 *Why learn locomotion policies for musculoskeletal models (MSMs)?*
 
 - Enables a simulation-based study of human gait, and how it physiologically changes due to pathology.
-- Easier-to-collect data for training and personalizing assistive device controllers.
+- Easier data collection for training and personalizing assistive device controllers.
 
 ::::: {.columns}
 ::: {.column width="62%"}

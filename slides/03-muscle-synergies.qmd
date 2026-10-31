@@ -1,24 +1,24 @@
 ## Muscle Synergies: Conceptually
 
-*Evidence suggests the nervous system doesn't control each muscle separately — it activates fixed **groups** of muscles together [@bizzi2013neural].*
+*Evidence suggests the nervous system doesn't control each muscle separately; it activates fixed groups of muscles together [@bizzi2013neural].*
 
 :::: {.columns}
 ::: {.column width="50%"}
 ::: {.box}
-**Without synergies**
+**Without synergies (Independent Controller)**
 
 - the controller sets every leg muscle on its own
-- in this model → **40 knobs** per leg
+- in this model: 40 muscles per leg
 :::
 :::
 
-::: {.column width="50%" .fragment}
+::: {.column width="50%" }
 ::: {.box-accent}
-**With synergies**
+**With synergies (Synergistic Controller)**
 
-- each knob turns on a *group* of muscles, in fixed proportions
+- turns on a group of muscles, in fixed proportions
 - the controller only decides how much of each group to use
-- in this paper → **10 knobs** per leg
+- in this paper: 10 muscle synergies per leg
 :::
 :::
 ::::
@@ -50,8 +50,8 @@ $$
 \mathbf{a}(t) \approx \sum_{j=1}^{k} w_j(t)\,\mathbf{h}_j
 $$
 
-- $\mathbf{h}_j$ → **which** muscles are in group $j$, and how strongly (fixed)
-- $w_j(t)$ → **how much** group $j$ is on at time $t$ (what the controller chooses)
+- $\mathbf{h}_j$: which muscles are in group $j$, and how strongly (fixed)
+- $w_j(t)$: how much group $j$ is on at time $t$ (what the controller chooses)
 - $k$ groups ≪ number of muscles
 :::
 :::

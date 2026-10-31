@@ -1,4 +1,4 @@
-## Learning Locomotion with MSMs
+## Learning Locomotion with Musculoskeletal Models
 
 *RL has enabled musculoskeletal simulations to generate diverse, human-like movement [@song2021deeprl]. Most of this progress uses motion-imitation rewards; predictive simulation works without them.*
 
@@ -7,11 +7,11 @@
 ::: {.box style="font-size: 0.8em;"}
 [**Motion Imitation** [@simos2025imitation; @park2025magnet; @cotton2025kintwin]]{style="display:block; text-align:center"}
 
-Reward = track pre-recorded mocap
+Reward = track pre-recorded motion capture
 
-- ✓ reproduces reference kinematics
-- ✗ only constrains surface motion → muscles + joint kinetics underdetermined
-- ✗ brittle outside the clips (new speed, slope, task)
+- reproduces reference kinematics
+- only constrains surface motion → muscles + joint kinetics underdetermined
+- brittle outside the clips (new speed, slope, task)
 :::
 :::
 
@@ -21,17 +21,17 @@ Reward = track pre-recorded mocap
 
 Reward = task + biologically-plausible terms, **no** reference
 
-<!-- - pursued *to overcome* imitation's limits -->
+- pursued to overcome imitation's limits
 - two complementary strategies:
-  - **objectives** → what's rewarded [@schumacher2025natural]
-  - **curricula** → how training progresses, for efficiency + robustness [@badie2025bioinspired; @weng2021natural]
-- ✗ still poor match to human **joint kinetics** + **muscle patterns**
+  - **objectives**: shaping bevaior with biologically plausible objectives [@schumacher2025natural]
+  - **curricula**: improving learning efficiency/robustness using bio-inspired curriculum design [@badie2025bioinspired; @weng2021natural]
+- ✗ still poor match to human joint kinetics + muscle patterns
 :::
 :::
 :::::
 
 ::: {.fragment}
-> *Gap: **visually plausible** motion ≠ **experimentally grounded** biomechanics*
+> *Gap the paper is trying to address: visually plausible motion ≠ experimentally grounded biomechanics*
 :::
 
 <!-- - Constraints or objectives are needed for more biological accuracy. -->

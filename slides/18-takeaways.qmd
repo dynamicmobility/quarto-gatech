@@ -1,16 +1,13 @@
 ## Takeaways
 
-### Synergies as the action space → physiology-informed prior from minimal data (10 strides, 1 person).
+### Synergies as the action space -> physiology-informed prior from minimal data (
 
 With only a high-level velocity target (no imitation reward):
 
-- muscle activation timing within cross-human variability for **all 8** muscles at 1.2 m/s
+- muscle activation timing within cross-human variability for all 8 muscles at 1.2 m/s
 - largely preserves speed- and slope-dependent trends in human data
-- **no** extreme (RMSE ratio > 5) kinematic or kinetic errors
+- no extreme (RMSE ratio > 5) kinematic or kinetic errors
 
-::: {.fragment}
-> *Leveraging not only human-like musculoskeletal **structure**, but also a human-like **control strategy**.*
-:::
 
 ::: {.notes}
 The paper's main takeaway is that you can get much more human-like biomechanics just by constraining the action space to synergies, with very little data and only a velocity target.

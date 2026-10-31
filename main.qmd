@@ -76,11 +76,11 @@ bibliography: refs.bib
 
 # Discussion
 
-{{< include slides/15-related-work.qmd >}}
+<!-- {{< include slides/15-related-work.qmd >}} -->
 
 {{< include slides/16-limitations.qmd >}}
 
-{{< include slides/17-open-questions.qmd >}}
+<!-- {{< include slides/17-open-questions.qmd >}} -->
 
 # Conclusion
 

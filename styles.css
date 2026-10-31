@@ -43,3 +43,8 @@
 .reveal div.callout.callout-tip .callout-title {
   color: #003057 !important;
 }
+
+/* Center figure captions under their images */
+.reveal figure figcaption {
+  text-align: center;
+}

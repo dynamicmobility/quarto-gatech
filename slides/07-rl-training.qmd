@@ -3,13 +3,13 @@
 *Two controllers are trained with the same setup — they differ only in what the policy outputs.*
 
 - **Synergistic controller (30 actions):** 10 right-leg synergy activations + 10 left-leg synergy activations + 10 torso/pelvis muscle activations → fixed synergy matrix $H$ turns them into leg muscle activations
-- **Independent controller (baseline):** sets every muscle excitation directly
+- **Independent controller (baseline):** sets every muscle excitation (80) directly
 
 **Same for both:**
 
-- **Observations:** muscle states, joint angles + velocities, head motion, foot positions, GRFs, COM velocity, **target speed**
+- **Observations:** muscle states, joint angles + velocities, head motion, foot positions, GRFs, COM velocity, target speed
 - **Environment:** Hyfydy [@geijtenbeek2021hyfydy], random uneven terrain ($-6^\circ$ to $+6^\circ$), target speed swept $0.7 \to 1.6 \to 0.7$ m/s
-- **Algorithm:** SAC [@haarnoja2018sac], 75M steps × 5 seeds → best policy kept for analysis
+- **Algorithm:** SAC [@haarnoja2018sac], 75M steps × 5 seeds 
 
 ::: {.notes}
 Here's the RL setup. They train two controllers that are identical except for the action space. The synergistic policy outputs 30 numbers at each step: 10 synergy activations for each leg, plus 10 independent activations for the torso and pelvis muscles. Each leg's 40 muscle activations come from multiplying the synergy activations through H. The independent controller is the baseline — it sets each muscle excitation directly, with no synergy structure. They also mirror activation patterns from one side to the other at heel strike to keep the gait coordinated and symmetric.

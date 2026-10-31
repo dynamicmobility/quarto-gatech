@@ -6,6 +6,15 @@
 3. **Inverse kinematics:** marker positions → joint angles $\mathbf{q}(t)$
 4. **MocoInverse** [@dembia2020moco]: joint angles + GRFs → estimated activations for **all 90 muscles**
 
+:::: {.columns}
+::: {.column width="50%"}
+![H2190 model](figures/h2190.png){fig-align="center" height="380"}
+:::
+::: {.column width="50%"}
+![Scaling to the participant (OpenSim)](figures/scale.png){fig-align="center" height="380"}
+:::
+::::
+
 
 
 ::: {.notes}
